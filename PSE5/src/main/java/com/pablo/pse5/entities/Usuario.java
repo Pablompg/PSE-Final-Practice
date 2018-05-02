@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pablo.ps5.entities;
+package com.pablo.pse5.entities;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author bribi
+ * @author usuario
  */
 @Entity
 @Table(name = "usuario")
@@ -61,7 +62,7 @@ public class Usuario implements Serializable {
     @Column(name = "movil")
     private Integer movil;
     @Column(name = "tarjeta")
-    private Integer tarjeta;
+    private BigInteger tarjeta;
 
     public Usuario() {
     }
@@ -116,11 +117,11 @@ public class Usuario implements Serializable {
         this.movil = movil;
     }
 
-    public Integer getTarjeta() {
+    public BigInteger getTarjeta() {
         return tarjeta;
     }
 
-    public void setTarjeta(Integer tarjeta) {
+    public void setTarjeta(BigInteger tarjeta) {
         this.tarjeta = tarjeta;
     }
 
@@ -146,7 +147,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pablo.ps5.entities.Usuario[ email=" + email + " ]";
+        return "com.pablo.pse5.entities.Usuario[ email=" + email + " ]";
     }
     
 }

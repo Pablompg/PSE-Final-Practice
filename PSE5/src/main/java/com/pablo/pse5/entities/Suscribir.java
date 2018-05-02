@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pablo.ps5.entities;
+package com.pablo.pse5.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author bribi
+ * @author usuario
  */
 @Entity
 @Table(name = "suscribir")
@@ -123,7 +123,7 @@ public class Suscribir implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pablo.ps5.entities.Suscribir[ idSuscribir=" + idSuscribir + " ]";
+        return "com.pablo.pse5.entities.Suscribir[ idSuscribir=" + idSuscribir + " ]";
     }
     
 }

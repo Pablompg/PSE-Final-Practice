@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pablo.ps5.entities;
+package com.pablo.pse5.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author bribi
+ * @author usuario
  */
 @Entity
 @Table(name = "grupo_usuario")
@@ -93,7 +93,7 @@ public class GrupoUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.pablo.ps5.entities.GrupoUsuario[ emailUsuario=" + emailUsuario + " ]";
+        return "com.pablo.pse5.entities.GrupoUsuario[ emailUsuario=" + emailUsuario + " ]";
     }
     
 }
