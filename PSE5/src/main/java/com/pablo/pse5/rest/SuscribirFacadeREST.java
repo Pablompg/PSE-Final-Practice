@@ -8,6 +8,7 @@ package com.pablo.pse5.rest;
 import com.pablo.pse5.entities.Suscribir;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
@@ -25,6 +26,7 @@ import javax.ws.rs.core.MediaType;
  * @author usuario
  */
 @Stateless
+@Named
 @Path("com.pablo.pse5.entities.suscribir")
 public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
 
