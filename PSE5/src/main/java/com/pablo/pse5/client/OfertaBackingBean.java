@@ -1,7 +1,9 @@
 
 package com.pablo.pse5.client;
 
+import com.pablo.pse5.entities.Oferta;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -16,6 +18,9 @@ public class OfertaBackingBean implements Serializable{
     private String ofertaPuesto; 
     private String ofertaRequisitosMinimos;
     private String ofertaEmailEmpresa;
+    private ArrayList<Oferta> ofertas;
+
+    
 
     public int getOfertaId() {
         return ofertaId;

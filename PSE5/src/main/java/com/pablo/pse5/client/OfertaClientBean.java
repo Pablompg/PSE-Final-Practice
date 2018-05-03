@@ -5,7 +5,6 @@ import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.json.OfertaReader;
 import com.pablo.pse5.json.OfertaWriter;
 import java.io.Serializable;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.RequestScoped;
