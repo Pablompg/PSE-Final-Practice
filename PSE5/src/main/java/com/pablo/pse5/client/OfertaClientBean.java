@@ -1,10 +1,8 @@
-
 package com.pablo.pse5.client;
 
 import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.json.OfertaReader;
 import com.pablo.pse5.json.OfertaWriter;
-import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.RequestScoped;
@@ -18,14 +16,14 @@ import javax.ws.rs.core.MediaType;
 
 @Named
 @RequestScoped
-public class OfertaClientBean implements Serializable{
+public class OfertaClientBean{
     
     Client client;
     WebTarget target;
     @Inject
     OfertaBackingBean bean;
     
-        @PostConstruct
+    @PostConstruct
     public void init() {
         client = ClientBuilder.newClient();
         target = client.target("http://localhost:8080/PSE5/webresources/com.pablo.pse5.entities.oferta");
@@ -36,36 +34,35 @@ public class OfertaClientBean implements Serializable{
         client.close();
     }
 
-    public Oferta[] getMovies() {
+    public Oferta[] getOfertas() {
         return target
                 .request()
                 .get(Oferta[].class);
     }
 
-    public Oferta getMovie() {
-        Oferta m = target
+    public Oferta getOferta() {
+        return target
                 .register(OfertaReader.class)
                 .path("{ofertaId}")
                 .resolveTemplate("ofertaId", bean.getOfertaId())
                 .request()
                 .get(Oferta.class);
-        return m;
     }
 
-    public void deleteMovie() {
+    public void deleteOferta() {
         target.path("{ofertaId}")
                 .resolveTemplate("ofertaId", bean.getOfertaId())
                 .request()
                 .delete();
     }
 
-    public void addMovie() {
+    public void addOferta() {
         Oferta o = new Oferta();
         o.setIdOferta(1);
-        o.setNombre (bean.getOfertaNombre ());
-        o.setDescripcion (bean.getOfertaDescripcion ());
-        o.setFecha (bean.getOfertaFecha ());
-        o.setPuesto (bean.getOfertaPuesto ());
+        o.setNombre (bean.getOfertaNombre());
+        o.setDescripcion (bean.getOfertaDescripcion());
+        o.setFecha (bean.getOfertaFecha());
+        o.setPuesto (bean.getOfertaPuesto());
         o.setRequisitosMinimos(bean.getOfertaRequisitosMinimos());
         o.setEmailEmpresa(bean.getOfertaEmailEmpresa());
         target.register(OfertaWriter.class)

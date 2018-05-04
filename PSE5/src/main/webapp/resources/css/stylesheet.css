@@ -1,0 +1,24 @@
+.ui-widget {
+    font-family: Times New Roman;
+    /* font-family: Courier New; */
+    font-size: 1em;
+}
+.ui-widget-content{
+    background: none;
+    border: 1px solid #740000;
+}
+#top{
+    background-image: url(wallpaper.png);
+}
+#top-text{
+    color: #fff;
+    padding-left: 1rem;
+}
+.ui-layout-pane-center{
+    border: none;
+    padding: 0 .5rem 0 0;
+}
+.bold{
+    font-weight: bold;
+}
+
