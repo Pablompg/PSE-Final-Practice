@@ -1,11 +1,12 @@
 package com.pablo.pse5.client;
 
+import com.pablo.pse5.bean.OfertaBackingBean;
 import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.json.OfertaReader;
 import com.pablo.pse5.json.OfertaWriter;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.client.Client;

@@ -1,5 +1,5 @@
 
-package com.pablo.pse5.client;
+package com.pablo.pse5.bean;
 
 import java.io.Serializable;
 import java.util.Date;

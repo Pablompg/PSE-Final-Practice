@@ -11,7 +11,7 @@
         <ui:composition template="./WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h:form> 
-                    <p:dataScroller value="#{ofertaFacadeREST.findAll()}" var="oferta" chunkSize="10">
+                    <p:dataScroller value="#{ofertaClientBean.ofertas}" var="oferta" chunkSize="10">
                         <f:facet name="header">
                             Ofertas
                         </f:facet>
