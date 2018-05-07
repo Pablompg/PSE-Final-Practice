@@ -24,6 +24,10 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.pablo.pse5.json.OfertaReader.class);
         resources.add(com.pablo.pse5.json.OfertaWriter.class);
+        resources.add(com.pablo.pse5.json.SuscribirReader.class);
+        resources.add(com.pablo.pse5.json.SuscribirWriter.class);
+        resources.add(com.pablo.pse5.json.UsuarioReader.class);
+        resources.add(com.pablo.pse5.json.UsuarioWriter.class);
         resources.add(com.pablo.pse5.rest.GrupoUsuarioFacadeREST.class);
         resources.add(com.pablo.pse5.rest.OfertaFacadeREST.class);
         resources.add(com.pablo.pse5.rest.SuscribirFacadeREST.class);
