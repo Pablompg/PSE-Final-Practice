@@ -21,10 +21,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author usuario
- */
 @Stateless
 @Named
 @Path("com.pablo.pse5.entities.oferta")

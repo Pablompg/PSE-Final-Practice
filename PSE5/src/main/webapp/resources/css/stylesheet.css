@@ -21,4 +21,11 @@
 .bold{
     font-weight: bold;
 }
-
+#menu{
+    list-style: none;
+    display: inline-block;
+    float: right;
+}
+#menu li{
+    display: inline;
+}

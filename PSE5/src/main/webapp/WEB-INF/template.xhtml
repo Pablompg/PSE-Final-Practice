@@ -3,14 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <!--<link href="${facesContext.externalContext.requestContextPath}/resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="${facesContext.externalContext.requestContextPath}/resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
-        -->
         <link href="${facesContext.externalContext.requestContextPath}/resources/css/stylesheet.css" rel="stylesheet" type="text/css" />
+
     </h:head>
 
     <h:body>
@@ -20,24 +19,106 @@
                 <h1>
                     <h:outputText id="top-text" value="Portal de Empleo - Grupo 5"/>
                 </h1>
+                <ul id="menu">
+                    <li>
+                        <h:form id="login">        
+                            <h:outputLink value="javascript:void(0)" onclick="PF('registro').hide(); PF('login').show();" title="login">
+                                Iniciar Sesión
+                            </h:outputLink>
+                        </h:form>
+                    </li>
+                    <li>
+                        <h:form>        
+                            <h:outputLink value="javascript:void(0)" onclick="PF('login').hide(); PF('registro').show();" title="login">
+                                Registrarse
+                            </h:outputLink>
+                        </h:form>
+                    </li>
+                </ul>
+                <h:form>           
+                    <p:growl id="message" showDetail="true" />
+
+                    <p:commandButton value="Destroy the World" actionListener="#{dialogView.destroyWorld}" update="message">
+                        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </h:form>
+
+
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="220" header="Menú" collapsible="true">
                 <h:form>
                     <p:menu>
                         <p:menuitem value="Inicio" url="/faces/index.xhtml" icon="ui-icon-home"/>
+                        <p:menuitem value="Chat" url="/faces/chat/chatroom.xhtml" icon="ui-icon-comment"/>
                     </p:menu>
                 </h:form>
 
+
             </p:layoutUnit>
 
-            <p:layoutUnit position="center" closable="true" collapsible="true">
+            <p:layoutUnit position="center" closable="true" collapsible="true" >
+                <h:form>
+                    <p:growl id="growlLogin" sticky="true" showDetail="true" life="3000" />
+
+                    <p:dialog header="Iniciar Sesión" widgetVar="login" resizable="false">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="username" value="Username:" />
+                            <p:inputText id="username" value="" required="true" label="username" />
+
+                            <h:outputLabel for="password" value="Password:" />
+                            <p:password id="password" value="" required="true" label="password" />
+
+                            <f:facet name="footer">
+                                <p:commandButton value="Login" update="growlLogin"
+                                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+                            </f:facet>  
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
+                <h:form>
+                    <p:growl id="growlRegistro" sticky="true" showDetail="true" life="3000" />
+
+                    <p:dialog header="Registro" widgetVar="registro" resizable="false">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputLabel for="email" value="Email" />
+                            <p:inputText id="email" value="" required="true" label="email" />
+
+                            <h:outputLabel for="password2" value="Password:" />
+                            <p:password id="password2" value="" required="true" label="password2" />
+
+                            <h:outputLabel for="nombre" value="Nombre:" />
+                            <p:password id="nombre" value="" required="true" label="nombre" />
+
+                            <h:outputLabel for="fecha" value="Fecha de nacimiento:" />
+                            <p:password id="fecha" value="" required="true" label="fecha" />
+
+                            <h:outputLabel for="movil" value="Móvil:" />
+                            <p:password id="movil" value="" required="true" label="movil" />
+
+                            <h:outputLabel for="tarjeta" value="Nº de tarjeta:" />
+                            <p:password id="tarjeta" value="" required="true" label="tarjeta" />
+
+                            <f:facet name="footer">
+                                <p:commandButton value="Login" update="growlRegistro"
+                                                 oncomplete="handleRegistroRequest(xhr, status, args)" />
+                            </f:facet>  
+                        </h:panelGrid>
+                    </p:dialog>
+                </h:form>
                 <ui:insert name="content"></ui:insert>
             </p:layoutUnit>
-            
+
             <p:layoutUnit position="south" size="35" style="text-align: right; padding-right: 10px">
                 <h:outputText value="David y Pablo" />
             </p:layoutUnit>
         </p:layout>
+        <script languaje="javascript" type="text/javascript" src="${facesContext.externalContext.requestContextPath}/resources/js/script.js"/>
+        
     </h:body>
 </html>

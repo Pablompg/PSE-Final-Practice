@@ -6,8 +6,8 @@ import java.util.Date;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-@Named
 @SessionScoped
+@Named
 public class OfertaBackingBean implements Serializable{
     private int ofertaId;
     private String ofertaNombre;
