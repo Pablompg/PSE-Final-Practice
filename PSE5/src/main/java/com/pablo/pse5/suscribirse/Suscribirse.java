@@ -120,4 +120,10 @@ public class Suscribirse implements Serializable{
             return false;
         }
     }
+
+    public String getEmailCandidato() {
+        return emailCandidato;
+    }
+    
+    
 }
