@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Suscribir.findByIdSuscribir", query = "SELECT s FROM Suscribir s WHERE s.idSuscribir = :idSuscribir")
     , @NamedQuery(name = "Suscribir.findByIdOferta", query = "SELECT s FROM Suscribir s WHERE s.idOferta = :idOferta")
     , @NamedQuery(name = "Suscribir.findByEmailCandidato", query = "SELECT s FROM Suscribir s WHERE s.emailCandidato = :emailCandidato")
+    , @NamedQuery(name = "Suscribir.findByOfertaAndCandidato", query = "SELECT s FROM Suscribir s WHERE s.emailCandidato = :emailCandidato AND s.idOferta = :idOferta")
     , @NamedQuery(name = "Suscribir.findByCartaPresentacion", query = "SELECT s FROM Suscribir s WHERE s.cartaPresentacion = :cartaPresentacion")})
 public class Suscribir implements Serializable {
 

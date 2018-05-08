@@ -3,6 +3,9 @@ package com.pablo.pse5.client;
 
 import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.entities.Suscribir;
+import com.pablo.pse5.json.SuscribirReader;
+import com.pablo.pse5.json.SuscribirWriter;
+import com.pablo.pse5.suscribirse.Suscribirse;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -21,7 +24,7 @@ public class SuscribirClientBean{
     Client client;
     WebTarget target;
     @Inject
-    Suscribirse bean;
+    //Suscribirse bean;
     
     @PostConstruct
     public void init() {
@@ -39,7 +42,7 @@ public class SuscribirClientBean{
                 .request()
                 .get(Suscribir[].class);
     }
-
+/*
     public Oferta getSuscribir() {
         return target
                 .register(SuscribirReader.class)
@@ -65,6 +68,6 @@ public class SuscribirClientBean{
         target.register(SuscribirWriter.class)
                 .request()
                 .post(Entity.entity(s, MediaType.APPLICATION_JSON));
-    }
+    }*/
 }
 
