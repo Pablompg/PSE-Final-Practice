@@ -1,6 +1,7 @@
 
 package com.pablo.pse5.client;
 
+import com.pablo.pse5.json.ValdaviaReader;
 import com.pablo.pse5.suscribirse.Suscribirse;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -19,9 +20,6 @@ public class ValdaviaClientBean {
     WebTarget target;
     Suscribirse bean;
     
-    private String estado;
-    private String email;
-    
     @PostConstruct
     public void init() {
         client = ClientBuilder.newClient();
@@ -33,18 +31,16 @@ public class ValdaviaClientBean {
         client.close();
     }
     
-    public String getSuscribir() {
+    public String getEstado(String emailCandidato) {
         try{
-        return target
+            return target
                 .register(ValdaviaReader.class)
                 .path("{email}")
-                .resolveTemplate("email", bean.getEmailCandidato())
+                .resolveTemplate("email", emailCandidato)
                 .request()
-                .get(Suscribirse.class);
-    
-        }catch(NotFoundException e){
+                .get(String.class);
+        }catch(Exception e){
             return "Not Found";
         }
     }    
-
 }

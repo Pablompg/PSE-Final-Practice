@@ -17,6 +17,7 @@ import javax.persistence.PersistenceContext;
 @FlowScoped("suscribirse")
 public class Suscribirse implements Serializable{
     private int idOferta;
+    private String cartaPresentacion;
     @PersistenceContext
     private EntityManager em;
     
@@ -30,6 +31,14 @@ public class Suscribirse implements Serializable{
 
     public void setIdOferta(int idOferta) {
         this.idOferta = idOferta;
+    }
+
+    public String getCartaPresentacion() {
+        return cartaPresentacion;
+    }
+
+    public void setCartaPresentacion(String cartaPresentacion) {
+        this.cartaPresentacion = cartaPresentacion;
     }
     
     public String getOfertaNombre(){
@@ -115,7 +124,7 @@ public class Suscribirse implements Serializable{
                     .setParameter("emailCandidato",emailCandidato)
                     .setParameter("idOferta",idOferta)
                     .getResultList();
-            return lista.isEmpty();
+            return !lista.isEmpty();
         }catch(NoResultException e){
             return false;
         }

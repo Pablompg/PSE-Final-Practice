@@ -38,17 +38,15 @@
                 <h:form>           
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Destroy the World" actionListener="#{dialogView.destroyWorld}" update="message">
-                        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                    <p:commandButton value="Cerrar Sesión" update="message">
+                        <p:confirm header="Cerrando sesión" message="¿Está seguro?" icon="ui-icon-alert" />
                     </p:commandButton>
 
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>
                 </h:form>
-
-
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="220" header="Menú" collapsible="true">
@@ -56,10 +54,9 @@
                     <p:menu>
                         <p:menuitem value="Inicio" url="/faces/index.xhtml" icon="ui-icon-home"/>
                         <p:menuitem value="Chat" url="/faces/chat/chatroom.xhtml" icon="ui-icon-comment"/>
+                        <p:menuitem value="Suscribirse" action="suscribirse" icon="ui-icon-comment"/>
                     </p:menu>
                 </h:form>
-
-
             </p:layoutUnit>
 
             <p:layoutUnit position="center" closable="true" collapsible="true" >
