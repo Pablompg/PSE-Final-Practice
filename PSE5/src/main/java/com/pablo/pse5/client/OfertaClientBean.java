@@ -65,7 +65,7 @@ public class OfertaClientBean{
         o.setFecha (bean.getOfertaFecha());
         o.setPuesto (bean.getOfertaPuesto());
         o.setRequisitosMinimos(bean.getOfertaRequisitosMinimos());
-        o.setEmailEmpresa(bean.getOfertaEmailEmpresa());
+        o.setEmailEmpresa("peñalara@peñalara.es");
         target.register(OfertaWriter.class)
                 .request()
                 .post(Entity.entity(o, MediaType.APPLICATION_JSON));

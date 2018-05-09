@@ -51,10 +51,14 @@
 
             <p:layoutUnit position="west" size="220" header="Menú" collapsible="true">
                 <h:form>
-                    <p:menu>
+                    <p:menu toggleable="true">
                         <p:menuitem value="Inicio" url="/faces/index.xhtml" icon="ui-icon-home"/>
                         <p:menuitem value="Chat" url="/faces/chat/chatroom.xhtml" icon="ui-icon-comment"/>
-                        <p:menuitem value="Suscribirse" action="suscribirse" icon="ui-icon-comment"/>
+                        <p:menuitem value="Suscribirse" action="suscribirse" icon="ui-icon-plus"/>
+                        <p:submenu label="Gestionar ofertas">
+                            <p:menuitem value="Listar ofertas" url="/faces/ofertas/listarOfertas.xhtml" icon="ui-icon-search"/>
+                            <p:menuitem value="Añadir oferta" url="/faces/ofertas/añadirOferta.xhtml" icon="ui-icon-plus"/>
+                        </p:submenu>
                     </p:menu>
                 </h:form>
             </p:layoutUnit>
