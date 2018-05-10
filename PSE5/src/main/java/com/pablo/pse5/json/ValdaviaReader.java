@@ -1,7 +1,7 @@
 
 package com.pablo.pse5.json;
 
-import com.pablo.pse5.client.Pago;
+import com.pablo.pse5.valdavia.Pago;
 import com.pablo.pse5.entities.Usuario;
 import java.io.IOException;
 import java.io.InputStream;

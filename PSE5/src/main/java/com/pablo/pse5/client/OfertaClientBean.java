@@ -40,6 +40,15 @@ public class OfertaClientBean{
                 .request()
                 .get(Oferta[].class);
     }
+    
+    public Oferta getOfertaFacesFlow(int id){
+        return target
+                .register(OfertaReader.class)
+                .path("{ofertaId}")
+                .resolveTemplate("ofertaId", id)
+                .request()
+                .get(Oferta.class);
+    }
 
     public Oferta getOferta() {
         return target

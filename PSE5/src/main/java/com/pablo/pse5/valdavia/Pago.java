@@ -1,4 +1,4 @@
-package com.pablo.pse5.client;
+package com.pablo.pse5.valdavia;
 
 import java.io.Serializable;
 

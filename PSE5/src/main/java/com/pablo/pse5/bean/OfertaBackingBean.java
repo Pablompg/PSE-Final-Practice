@@ -9,6 +9,7 @@ import javax.inject.Named;
 @SessionScoped
 @Named
 public class OfertaBackingBean implements Serializable{
+    
     private int ofertaId;
     private String ofertaNombre;
     private String ofertaDescripcion; 

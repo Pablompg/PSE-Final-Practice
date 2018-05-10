@@ -26,7 +26,17 @@
                                        itemValue="#{o.idOferta}"
                                        itemLabel="#{o.nombre}"/>
                     </h:selectOneRadio>
-                    <p:commandButton id="info" value="Ver detalles" action="info"/>
+                    <p:commandButton id="one" 
+                                     actionListener = "#{suscribirse.setOferta(ofertaClientBean.getOfertaFacesFlow(suscribirse.idOferta))}" 
+                                     value="1" >
+                    </p:commandButton>
+                    <p:commandButton id="two" 
+                                     actionListener = "#{suscribirse.setNombreEmpresa(usuarioClientBean.getNombreEmpresa(suscribirse.emailEmpresa))}" 
+                                     value="2" 
+                                     action="info">
+                    </p:commandButton>
+                    <!--and suscribirse.setNombreEmpresa(usuarioClientBean.getNombreEmpresa(suscribirse.emailEmpresa))
+                    suscribirse.setOferta(ofertaClientBean.getOfertaFacesFlow(suscribirse.idOferta))-->
                 </h:form>
             </ui:define>
 

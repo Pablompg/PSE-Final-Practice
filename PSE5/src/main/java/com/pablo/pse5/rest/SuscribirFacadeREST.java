@@ -88,6 +88,6 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
-    }
+    }    
     
 }

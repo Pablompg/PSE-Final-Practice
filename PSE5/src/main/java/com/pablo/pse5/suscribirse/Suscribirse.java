@@ -1,6 +1,7 @@
 
 package com.pablo.pse5.suscribirse;
 
+import com.pablo.pse5.client.OfertaClientBean;
 import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.entities.Suscribir;
 import com.pablo.pse5.entities.Usuario;
@@ -17,6 +18,8 @@ import javax.persistence.PersistenceContext;
 @FlowScoped("suscribirse")
 public class Suscribirse implements Serializable{
     private int idOferta;
+    private Oferta oferta;
+    private String nombreEmpresa;
     private String cartaPresentacion;
     @PersistenceContext
     private EntityManager em;
@@ -41,83 +44,6 @@ public class Suscribirse implements Serializable{
         this.cartaPresentacion = cartaPresentacion;
     }
     
-    public String getOfertaNombre(){
-        try{
-            return em.createNamedQuery("Oferta.findByIdOferta", Oferta.class)
-                    .setParameter("idOferta",idOferta)
-                    .getSingleResult()
-                    .getNombre();
-        }catch(NoResultException e){
-            return "";
-        }
-    }
-    
-    public String getOfertaDescripcion(){
-        try{
-            return em.createNamedQuery("Oferta.findByIdOferta", Oferta.class)
-                    .setParameter("idOferta",idOferta)
-                    .getSingleResult()
-                    .getDescripcion();
-        }catch(NoResultException e){
-            return "";
-        }
-    }
-    
-    public Date getOfertaFecha(){
-        try{
-            return em.createNamedQuery("Oferta.findByIdOferta", Oferta.class)
-                    .setParameter("idOferta",idOferta)
-                    .getSingleResult()
-                    .getFecha();
-        }catch(NoResultException e){
-            return new Date();
-        }
-    }
-    
-    public String getOfertaPuesto(){
-        try{
-            return em.createNamedQuery("Oferta.findByIdOferta", Oferta.class)
-                    .setParameter("idOferta",idOferta)
-                    .getSingleResult()
-                    .getPuesto();
-        }catch(NoResultException e){
-            return "";
-        }
-    }
-    
-    public String getOfertaRequisitosMinimos(){
-        try{
-            return em.createNamedQuery("Oferta.findByIdOferta", Oferta.class)
-                    .setParameter("idOferta",idOferta)
-                    .getSingleResult()
-                    .getRequisitosMinimos();
-        }catch(NoResultException e){
-            return "";
-        }
-    }
-    
-    public String getOfertaEmailEmpresa(){
-        try{
-            return em.createNamedQuery("Oferta.findByIdOferta", Oferta.class)
-                    .setParameter("idOferta",idOferta)
-                    .getSingleResult()
-                    .getEmailEmpresa();
-        }catch(NoResultException e){
-            return "";
-        }
-    }
-    
-    public String getOfertaNombreEmpresa(){
-        try{
-            return em.createNamedQuery("Usuario.findByEmail", Usuario.class)
-                    .setParameter("email",getOfertaEmailEmpresa())
-                    .getSingleResult()
-                    .getNombre();
-        }catch(NoResultException e){
-            return "";
-        }
-    }
-    
     public boolean getUsuarioSuscrito(){
         try{
             List<Suscribir> lista = em.createNamedQuery("Suscribir.findByOfertaAndCandidato", Suscribir.class)
@@ -130,9 +56,28 @@ public class Suscribirse implements Serializable{
         }
     }
 
-    public String getEmailCandidato() {
-        return emailCandidato;
+    public void setNombreEmpresa(String nombre) {
+        this.nombreEmpresa = nombre;
     }
     
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+    
+    public String getEmailEmpresa(){
+        return oferta.getEmailEmpresa();
+    }
+    
+    public void setOferta(Oferta oferta) {
+        this.oferta = oferta;
+    }
+    
+    public Oferta getOferta(){
+        return oferta;
+    }
+    
+    public String getDescripcionOferta(){
+        return oferta.getDescripcion();
+    }
     
 }

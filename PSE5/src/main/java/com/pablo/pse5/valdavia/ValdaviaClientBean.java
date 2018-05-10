@@ -1,4 +1,4 @@
-package com.pablo.pse5.client;
+package com.pablo.pse5.valdavia;
 
 import com.pablo.pse5.json.ValdaviaReader;
 import com.pablo.pse5.suscribirse.Suscribirse;
