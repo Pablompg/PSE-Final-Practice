@@ -1,6 +1,8 @@
 
 package com.pablo.pse5.suscribirse;
 
+import com.pablo.pse5.client.OfertaClientBean;
+import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.entities.Suscribir;
 import java.io.Serializable;
@@ -18,6 +20,7 @@ public class Suscribirse implements Serializable{
     private Oferta oferta;
     private String nombreEmpresa;
     private String cartaPresentacion;
+    
     @PersistenceContext
     private EntityManager em;
     
@@ -76,5 +79,4 @@ public class Suscribirse implements Serializable{
     public String getDescripcionOferta(){
         return oferta.getDescripcion();
     }
-    
 }

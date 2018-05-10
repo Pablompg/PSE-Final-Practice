@@ -12,7 +12,21 @@
 
             <ui:define name="content">
                 <h:outputText value="#{valdaviaClientBean.estado.pago}"></h:outputText>
-                
+                <c:choose>
+                    <c:when test="#{suscribirse.usuarioSuscrito}">
+                        Usuario ya suscrito
+                    </c:when>
+                    <c:when test="#{valdaviaClientBean.estado.pago == 'si'}">
+                        Usuario al corriente de pagos
+                    </c:when>
+                    <c:when test="#{valdaviaClientBean.estado.pago == 'no'}">
+                        Usuario no al corriente de pagos
+                    </c:when>
+                    <c:otherwise>
+                        Usuario no identificado en la pasarela de pagos.
+                    </c:otherwise>
+                    
+                </c:choose>
                 <h:form>
                     <h:outputText value="#{pago.pago}"/>
                     <p:commandButton id="carta" value="Confirmar" action="carta"/>

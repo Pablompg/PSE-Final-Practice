@@ -30,7 +30,7 @@ public class UsuarioClientBean {
     }
     
     public String getNombreEmpresa(String emailEmpresa){
-        Usuario u= target
+        Usuario u = target
                 .register(UsuarioReader.class)
                 .path("{id}")
                 .resolveTemplate("id", emailEmpresa)

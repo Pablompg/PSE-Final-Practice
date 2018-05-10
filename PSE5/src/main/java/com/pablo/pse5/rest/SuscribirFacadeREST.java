@@ -70,12 +70,24 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
     public List<Suscribir> findAll() {
         return super.findAll();
     }
-
+//
+//    @GET
+//    @Path("{from}/{to}")
+//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+//    public List<Suscribir> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+//        return super.findRange(new int[]{from, to});
+//    }
+    
     @GET
-    @Path("{from}/{to}")
+    @Path("{emailCandidato}/{idOferta}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Suscribir> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
+    public boolean findUsuarioSuscrito(@PathParam("emailCandidato") String emailCandidato, @PathParam("idOferta") Integer idOferta) {
+        //returns true if user is suscribed
+        return !em.createNamedQuery("Suscribir.findByOfertaAndCandidato", Suscribir.class)
+            .setParameter("emailCandidato",emailCandidato)
+            .setParameter("idOferta",idOferta)
+            .getResultList()
+            .isEmpty();
     }
 
     @GET

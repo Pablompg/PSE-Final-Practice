@@ -23,8 +23,6 @@ public class SuscribirClientBean{
     
     Client client;
     WebTarget target;
-    @Inject
-    //Suscribirse bean;
     
     @PostConstruct
     public void init() {
@@ -42,32 +40,42 @@ public class SuscribirClientBean{
                 .request()
                 .get(Suscribir[].class);
     }
-/*
-    public Oferta getSuscribir() {
+
+//    public Suscribir getSuscribir() {
+//        return target
+//                .register(SuscribirReader.class)
+//                .path("{id}")
+//                .resolveTemplate("id", bean.getIdSuscribir())
+//                .request()
+//                .get(Suscribir.class);
+//    }
+    
+    public boolean getUsuarioSuscrito(String emailCandidato, int idOferta) {
         return target
                 .register(SuscribirReader.class)
-                .path("{id}")
-                .resolveTemplate("id", bean.getIdSuscribir())
+                .path("{emailCandidato}/{idOferta}")
+                .resolveTemplate("emailCandidato", emailCandidato)
+                .resolveTemplate("idOferta", idOferta)
                 .request()
-                .get(Suscribir.class);
+                .get(Boolean.class);
     }
 
-    public void deleteSuscribir() {
-        target.path("{id}")
-                .resolveTemplate("id", bean.getIdSuscribir())
-                .request()
-                .delete();
-    }
-
-    public void addSuscribir() {
-        Suscribir s = new Suscribir();
-        s.setIdSuscribir(1);
-        s.setIdOferta (bean.getIdOferta());
-        s.setEmailCandidato (bean.getEmailCandidato());
-        s.setCartaPresentacion (bean.getCartaPresentacion());
-        target.register(SuscribirWriter.class)
-                .request()
-                .post(Entity.entity(s, MediaType.APPLICATION_JSON));
-    }*/
+//    public void deleteSuscribir() {
+//        target.path("{id}")
+//                .resolveTemplate("id", bean.getIdSuscribir())
+//                .request()
+//                .delete();
+//    }
+//
+//    public void addSuscribir() {
+//        Suscribir s = new Suscribir();
+//        s.setIdSuscribir(1);
+//        s.setIdOferta (bean.getIdOferta());
+//        s.setEmailCandidato (bean.getEmailCandidato());
+//        s.setCartaPresentacion (bean.getCartaPresentacion());
+//        target.register(SuscribirWriter.class)
+//                .request()
+//                .post(Entity.entity(s, MediaType.APPLICATION_JSON));
+//    }
 }
 

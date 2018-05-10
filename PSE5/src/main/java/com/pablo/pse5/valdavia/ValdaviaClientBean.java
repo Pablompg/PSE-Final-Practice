@@ -37,7 +37,7 @@ public class ValdaviaClientBean {
             m = target
                     .register(ValdaviaReader.class)
                     .path("{userId}")
-                    .resolveTemplate("userId", "grupo5no@uva.es")
+                    .resolveTemplate("userId", "grupo5si@uva.es")
                     .request(MediaType.APPLICATION_JSON)
                     .get(Pago.class);
         } catch (NotFoundException e) {
