@@ -73,6 +73,4 @@ public class OfertaBackingBean implements Serializable{
     public void setOfertaEmailEmpresa(String ofertaEmailEmpresa) {
         this.ofertaEmailEmpresa = ofertaEmailEmpresa;
     }
-    
-    
 }

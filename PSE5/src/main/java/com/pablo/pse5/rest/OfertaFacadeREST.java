@@ -55,7 +55,7 @@ public class OfertaFacadeREST extends AbstractFacade<Oferta> {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Oferta find(@PathParam("id") Integer id) {
         return super.find(id);
     }

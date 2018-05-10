@@ -76,8 +76,8 @@ public class OfertaClientBean{
         o.setRequisitosMinimos(bean.getOfertaRequisitosMinimos());
         o.setEmailEmpresa("peñalara@peñalara.es");
         target.register(OfertaWriter.class)
-                .request()
-                .post(Entity.entity(o, MediaType.APPLICATION_JSON));
+            .request()
+            .post(Entity.entity(o, MediaType.APPLICATION_JSON));
     }
     
 }

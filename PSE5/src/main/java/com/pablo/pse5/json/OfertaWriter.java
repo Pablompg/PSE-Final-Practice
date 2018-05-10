@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import javax.json.Json;
 import javax.json.stream.JsonGenerator;
 import javax.ws.rs.Produces;
@@ -30,19 +31,19 @@ public class OfertaWriter implements MessageBodyWriter<Oferta>{
     }
 
     @Override
-    public void writeTo(Oferta t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
+    public void writeTo(Oferta o, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         JsonGenerator gen = Json.createGenerator(entityStream);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         gen.writeStartObject()
-                .write("idOferta", t.getIdOferta())
-                .write("nombre", t.getNombre())
-                .write("descripcion", t.getDescripcion())
-                .write("fecha", t.getFecha().toString())
-                .write("puesto", t.getPuesto())
-                .write("requisitosMinimos", t.getRequisitosMinimos())
-                .write("emailEmpresa", t.getEmailEmpresa())
+                .write("idOferta", o.getIdOferta())
+                .write("nombre", o.getNombre())
+                .write("descripcion", o.getDescripcion())
+                .write("fecha", formato.format(o.getFecha()))
+                .write("puesto", o.getPuesto())
+                .write("requisitosMinimos", o.getRequisitosMinimos())
+                .write("emailEmpresa", o.getEmailEmpresa())
                 .writeEnd();
         gen.flush();
     }
-
 }
 
