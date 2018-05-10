@@ -1,6 +1,7 @@
 
 package com.pablo.pse5.json;
 
+import com.pablo.pse5.client.Pago;
 import com.pablo.pse5.entities.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,16 +18,16 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
-public class ValdaviaReader implements MessageBodyReader<String>{
+public class ValdaviaReader implements MessageBodyReader<Pago>{
     
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return Usuario.class.isAssignableFrom(type);
+        return Pago.class.isAssignableFrom(type);
     }
 
     @Override
-    public String readFrom(Class<String> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
-        String estado = new String();
+    public Pago readFrom(Class<Pago> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
+        Pago pagousuario = new Pago();
         JsonParser parser = Json.createParser(entityStream);
         while (parser.hasNext()) {
             switch (parser.next()) {
@@ -34,8 +35,11 @@ public class ValdaviaReader implements MessageBodyReader<String>{
                     String key = parser.getString();
                     parser.next();
                     switch (key) {
+                        case "email":
+                            pagousuario.setEmail(parser.getString());
+                            break;
                         case "estadopago":
-                            estado = parser.getString();
+                            pagousuario.setPago(parser.getString());
                             break;
                         default:
                             break;
@@ -45,6 +49,6 @@ public class ValdaviaReader implements MessageBodyReader<String>{
                     break;
             }
         }
-        return estado;
+        return pagousuario;
     }
 }
