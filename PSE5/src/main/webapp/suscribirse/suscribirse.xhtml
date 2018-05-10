@@ -28,12 +28,9 @@
                     </h:selectOneRadio>
                     <p:commandButton id="one" 
                                      actionListener = "#{suscribirse.setOferta(ofertaClientBean.getOfertaFacesFlow(suscribirse.idOferta))}" 
+                                     action="info"
                                      value="1" >
-                    </p:commandButton>
-                    <p:commandButton id="two" 
-                                     actionListener = "#{suscribirse.setNombreEmpresa(usuarioClientBean.getNombreEmpresa(suscribirse.emailEmpresa))}" 
-                                     value="2" 
-                                     action="info">
+                        <f:actionListener rendered="#{suscribirse.setNombreEmpresa(usuarioClientBean.getNombreEmpresa(suscribirse.emailEmpresa))}"/>
                     </p:commandButton>
                     <!--and suscribirse.setNombreEmpresa(usuarioClientBean.getNombreEmpresa(suscribirse.emailEmpresa))
                     suscribirse.setOferta(ofertaClientBean.getOfertaFacesFlow(suscribirse.idOferta))-->

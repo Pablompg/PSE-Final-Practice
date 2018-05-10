@@ -10,14 +10,15 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <h:outputText value="Hola"/>
+                <h:outputText value="#{suscribirse.idOferta}"/>
+                <h:outputText value="#{suscribirse.descripcionOferta}"/>
+                <h:outputText value="#{suscribirse.emailEmpresa}"/>
+                <h:outputText value="#{suscribirse.nombreEmpresa}"/>
                 <h:form>
                     <p:commandButton id="verificaciones" value="Ver detalles" action="verificaciones"/>
                 </h:form>
             </ui:define>
 
         </ui:composition>
-
-
     </body>
 </html>

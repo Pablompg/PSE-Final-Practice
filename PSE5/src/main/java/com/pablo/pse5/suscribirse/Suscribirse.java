@@ -1,12 +1,9 @@
 
 package com.pablo.pse5.suscribirse;
 
-import com.pablo.pse5.client.OfertaClientBean;
 import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.entities.Suscribir;
-import com.pablo.pse5.entities.Usuario;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Named;

@@ -51,7 +51,6 @@ public class OfertaReader implements MessageBodyReader<Oferta> {
                             break;
                         case "fecha": 
                             try {
-                                System.out.println(format.parse(parser.getString()));
                                 oferta.setFecha(format.parse(parser.getString()));
                             } catch (ParseException ex) {
                                 Logger.getLogger(OfertaReader.class.getName()).log(Level.SEVERE, null, ex);
