@@ -19,6 +19,8 @@ public class UserEJB {
     private EntityManager em;
     @Inject
     private LoginBackingBean usuarioInfo;
+    @Inject
+    private UsuarioClientBean usuarioBean;
 
     public Usuario createUser(Usuario user) {
         
@@ -32,10 +34,10 @@ public class UserEJB {
         String nombreGrupo = (usuarioInfo.getAuthenticatedUser() != null)? "empresa" : "candidato";
         group.setNombreGrupo(nombreGrupo);
 //        UsuarioClientBean usuarioBean = new UsuarioClientBean();
-//        usuarioBean.addUsuario();
+        usuarioBean.addUsuario();
 //        GrupoUsuarioClientBean grupoBean = new GrupoUsuarioClientBean();
 //        grupoBean.addGrupoUsuario();
-        em.persist(user);
+        //em.persist(user);
         em.persist(group);
 
         return user;

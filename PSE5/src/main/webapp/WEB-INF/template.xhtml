@@ -19,7 +19,7 @@
                 <h1>
                     <h:outputText id="top-text" value="Portal de Empleo - Grupo 5"/>
                 </h1>
-                <ul id="menu">
+                <!--ul id="menu">
                     <li>
                         <h:form id="login">        
                             <h:outputLink value="javascript:void(0)" onclick="PF('registro').hide(); PF('login').show();" title="login">
@@ -46,7 +46,7 @@
                         <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>
-                </h:form>
+                </h:form-->
                 <h:form>
                     <p:toolbar>
                         <f:facet name="left">
@@ -64,7 +64,7 @@
                                                          and request.isUserInRole('empresa')==false 
                                                          and request.isUserInRole('candidato')==false}"/>
                             <p:commandButton value="Cerrar sesión" 
-                                             action="#{loginView.logout}" icon="ui-icon-power"
+                                             action="#{loginBackingBean.logout}" icon="ui-icon-power"
                                              rendered="#{request.isUserInRole('administrador')
                                                          or request.isUserInRole('candidato')
                                                          or request.isUserInRole('empresa')}"/>
@@ -96,7 +96,7 @@
             </p:layoutUnit>
 
             <p:layoutUnit position="center" closable="true" collapsible="true" >
-                <h:form>
+                <!--h:form>
                     <p:growl id="growlLogin" sticky="true" showDetail="true" life="3000" />
 
                     <p:dialog header="Iniciar Sesión" widgetVar="login" resizable="false">
@@ -143,7 +143,7 @@
                             </f:facet>  
                         </h:panelGrid>
                     </p:dialog>
-                </h:form>
+                </h:form-->
                 <ui:insert name="content"></ui:insert>
             </p:layoutUnit>
 

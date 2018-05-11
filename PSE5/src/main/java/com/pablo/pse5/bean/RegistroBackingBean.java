@@ -109,7 +109,7 @@ public class RegistroBackingBean implements Serializable {
         if (userEJB.findByEmail(email) != null) {
             FacesMessage msg = new FacesMessage("Ya existe un usuario con ese email");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            facesContext.addMessage(uiInputPassword.getClientId(), msg);
+            facesContext.addMessage(uiInputEmail.getClientId(), msg);
             facesContext.renderResponse();
         }
     }
