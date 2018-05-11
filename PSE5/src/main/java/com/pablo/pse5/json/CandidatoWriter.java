@@ -16,10 +16,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
-
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
-public class UsuarioWriter implements MessageBodyWriter<Usuario>{
+public class CandidatoWriter implements MessageBodyWriter<Usuario>{
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return Usuario.class.isAssignableFrom(type);

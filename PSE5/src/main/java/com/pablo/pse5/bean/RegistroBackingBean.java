@@ -29,6 +29,8 @@ public class RegistroBackingBean implements Serializable {
     private static Logger log = Logger.getLogger(RegistroBackingBean.class.getName());
     @Inject
     private UserEJB userEJB;
+    @Inject
+    private LoginBackingBean login;
 
     public String getName() {
         return name;
@@ -116,7 +118,6 @@ public class RegistroBackingBean implements Serializable {
 
     public String register() {
         userEJB.createUser();
-        log.info("Nuevo usuario creado con e-mail: " + email + " y nombre: " + name);
-        return "/login?faces-redirect=true";
+        return (login.getAuthenticatedUser() != null) ? "/administrador/listarEmpresas?faces-redirect=true" : "/login?faces-redirect=true";
     }
 }

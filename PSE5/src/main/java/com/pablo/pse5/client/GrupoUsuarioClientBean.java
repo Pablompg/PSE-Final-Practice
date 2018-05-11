@@ -1,7 +1,6 @@
 
 package com.pablo.pse5.client;
 
-import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.bean.RegistroBackingBean;
 import com.pablo.pse5.entities.GrupoUsuario;
 import com.pablo.pse5.json.GrupoUsuarioWriter;
@@ -23,8 +22,6 @@ public class GrupoUsuarioClientBean {
     WebTarget target;
     @Inject
     private RegistroBackingBean registroBean;
-    @Inject
-    private LoginBackingBean loginBean;
     
     @PostConstruct
     public void init() {
@@ -37,12 +34,10 @@ public class GrupoUsuarioClientBean {
         client.close();
     }
     
-    public void addGrupoUsuario() {
+    public void addGrupoUsuario(String nombreGrupo) {
         GrupoUsuario grupo = new GrupoUsuario();
         grupo.setEmailUsuario(registroBean.getEmail());
-        String nombreGrupo = (loginBean.getAuthenticatedUser() != null)? "empresa" : "candidato";
         grupo.setNombreGrupo(nombreGrupo);
-        
         target.register(GrupoUsuarioWriter.class)
             .request()
             .post(Entity.entity(grupo, MediaType.APPLICATION_JSON));

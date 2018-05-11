@@ -3,9 +3,10 @@ package com.pablo.pse5.client;
 
 import com.pablo.pse5.bean.RegistroBackingBean;
 import com.pablo.pse5.entities.Usuario;
-import com.pablo.pse5.jaas.AuthenticationUtils;
 import com.pablo.pse5.json.CandidatoReader;
-import com.pablo.pse5.json.UsuarioWriter;
+import com.pablo.pse5.json.CandidatoWriter;
+import com.pablo.pse5.json.EmpresaReader;
+import com.pablo.pse5.json.EmpresaWriter;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -39,7 +40,7 @@ public class UsuarioClientBean {
     
     public String getNombreEmpresa(String emailEmpresa){
         Usuario u = target
-                .register(CandidatoReader.class)
+                .register(EmpresaReader.class)
                 .path("{id}")
                 .resolveTemplate("id", emailEmpresa)
                 .request()
@@ -62,20 +63,27 @@ public class UsuarioClientBean {
                 .get(Usuario.class);
     }
     
-    public void addUsuario() {
+    public void addCandidato() {
         Usuario u = new Usuario();
         u.setEmail(registroBean.getEmail());
-        try {
-            u.setPassword(AuthenticationUtils.encodeSHA256(registroBean.getPassword()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        u.setPassword(registroBean.getPassword());
         u.setNombre(registroBean.getName());
         u.setNacimiento(registroBean.getFecha());
         u.setMovil(registroBean.getTelefono());
         u.setTarjeta(registroBean.getTarjeta());
         
-        target.register(UsuarioWriter.class)
+        target.register(CandidatoWriter.class)
+            .request()
+            .post(Entity.entity(u, MediaType.APPLICATION_JSON));
+    }
+    
+    public void addEmpresa() {
+        Usuario u = new Usuario();
+        u.setEmail(registroBean.getEmail());
+        u.setPassword(registroBean.getPassword());
+        u.setNombre(registroBean.getName());
+        
+        target.register(EmpresaWriter.class)
             .request()
             .post(Entity.entity(u, MediaType.APPLICATION_JSON));
     }

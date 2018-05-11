@@ -1,7 +1,7 @@
 
 package com.pablo.pse5.json;
 
-import com.pablo.pse5.entities.GrupoUsuario;
+import com.pablo.pse5.entities.Usuario;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Annotation;
@@ -15,27 +15,28 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
-
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
-public class GrupoUsuarioWriter implements MessageBodyWriter<GrupoUsuario>{
+public class EmpresaWriter implements MessageBodyWriter<Usuario>{
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return GrupoUsuario.class.isAssignableFrom(type);
+        return Usuario.class.isAssignableFrom(type);
     }
 
     @Override
-    public long getSize(GrupoUsuario t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
+    public long getSize(Usuario t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return -1;
     }
 
     @Override
-    public void writeTo(GrupoUsuario t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
+    public void writeTo(Usuario t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         JsonGenerator gen = Json.createGenerator(entityStream);
         gen.writeStartObject()
-                .write("email_usuario", t.getEmailUsuario())
-                .write("nombre_grupo", t.getNombreGrupo())
+                .write("email", t.getEmail())
+                .write("password", t.getPassword())
+                .write("nombre", t.getNombre())
                 .writeEnd();
         gen.flush();
     }
+    
 }
