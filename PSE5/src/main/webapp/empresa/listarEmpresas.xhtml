@@ -11,20 +11,20 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <h2>Selecciona una oferta</h2>
+                <h2>Selecciona una empresa</h2>
                 <h:form>
                     
                     <p:messages id="messages" closable="true" autoUpdate="true"/>
                     
-                    <h:selectOneRadio value="#{ofertaBackingBean.idOferta}"
+                    <h:selectOneRadio value="#{empresaBackingbBean.email}"
                                       layout="pageDirection"
                                       required="true"
                                       requiredMessage="No ha seleccionado ninguna opción"
                                       style="margin-bottom: 10px">
-                        <f:selectItems value="#{ofertaClientBean.ofertas}"
-                                       var="o"
-                                       itemValue="#{o.idOferta}"
-                                       itemLabel="#{o.nombre}"/>
+                        <f:selectItems value="#{usuarioClientBean.empresas}"
+                                       var="e"
+                                       itemValue="#{e.email}"
+                                       itemLabel="#{e.nombre}"/>
                     </h:selectOneRadio>
                 </h:form>
             </ui:define>

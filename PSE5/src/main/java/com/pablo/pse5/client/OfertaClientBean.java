@@ -44,8 +44,8 @@ public class OfertaClientBean{
     public Oferta getOfertaFacesFlow(int id){
         return target
                 .register(OfertaReader.class)
-                .path("{ofertaId}")
-                .resolveTemplate("ofertaId", id)
+                .path("{idOferta}")
+                .resolveTemplate("idOferta", id)
                 .request()
                 .get(Oferta.class);
     }
@@ -53,15 +53,15 @@ public class OfertaClientBean{
     public Oferta getOferta() {
         return target
                 .register(OfertaReader.class)
-                .path("{ofertaId}")
-                .resolveTemplate("ofertaId", bean.getOfertaId())
+                .path("{idOferta}")
+                .resolveTemplate("idOferta", bean.getIdOferta())
                 .request()
                 .get(Oferta.class);
     }
 
     public void deleteOferta() {
-        target.path("{ofertaId}")
-                .resolveTemplate("ofertaId", bean.getOfertaId())
+        target.path("{idOferta}")
+                .resolveTemplate("idOferta", bean.getIdOferta())
                 .request()
                 .delete();
     }

@@ -39,4 +39,10 @@ public class UsuarioClientBean {
         return u.getNombre();
     }
     
+    public Usuario[] getEmpresas(){
+        return target
+                .request()
+                .get(Usuario[].class);
+        
+    }
 }

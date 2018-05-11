@@ -10,7 +10,7 @@ import javax.inject.Named;
 @Named
 public class OfertaBackingBean implements Serializable{
     
-    private int ofertaId;
+    private int idOferta;
     private String ofertaNombre;
     private String ofertaDescripcion; 
     private Date ofertaFecha; 
@@ -18,12 +18,12 @@ public class OfertaBackingBean implements Serializable{
     private String ofertaRequisitosMinimos;
     private String ofertaEmailEmpresa;
 
-    public int getOfertaId() {
-        return ofertaId;
+    public int getIdOferta() {
+        return idOferta;
     }
 
-    public void setOfertaId(int ofertaId) {
-        this.ofertaId = ofertaId;
+    public void setIdOferta(int idOferta) {
+        this.idOferta = idOferta;
     }
 
     public String getOfertaNombre() {
