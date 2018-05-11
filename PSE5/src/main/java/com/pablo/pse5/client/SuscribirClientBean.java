@@ -1,11 +1,9 @@
 
 package com.pablo.pse5.client;
 
-import com.pablo.pse5.entities.Oferta;
+import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.entities.Suscribir;
 import com.pablo.pse5.json.SuscribirReader;
-import com.pablo.pse5.json.SuscribirWriter;
-import com.pablo.pse5.suscribirse.Suscribirse;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -23,6 +21,9 @@ public class SuscribirClientBean{
     
     Client client;
     WebTarget target;
+    
+    @Inject
+    LoginBackingBean loginBean;
     
     @PostConstruct
     public void init() {
@@ -67,15 +68,16 @@ public class SuscribirClientBean{
 //                .delete();
 //    }
 //
-//    public void addSuscribir() {
-//        Suscribir s = new Suscribir();
-//        s.setIdSuscribir(1);
-//        s.setIdOferta (bean.getIdOferta());
-//        s.setEmailCandidato (bean.getEmailCandidato());
-//        s.setCartaPresentacion (bean.getCartaPresentacion());
-//        target.register(SuscribirWriter.class)
-//                .request()
-//                .post(Entity.entity(s, MediaType.APPLICATION_JSON));
-//    }
+    public void addSuscribir(int idOferta, String cartaPresentacion) {
+        Suscribir s = new Suscribir();
+        s.setIdSuscribir(1);
+        s.setIdOferta(idOferta);
+        s.setEmailCandidato(loginBean.getEmail());
+        s.setCartaPresentacion(cartaPresentacion);
+        
+        target.register(Suscribir.class)
+            .request()
+            .post(Entity.entity(s, MediaType.APPLICATION_JSON));
+    }
 }
 

@@ -12,7 +12,7 @@
             <ui:define name="content">
                 <p:inputTextarea value="#{suscribirse.cartaPresentacion}"/>
                 <h:form>
-                    <p:commandButton id="resumen" value="Confirmar" action="resumen"/>
+                    <p:commandButton id="resumen" actionListener="#{suscribirse.suscribir()}" value="Confirmar" action="resumen"/>
                 </h:form>
             </ui:define>
         </ui:composition>
