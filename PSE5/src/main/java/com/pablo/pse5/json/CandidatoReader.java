@@ -1,11 +1,9 @@
 
 package com.pablo.pse5.json;
 
-import com.pablo.pse5.entities.Suscribir;
 import com.pablo.pse5.entities.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.math.BigInteger;
@@ -16,21 +14,18 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
-import javax.json.stream.JsonGenerator;
 import javax.json.stream.JsonParser;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
-import javax.ws.rs.ext.MessageBodyWriter;
 import javax.ws.rs.ext.Provider;
 
 
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
-public class UsuarioReader implements MessageBodyReader<Usuario>{
+public class CandidatoReader implements MessageBodyReader<Usuario>{
     
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
@@ -61,7 +56,7 @@ public class UsuarioReader implements MessageBodyReader<Usuario>{
                             try {
                                 usuario.setNacimiento(format.parse(parser.getString()));
                             } catch (ParseException ex) {
-                                Logger.getLogger(UsuarioReader.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(CandidatoReader.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
                         case "movil":

@@ -4,7 +4,7 @@ package com.pablo.pse5.client;
 import com.pablo.pse5.bean.RegistroBackingBean;
 import com.pablo.pse5.entities.Usuario;
 import com.pablo.pse5.jaas.AuthenticationUtils;
-import com.pablo.pse5.json.UsuarioReader;
+import com.pablo.pse5.json.CandidatoReader;
 import com.pablo.pse5.json.UsuarioWriter;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -39,7 +39,7 @@ public class UsuarioClientBean {
     
     public String getNombreEmpresa(String emailEmpresa){
         Usuario u = target
-                .register(UsuarioReader.class)
+                .register(CandidatoReader.class)
                 .path("{id}")
                 .resolveTemplate("id", emailEmpresa)
                 .request()
@@ -55,7 +55,7 @@ public class UsuarioClientBean {
     
     public Usuario getUsuario(String email) {
         return target
-                .register(UsuarioReader.class)
+                .register(CandidatoReader.class)
                 .path("{email}")
                 .resolveTemplate("email", email)
                 .request()
