@@ -25,6 +25,7 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    
     <!-- SECURITY -->
     <login-config>
         <auth-method>FORM</auth-method>
@@ -34,9 +35,6 @@
             <form-error-page>/faces/login.xhtml</form-error-page>
         </form-login-config>
     </login-config>
-<!--    <security-role>
-        <role-name>usuario</role-name>
-    </security-role>-->
 
     <security-role>
         <role-name>administrador</role-name>
@@ -49,13 +47,17 @@
     <security-role>
         <role-name>empresa</role-name>
     </security-role>
+    
+    <security-role>
+        <role-name>chatRol</role-name>
+    </security-role>
 
     <security-constraint>
         <display-name>Restringido administrador</display-name>
-        <weweb-resource-collection>
+        <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/administrador/*</url-pattern>
-        </weweb-resource-collection>
+        </web-resource-collection>
         <auth-constraint>
             <role-name>administrador</role-name>
         </auth-constraint>
@@ -63,10 +65,10 @@
     
     <security-constraint>
         <display-name>Restringido empresas</display-name>
-        <weweb-resource-collection>
+        <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/empresa/*</url-pattern>
-        </weweb-resource-collection>
+        </web-resource-collection>
         <auth-constraint>
             <role-name>empresa</role-name>
         </auth-constraint>
@@ -74,12 +76,23 @@
     
     <security-constraint>
         <display-name>Restringido candidatos</display-name>
-        <weweb-resource-collection>
+        <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/candidato/*</url-pattern>
-        </weweb-resource-collection>
+        </web-resource-collection>
         <auth-constraint>
             <role-name>candidato</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <display-name>Restringido candidatos y empresas</display-name>
+        <web-resource-collection>
+            <web-resource-name>Restricted Access</web-resource-name>
+            <url-pattern>/faces/chat/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>chatRol</role-name>
         </auth-constraint>
     </security-constraint>
     

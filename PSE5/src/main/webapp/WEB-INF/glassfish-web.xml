@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glassfish-web-app PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Servlet 3.0//EN" "http://glassfish.org/dtds/glassfish-web-app_3_0-1.dtd">
 <glassfish-web-app error-url="">
-<!--    <security-role-mapping>
-        <role-name>usuario</role-name>
-        <group-name>administrador</group-name>
-        <group-name>candidato</group-name>
-        <group-name>empresa</group-name>
-    </security-role-mapping>-->
     <security-role-mapping>
         <role-name>administrador</role-name>
         <group-name>administrador</group-name>
@@ -17,6 +11,11 @@
     </security-role-mapping> 
     <security-role-mapping>
         <role-name>empresa</role-name>
+        <group-name>empresa</group-name>
+    </security-role-mapping> 
+    <security-role-mapping>
+        <role-name>chatRol</role-name>
+        <group-name>candidato</group-name>
         <group-name>empresa</group-name>
     </security-role-mapping> 
     <class-loader delegate="true"/>
