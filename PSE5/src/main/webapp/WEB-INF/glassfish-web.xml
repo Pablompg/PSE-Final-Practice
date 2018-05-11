@@ -19,6 +19,11 @@
         <role-name>empresa</role-name>
         <group-name>empresa</group-name>
     </security-role-mapping> 
+    <security-role-mapping>
+        <role-name>chatRol</role-name>
+        <group-name>candidato</group-name>
+        <group-name>empresa</group-name>
+    </security-role-mapping> 
     <class-loader delegate="true"/>
     <jsp-config>
         <property name="keepgenerated" value="true">

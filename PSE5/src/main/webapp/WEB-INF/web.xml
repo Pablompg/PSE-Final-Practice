@@ -52,10 +52,10 @@
 
     <security-constraint>
         <display-name>Restringido administrador</display-name>
-        <weweb-resource-collection>
+        <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/administrador/*</url-pattern>
-        </weweb-resource-collection>
+        </web-resource-collection>
         <auth-constraint>
             <role-name>administrador</role-name>
         </auth-constraint>
@@ -63,10 +63,10 @@
     
     <security-constraint>
         <display-name>Restringido empresas</display-name>
-        <weweb-resource-collection>
+        <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/empresa/*</url-pattern>
-        </weweb-resource-collection>
+        </web-resource-collection>
         <auth-constraint>
             <role-name>empresa</role-name>
         </auth-constraint>
@@ -74,10 +74,10 @@
     
     <security-constraint>
         <display-name>Restringido candidatos</display-name>
-        <weweb-resource-collection>
+        <web-resource-collection>
             <web-resource-name>Restricted Access</web-resource-name>
             <url-pattern>/faces/candidato/*</url-pattern>
-        </weweb-resource-collection>
+        </web-resource-collection>
         <auth-constraint>
             <role-name>candidato</role-name>
         </auth-constraint>
