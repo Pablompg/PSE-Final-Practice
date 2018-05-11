@@ -47,19 +47,47 @@
                         <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>
                 </h:form>
+                <h:form>
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <h:outputText value="#{loginBackingBean.authenticatedUser.nombre}"/>
+                        </f:facet>
+                        <f:facet name="right">
+                            <p:commandButton action="login?faces-redirect=true" 
+                                             value="Iniciar Sesión"
+                                             rendered="#{request.isUserInRole('administrador')==false 
+                                                         and request.isUserInRole('empresa')==false 
+                                                         and request.isUserInRole('candidato')==false}"/>
+                            <p:commandButton action="registro?faces-redirect=true"
+                                             value="Registrarse"
+                                             rendered="#{request.isUserInRole('administrador')==false 
+                                                         and request.isUserInRole('empresa')==false 
+                                                         and request.isUserInRole('candidato')==false}"/>
+                            <p:commandButton value="Cerrar sesión" 
+                                             action="#{loginView.logout}" icon="ui-icon-power"
+                                             rendered="#{request.isUserInRole('administrador')
+                                                         or request.isUserInRole('candidato')
+                                                         or request.isUserInRole('empresa')}"/>
+                        </f:facet>
+                    </p:toolbar>
+                </h:form>
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="220" header="Menú" collapsible="true">
                 <h:form>
                     <p:menu toggleable="true">
                         <p:menuitem value="Inicio" url="/faces/index.xhtml" icon="ui-icon-home"/>
-                        <p:menuitem value="Chat" url="/faces/chat/chatroom.xhtml" icon="ui-icon-comment"/>
-                        <p:menuitem value="Suscribirse" action="suscribirse" icon="ui-icon-plus"/>
-                        <p:submenu label="Gestionar ofertas">
+                        <p:menuitem value="Chat" url="/faces/chat/chatroom.xhtml" icon="ui-icon-comment"
+                                    rendered="#{request.isUserInRole('chatRol')}"/>
+                        <p:menuitem value="Suscribirse" action="suscribirse" icon="ui-icon-plus"
+                                    rendered="#{request.isUserInRole('candidato')}"/>
+                        <p:submenu label="Gestionar ofertas"
+                                   rendered="#{request.isUserInRole('empresa')}">
                             <p:menuitem value="Listar ofertas" url="/faces/empresa/listarOfertas.xhtml" icon="ui-icon-search"/>
                             <p:menuitem value="Añadir oferta" url="/faces/empresa/añadirOferta.xhtml" icon="ui-icon-plus"/>
                         </p:submenu>
-                        <p:submenu label="Gestionar empresas">
+                        <p:submenu label="Gestionar empresas"
+                                   rendered="#{request.isUserInRole('administrador')}">
                             <p:menuitem value="Listar empresas" url="/faces/administrador/listarEmpresas.xhtml" icon="ui-icon-search"/>
                             <p:menuitem value="Añadir empresa" url="/faces/administrador/añadirEmpresa.xhtml" icon="ui-icon-plus"/>
                         </p:submenu>
@@ -124,6 +152,6 @@
             </p:layoutUnit>
         </p:layout>
         <script languaje="javascript" type="text/javascript" src="${facesContext.externalContext.requestContextPath}/resources/js/script.js"/>
-        
+
     </h:body>
 </html>

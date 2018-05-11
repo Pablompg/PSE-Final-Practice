@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import javax.json.Json;
 import javax.json.stream.JsonGenerator;
 import javax.ws.rs.Produces;
@@ -32,11 +33,12 @@ public class UsuarioWriter implements MessageBodyWriter<Usuario>{
     @Override
     public void writeTo(Usuario t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         JsonGenerator gen = Json.createGenerator(entityStream);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         gen.writeStartObject()
                 .write("email", t.getEmail())
                 .write("password", t.getPassword())
                 .write("nombre", t.getNombre())
-                .write("nacimiento", t.getNacimiento().toString())
+                .write("nacimiento", formato.format(t.getNacimiento()))
                 .write("movil", t.getMovil())
                 .write("tarjeta", t.getTarjeta())
                 .writeEnd();
