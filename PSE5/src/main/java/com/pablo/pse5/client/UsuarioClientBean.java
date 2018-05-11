@@ -6,10 +6,6 @@ import com.pablo.pse5.entities.Usuario;
 import com.pablo.pse5.jaas.AuthenticationUtils;
 import com.pablo.pse5.json.UsuarioReader;
 import com.pablo.pse5.json.UsuarioWriter;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -27,7 +23,7 @@ public class UsuarioClientBean {
     Client client;
     WebTarget target;
     @Inject
-    private RegistroBackingBean bean;
+    private RegistroBackingBean registroBean;
     
     
     @PostConstruct
@@ -55,21 +51,29 @@ public class UsuarioClientBean {
         return target
                 .request()
                 .get(Usuario[].class);
-        
+    }
+    
+    public Usuario getUsuario(String email) {
+        return target
+                .register(UsuarioReader.class)
+                .path("{email}")
+                .resolveTemplate("email", email)
+                .request()
+                .get(Usuario.class);
     }
     
     public void addUsuario() {
         Usuario u = new Usuario();
-        u.setEmail(bean.getEmail());
+        u.setEmail(registroBean.getEmail());
         try {
-            u.setPassword(AuthenticationUtils.encodeSHA256(bean.getPassword()));
+            u.setPassword(AuthenticationUtils.encodeSHA256(registroBean.getPassword()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        u.setNombre(bean.getName());
-        u.setNacimiento(bean.getFecha());
-        u.setMovil(bean.getTelefono());
-        u.setTarjeta(bean.getTarjeta());
+        u.setNombre(registroBean.getName());
+        u.setNacimiento(registroBean.getFecha());
+        u.setMovil(registroBean.getTelefono());
+        u.setTarjeta(registroBean.getTarjeta());
         
         target.register(UsuarioWriter.class)
             .request()

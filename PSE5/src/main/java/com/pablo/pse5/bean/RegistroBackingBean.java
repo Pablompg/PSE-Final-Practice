@@ -115,8 +115,7 @@ public class RegistroBackingBean implements Serializable {
     }
 
     public String register() {
-        Usuario user = new Usuario(email, password, name, fecha, telefono, tarjeta);
-        userEJB.createUser(user);
+        userEJB.createUser();
         log.info("Nuevo usuario creado con e-mail: " + email + " y nombre: " + name);
         return "/login?faces-redirect=true";
     }
