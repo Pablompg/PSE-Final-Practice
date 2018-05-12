@@ -81,13 +81,11 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
     @GET
     @Path("{emailCandidato}/{idOferta}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public boolean findUsuarioSuscrito(@PathParam("emailCandidato") String emailCandidato, @PathParam("idOferta") Integer idOferta) {
-        //returns true if user is suscribed
-        return !em.createNamedQuery("Suscribir.findByOfertaAndCandidato", Suscribir.class)
+    public List<Suscribir> findUsuarioSuscrito(@PathParam("emailCandidato") String emailCandidato, @PathParam("idOferta") Integer idOferta) {
+        return em.createNamedQuery("Suscribir.findByOfertaAndCandidato", Suscribir.class)
             .setParameter("emailCandidato",emailCandidato)
             .setParameter("idOferta",idOferta)
-            .getResultList()
-            .isEmpty();
+            .getResultList();
     }
 
     @GET

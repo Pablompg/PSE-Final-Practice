@@ -33,16 +33,16 @@ public class SuscribirReader implements MessageBodyReader<Suscribir> {
                     String key = parser.getString();
                     parser.next();
                     switch (key) {
-                        case "IdSuscribir":
+                        case "idSuscribir":
                             suscribir.setIdSuscribir(parser.getInt());
                             break;
-                        case "IdOferta":
+                        case "idOferta":
                             suscribir.setIdOferta(parser.getInt());
                             break;
-                        case "EmailCandidato":
+                        case "emailCandidato":
                             suscribir.setEmailCandidato(parser.getString());
                             break;
-                        case "CartaPresentacion": 
+                        case "cartaPresentacion": 
                             suscribir.setCartaPresentacion(parser.getString());
                             break;
                         default:

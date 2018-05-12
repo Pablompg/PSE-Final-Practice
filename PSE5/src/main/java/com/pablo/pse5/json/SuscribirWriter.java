@@ -33,10 +33,10 @@ public class SuscribirWriter implements MessageBodyWriter<Suscribir>{
     public void writeTo(Suscribir t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         JsonGenerator gen = Json.createGenerator(entityStream);
         gen.writeStartObject()
-                .write("IdSuscribir", t.getIdSuscribir())
-                .write("IdOferta", t.getIdOferta())
-                .write("EmailCandidato", t.getEmailCandidato())
-                .write("CartaPresentacion", t.getCartaPresentacion())
+                .write("idSuscribir", t.getIdSuscribir())
+                .write("idOferta", t.getIdOferta())
+                .write("emailCandidato", t.getEmailCandidato())
+                .write("cartaPresentacion", t.getCartaPresentacion())
                 .writeEnd();
         gen.flush();
     }

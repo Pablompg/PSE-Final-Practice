@@ -1,10 +1,12 @@
 package com.pablo.pse5.valdavia;
 
+import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.json.ValdaviaReader;
 import com.pablo.pse5.suscribirse.Suscribirse;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.client.Client;
@@ -18,7 +20,9 @@ public class ValdaviaClientBean {
 
     Client client;
     WebTarget target;
-    Suscribirse bean;
+    @Inject
+    LoginBackingBean usuario;
+    
 
     @PostConstruct
     public void init() {
@@ -37,7 +41,7 @@ public class ValdaviaClientBean {
             m = target
                     .register(ValdaviaReader.class)
                     .path("{userId}")
-                    .resolveTemplate("userId", "grupo5si@uva.es")
+                    .resolveTemplate("userId", usuario.getEmail())
                     .request(MediaType.APPLICATION_JSON)
                     .get(Pago.class);
         } catch (NotFoundException e) {

@@ -4,6 +4,7 @@ package com.pablo.pse5.client;
 import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.entities.Suscribir;
 import com.pablo.pse5.json.SuscribirReader;
+import com.pablo.pse5.json.SuscribirWriter;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -51,14 +52,14 @@ public class SuscribirClientBean{
 //                .get(Suscribir.class);
 //    }
     
-    public boolean getUsuarioSuscrito(String emailCandidato, int idOferta) {
+    public Suscribir[] getUsuarioSuscrito(int idOferta) {
         return target
                 .register(SuscribirReader.class)
                 .path("{emailCandidato}/{idOferta}")
-                .resolveTemplate("emailCandidato", emailCandidato)
+                .resolveTemplate("emailCandidato", loginBean.getEmail())
                 .resolveTemplate("idOferta", idOferta)
                 .request()
-                .get(Boolean.class);
+                .get(Suscribir[].class);
     }
 
 //    public void deleteSuscribir() {
@@ -75,7 +76,7 @@ public class SuscribirClientBean{
         s.setEmailCandidato(loginBean.getEmail());
         s.setCartaPresentacion(cartaPresentacion);
         
-        target.register(Suscribir.class)
+        target.register(SuscribirWriter.class)
             .request()
             .post(Entity.entity(s, MediaType.APPLICATION_JSON));
     }

@@ -1,13 +1,18 @@
 
 package com.pablo.pse5.suscribirse;
 
+import com.pablo.pse5.client.OfertaClientBean;
 import com.pablo.pse5.client.SuscribirClientBean;
+import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Oferta;
+import com.pablo.pse5.entities.Suscribir;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 @Named
@@ -16,13 +21,16 @@ public class Suscribirse implements Serializable{
     private int idOferta;
     private Oferta oferta;
     private String nombreEmpresa;
-    private String cartaPresentacion;
-    
-    @PersistenceContext
-    private EntityManager em;
+    private String carta;
     
     @Inject
-    SuscribirClientBean suscribirBean;
+    SuscribirClientBean suscribirClientBean;
+    
+    @Inject
+    OfertaClientBean ofertaClientBean;
+    
+    @Inject
+    UsuarioClientBean usuarioClientBean;
     
     public int getIdOferta() {
         return idOferta;
@@ -30,14 +38,6 @@ public class Suscribirse implements Serializable{
 
     public void setIdOferta(int idOferta) {
         this.idOferta = idOferta;
-    }
-
-    public String getCartaPresentacion() {
-        return cartaPresentacion;
-    }
-
-    public void setCartaPresentacion(String cartaPresentacion) {
-        this.cartaPresentacion = cartaPresentacion;
     }
 
     public void setNombreEmpresa(String nombre) {
@@ -56,6 +56,15 @@ public class Suscribirse implements Serializable{
         this.oferta = oferta;
     }
     
+    public void almacenarOferta(){
+        this.oferta = ofertaClientBean.getOfertaFacesFlow(idOferta);
+        this.nombreEmpresa = usuarioClientBean.getNombreEmpresa(oferta.getEmailEmpresa());
+    }
+    
+    public boolean getUsuarioSuscrito(){
+        return !(suscribirClientBean.getUsuarioSuscrito(idOferta).length == 0);
+    }
+    
     public Oferta getOferta(){
         return oferta;
     }
@@ -65,6 +74,15 @@ public class Suscribirse implements Serializable{
     }
     
     public void suscribir(){
-        suscribirBean.addSuscribir(idOferta,cartaPresentacion);
+        suscribirClientBean.addSuscribir(idOferta,carta);
     }
+
+    public String getCarta() {
+        return carta;
+    }
+
+    public void setCarta(String carta) {
+        this.carta = carta;
+    }
+    
 }

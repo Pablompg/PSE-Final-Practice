@@ -31,7 +31,7 @@ public class OfertaReader implements MessageBodyReader<Oferta> {
 
     @Override
     public Oferta readFrom(Class<Oferta> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Oferta oferta = new Oferta();
         JsonParser parser = Json.createParser(entityStream);
         while (parser.hasNext()) {
