@@ -7,8 +7,13 @@ h1{
     text-align: center;
 }
 
+.principal{
+    padding-left: 30px;
+}
+
 h2{
     color: #aa5712;
+    padding-left: 10px;
 }
 
 .ui-datascroller .ui-datascroller-item {

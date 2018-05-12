@@ -21,26 +21,82 @@
                     </p:steps>
                 </h:form>
                 <p:separator />
-                <h:outputText value="#{valdaviaClientBean.estado.pago}"></h:outputText>
                 <c:choose>
                     <c:when test="#{suscribirse.usuarioSuscrito}">
-                        Usuario ya suscrito
+                        <h2>
+                            Usuario ya suscrito
+                        </h2>
+                        <div class="principal">
+                            Usted ya está suscrito a esta oferta.
+                            <h:form>
+                                <p:commandButton id="back"
+                                                 value="Otras ofertas"
+                                                 action="suscribirse"
+                                                 icon="ui-icon-arrowrefresh-1-w"
+                                                 immediate="true"
+                                                 style="margin-top: 15px"/>
+                            </h:form>
+                        </div>
+
                     </c:when>
-                    <c:when test="#{valdaviaClientBean.estado.pago == 'si'}">
-                        Usuario al corriente de pagos
+                    <c:when test="#{suscribirse.estadoPagos == 'si'}">
+                        <h2>
+                            Usuario al corriente de pagos
+                        </h2>
+                        <div class="principal">
+                            Usted está al corriente de pagos y puede suscribirse
+                            en esta oferta.
+                            <h:form>
+                                <p:commandButton id="back"
+                                                 value="Atrás"
+                                                 action="info"
+                                                 icon="ui-icon-arrowrefresh-1-w"
+                                                 immediate="true"
+                                                 style="margin-top: 15px"/>
+                                <p:commandButton id="carta"
+                                                 value="Siguiente"
+                                                 action="carta"
+                                                 icon="ui-icon-arrowreturn-1-e"
+                                                 style="margin-top: 15px"/>
+                            </h:form>
+                        </div>
+
                     </c:when>
-                    <c:when test="#{valdaviaClientBean.estado.pago == 'no'}">
-                        Usuario no al corriente de pagos
+                    <c:when test="#{suscribirse.estadoPagos == 'no'}">
+                        <h2>
+                            Usuario moroso.
+                        </h2>
+                        <div class="principal">
+                            Usted no está al corriente de los pagos con el Portal 
+                            de Empleo Grupo 5, y por tanto no puede suscribirse
+                            <h:form>
+                                <p:commandButton id="home"
+                                                 value="Inicio"
+                                                 action="goHome"
+                                                 icon="ui-icon-home"
+                                                 style="margin-top: 15px"/>
+                            </h:form>
+                        </div>
+
                     </c:when>
                     <c:otherwise>
-                        Usuario no identificado en la pasarela de pagos.
+                        <h2>
+                            Usuario no identificado en la pasarela de pagos
+                        </h2>
+                        <div class="principal">
+                            Usted no está dado de alta en la pasarela de pagos.
+                            Para cualquier duda al respecto consulte con el adminitrador.
+                            <h:form>
+                                <p:commandButton id="home"
+                                                 value="Inicio"
+                                                 action="goHome"
+                                                 icon="ui-icon-home"
+                                                 style="margin-top: 15px"/>
+                            </h:form>
+                        </div>
+
                     </c:otherwise>
-                    
                 </c:choose>
-                <h:form>
-                    <h:outputText value="#{pago.pago}"/>
-                    <p:commandButton id="carta" value="Confirmar" action="carta"/>
-                </h:form>
             </ui:define>
 
         </ui:composition>

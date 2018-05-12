@@ -20,15 +20,46 @@
                     </p:steps>
                 </h:form>
                 <p:separator />
-                <h:form>
-                    <p:inputText value="#{suscribirse.carta}"/>
-                    <p:commandButton id="resumen" 
-                                     actionListener="#{suscribirse.suscribir()}" 
-                                     value="Confirmar" 
-                                     action="resumen"/>
-                </h:form>
+                <h2>
+                    Carta de Presentación
+                </h2>
+                <div class="principal">
+                    <p:messages id="messages" closable="true" autoUpdate="true"/>
+                    Para poder suscribirse a la oferta debe rellenar la carta de presentación:<br/><br/>
+                    <h:form>
+                        
+                        <p:inputTextarea rows="10"
+                                         cols="50" 
+                                         counter="display" 
+                                         maxlength="300" 
+                                         counterTemplate="{0} carácteres." 
+                                         autoResize="false" 
+                                         value="#{suscribirse.carta}"
+                                         required="true"
+                                         requiredMessage="Es obligatorio rellenar la 
+                                         carta de presentación."/><br/>
+                        <h:outputText id="display" /><br/><br/>
+                        
+                        <p:captcha id="miCaptcha" 
+                                   label="Captcha" 
+                                   language="es"
+                                   requiredMessage="Es obligatorio rellenar el captcha."/>
+                        
+                        <p:commandButton id="back"
+                                                 value="Atrás"
+                                                 action="verificaciones"
+                                                 icon="ui-icon-arrowrefresh-1-w"
+                                                 immediate="true"
+                                                 style="margin-top: 15px"/>
+                        <p:commandButton id="resumen" 
+                                         actionListener="#{suscribirse.suscribir()}" 
+                                         value="Confirmar" 
+                                         action="resumen"
+                                         icon="ui-icon-check"
+                                         style="margin-top: 15px"/>
+                    </h:form>
+                </div>
             </ui:define>
         </ui:composition>
-
     </body>
 </html>

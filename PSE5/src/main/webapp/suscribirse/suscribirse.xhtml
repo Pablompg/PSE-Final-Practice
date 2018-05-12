@@ -22,26 +22,30 @@
                 </h:form>
                 <p:separator />
                 <h2>Selecciona una oferta</h2>
-                <h:form>
+                <div class="principal">
+                    <h:form>
 
-                    <p:messages id="messages" closable="true" autoUpdate="true"/>
+                        <p:messages id="messages" closable="true" autoUpdate="true"/>
 
-                    <h:selectOneRadio value="#{suscribirse.idOferta}"
-                                      layout="pageDirection"
-                                      required="true"
-                                      requiredMessage="No ha seleccionado ninguna opción"
-                                      style="margin-bottom: 10px">
-                        <f:selectItems value="#{ofertaClientBean.ofertas}"
-                                       var="o"
-                                       itemValue="#{o.idOferta}"
-                                       itemLabel="#{o.nombre}"/>
-                    </h:selectOneRadio>
-                    <p:commandButton id="info" 
-                                     actionListener = "#{suscribirse.almacenarOferta()}" 
-                                     action="info"
-                                     value="Ver detalles" >
-                    </p:commandButton>
-                </h:form>
+                        <h:selectOneRadio value="#{suscribirse.idOferta}"
+                                          layout="pageDirection"
+                                          required="true"
+                                          requiredMessage="No ha seleccionado ninguna opción"
+                                          style="margin-bottom: 10px">
+                            <f:selectItems value="#{ofertaClientBean.ofertas}"
+                                           var="o"
+                                           itemValue="#{o.idOferta}"
+                                           itemLabel="#{o.nombre}"/>
+                        </h:selectOneRadio>
+                        <p:commandButton id="info" 
+                                         actionListener = "#{suscribirse.almacenarOferta()}" 
+                                         action="info"
+                                         value="Siguiente"
+                                         icon="ui-icon-arrowreturn-1-e">
+                        </p:commandButton>
+                    </h:form>
+                </div>
+
             </ui:define>
 
         </ui:composition>

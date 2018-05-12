@@ -20,10 +20,42 @@
                     </p:steps>
                 </h:form>
                 <p:separator />
-                <h:form>
-                    <h:outputText value="#{suscribirse.carta}"/>
-                    <p:commandButton id="home" value="Inicio" action="goHome"/>
-                </h:form>
+                <h2>
+                    <h:outputText value="¡Enhorabuena, te has suscrito a la oferta 
+                                  \'#{suscribirse.nombreOferta}\'!"/>
+                </h2>
+                <div class="principal">
+                    <h:form>
+                        <h:outputText value="Descripción:"/><br/>
+                        <h:outputText value="#{suscribirse.descripcionOferta}"/><br/><br/>
+
+                        <h:outputText value="Fecha de incorporación:"/>
+                        <h:outputText value="#{suscribirse.fechaOferta}"
+                                      style="font-weight: bold; color: #66cc00"/><br/><br/>
+
+                        <h:outputText value="Puesto:"/><br/>
+                        <h:outputText value="#{suscribirse.puestoOferta}"/><br/><br/>
+
+                        <h:outputText value="Requisitos Mínimos:"/><br/>
+                        <h:outputText value="#{suscribirse.requisitosMinimosOferta}"
+                                      style="color: #a81919"/><br/><br/>
+                        
+                        <h:outputText value="Empresa:"/>
+                        <h:outputText value="#{suscribirse.nombreEmpresa} "/>
+                        <h:outputText value="(#{suscribirse.emailEmpresa})"
+                                      style="font-style: italic"/><br/><br/>
+                        
+                        <h:outputText value="Carta de presentación:"/><br/>
+                        <h:outputText value="#{suscribirse.carta}"/><br/>
+                        
+                        <p:commandButton id="home"
+                                         value="Inicio"
+                                         action="goHome"
+                                         icon="ui-icon-home"
+                                         style="margin-top: 15px;"/>
+                    </h:form>
+                </div>
+
             </ui:define>
 
         </ui:composition>

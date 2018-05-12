@@ -5,6 +5,7 @@ import com.pablo.pse5.client.OfertaClientBean;
 import com.pablo.pse5.client.SuscribirClientBean;
 import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Oferta;
+import com.pablo.pse5.valdavia.ValdaviaClientBean;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import javax.faces.flow.FlowScoped;
@@ -18,12 +19,15 @@ public class Suscribirse implements Serializable{
     private Oferta oferta;
     private String nombreEmpresa;
     private String carta;
+    private String estadoPagos;
     @Inject
     SuscribirClientBean suscribirClientBean;
     @Inject
     OfertaClientBean ofertaClientBean;
     @Inject
     UsuarioClientBean usuarioClientBean;
+    @Inject
+    ValdaviaClientBean valdaviaClientBean;
     
     public int getIdOferta() {
         return idOferta;
@@ -31,6 +35,14 @@ public class Suscribirse implements Serializable{
 
     public void setIdOferta(int idOferta) {
         this.idOferta = idOferta;
+    }
+    
+    public Oferta getOferta(){
+        return oferta;
+    }
+    
+    public void setOferta(Oferta oferta) {
+        this.oferta = oferta;
     }
 
     public void setNombreEmpresa(String nombre) {
@@ -40,27 +52,26 @@ public class Suscribirse implements Serializable{
     public String getNombreEmpresa() {
         return nombreEmpresa;
     }
-    
-    public String getEmailEmpresa(){
-        return oferta.getEmailEmpresa();
+
+    public String getCarta() {
+        return carta;
+    }
+
+    public void setCarta(String carta) {
+        this.carta = carta;
     }
     
-    public void setOferta(Oferta oferta) {
-        this.oferta = oferta;
+    public String getEstadoPagos(){
+        return estadoPagos;
+    }
+    
+    public void setOferta(String estadoPagos) {
+        this.estadoPagos = estadoPagos;
     }
     
     public void almacenarOferta(){
         this.oferta = ofertaClientBean.getOfertaFacesFlow(idOferta);
         this.nombreEmpresa = usuarioClientBean.getNombreEmpresa(oferta.getEmailEmpresa());
-    }
-    
-    public boolean getUsuarioSuscrito(){
-        //return false if user is not suscribed
-        return !(suscribirClientBean.getUsuarioSuscrito(idOferta).length == 0);
-    }
-    
-    public Oferta getOferta(){
-        return oferta;
     }
     
     public String getDescripcionOferta(){
@@ -84,16 +95,21 @@ public class Suscribirse implements Serializable{
         return formato.format(oferta.getFecha());
     }
     
+    public String getEmailEmpresa(){
+        return oferta.getEmailEmpresa();
+    }
+    
+    public boolean getUsuarioSuscrito(){
+        //return false if user is not suscribed
+        return !(suscribirClientBean.getUsuarioSuscrito(idOferta).length == 0);
+    }
+    
     public void suscribir(){
         suscribirClientBean.addSuscribir(idOferta,carta);
     }
-
-    public String getCarta() {
-        return carta;
-    }
-
-    public void setCarta(String carta) {
-        this.carta = carta;
+    
+    public void estadoPagos(){
+        this.estadoPagos = valdaviaClientBean.getEstado().getPago();
     }
     
 }

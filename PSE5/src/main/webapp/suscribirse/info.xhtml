@@ -22,27 +22,43 @@
                 <p:separator />
                 
                 <h2>Detalles de la oferta</h2>
-                <h:form>
-                    <h:outputText value="#{suscribirse.nombreOferta}" style="font-weight: bold"/><br/><br/>
+                <div class="principal">
+                    <h:form>
+                        <h:outputText value="#{suscribirse.nombreOferta}" style="font-weight: bold"/><br/><br/>
 
-                    <h:outputText value="Descripción:"/><br/>
-                    <h:outputText value="#{suscribirse.descripcionOferta}"/><br/><br/>
+                        <h:outputText value="Descripción:"/><br/>
+                        <h:outputText value="#{suscribirse.descripcionOferta}"/><br/><br/>
 
-                    <h:outputText value="Fecha de incorporación:"/>
-                    <h:outputText value="#{suscribirse.fechaOferta}"
-                                  style="font-weight: bold; color: #99ff00"/><br/><br/>
+                        <h:outputText value="Fecha de incorporación:"/>
+                        <h:outputText value="#{suscribirse.fechaOferta}"
+                                      style="font-weight: bold; color: #66cc00"/><br/><br/>
 
-                    <h:outputText value="Puesto:"/><br/>
-                    <h:outputText value="#{suscribirse.puestoOferta}"/><br/><br/>
+                        <h:outputText value="Puesto:"/><br/>
+                        <h:outputText value="#{suscribirse.puestoOferta}"/><br/><br/>
 
-                    <h:outputText value="Requisitos Mínimos:"/><br/>
-                    <h:outputText value="#{suscribirse.requisitosMinimosOferta}"
-                                  style="color: #a81919"/><br/><br/>
-                    
-                    <p:commandButton id="verificaciones"
-                                     value="Suscribirse"
-                                     action="verificaciones"/>
-                </h:form>
+                        <h:outputText value="Requisitos Mínimos:"/><br/>
+                        <h:outputText value="#{suscribirse.requisitosMinimosOferta}"
+                                      style="color: #a81919"/><br/><br/>
+                        
+                        <h:outputText value="Empresa:"/>
+                        <h:outputText value="#{suscribirse.nombreEmpresa} "/>
+                        <h:outputText value="(#{suscribirse.emailEmpresa})"
+                                      style="font-style: italic"/><br/>
+
+                        <p:commandButton id="back"
+                                         value="Atrás"
+                                         action="suscribirse"
+                                         icon="ui-icon-arrowrefresh-1-w"
+                                         immediate="true"
+                                         style="margin-top: 15px"/>
+                        <p:commandButton id="verificaciones"
+                                         value="Siguiente"
+                                         action="verificaciones"
+                                         actionListener="#{suscribirse.estadoPagos()}"
+                                         icon="ui-icon-arrowreturn-1-e"
+                                         style="margin-top: 15px"/>
+                    </h:form>
+                </div>
             </ui:define>
 
         </ui:composition>
