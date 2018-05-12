@@ -36,6 +36,13 @@ public class UserEJB {
     }
 
     public Usuario findByEmail(String email) {
-        return usuarioClientBean.getUsuario(email);
+        Usuario user = null;
+        try{
+            user = usuarioClientBean.getUsuario(email);
+        }
+        catch(Exception e){
+            
+        }
+        return user;
     }
 }

@@ -5,15 +5,10 @@ import com.pablo.pse5.client.OfertaClientBean;
 import com.pablo.pse5.client.SuscribirClientBean;
 import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Oferta;
-import com.pablo.pse5.entities.Suscribir;
 import java.io.Serializable;
-import java.util.List;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
 
 @Named
 @FlowScoped("suscribirse")
@@ -22,13 +17,10 @@ public class Suscribirse implements Serializable{
     private Oferta oferta;
     private String nombreEmpresa;
     private String carta;
-    
     @Inject
     SuscribirClientBean suscribirClientBean;
-    
     @Inject
     OfertaClientBean ofertaClientBean;
-    
     @Inject
     UsuarioClientBean usuarioClientBean;
     
@@ -62,6 +54,7 @@ public class Suscribirse implements Serializable{
     }
     
     public boolean getUsuarioSuscrito(){
+        //return false if user is not suscribed
         return !(suscribirClientBean.getUsuarioSuscrito(idOferta).length == 0);
     }
     

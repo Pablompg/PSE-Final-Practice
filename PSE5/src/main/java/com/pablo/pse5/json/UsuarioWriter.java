@@ -18,7 +18,7 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 @Produces(MediaType.APPLICATION_JSON)
-public class CandidatoWriter implements MessageBodyWriter<Usuario>{
+public class UsuarioWriter implements MessageBodyWriter<Usuario>{
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return Usuario.class.isAssignableFrom(type);
@@ -30,18 +30,26 @@ public class CandidatoWriter implements MessageBodyWriter<Usuario>{
     }
 
     @Override
-    public void writeTo(Usuario t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
+    public void writeTo(Usuario u, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         JsonGenerator gen = Json.createGenerator(entityStream);
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        gen.writeStartObject()
-                .write("email", t.getEmail())
-                .write("password", t.getPassword())
-                .write("nombre", t.getNombre())
-                .write("nacimiento", formato.format(t.getNacimiento()))
-                .write("movil", t.getMovil())
-                .write("tarjeta", t.getTarjeta())
+        if (u.getNacimiento() != null) {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            gen.writeStartObject()
+                .write("email", u.getEmail())
+                .write("password", u.getPassword())
+                .write("nombre", u.getNombre())
+                .write("nacimiento", formato.format(u.getNacimiento()))
+                .write("movil", u.getMovil())
+                .write("tarjeta", u.getTarjeta())
                 .writeEnd();
+        }
+        else{
+            gen.writeStartObject()
+                .write("email", u.getEmail())
+                .write("password", u.getPassword())
+                .write("nombre", u.getNombre())
+                .writeEnd();
+        }
         gen.flush();
     }
-    
 }

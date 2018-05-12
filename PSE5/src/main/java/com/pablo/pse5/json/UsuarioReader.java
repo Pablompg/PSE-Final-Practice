@@ -25,7 +25,7 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
-public class CandidatoReader implements MessageBodyReader<Usuario>{
+public class UsuarioReader implements MessageBodyReader<Usuario>{
     
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
@@ -34,7 +34,6 @@ public class CandidatoReader implements MessageBodyReader<Usuario>{
 
     @Override
     public Usuario readFrom(Class<Usuario> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Usuario usuario = new Usuario();
         JsonParser parser = Json.createParser(entityStream);
         while (parser.hasNext()) {
@@ -53,10 +52,11 @@ public class CandidatoReader implements MessageBodyReader<Usuario>{
                             usuario.setNombre(parser.getString());
                             break;
                         case "nacimiento": 
+                            DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                             try {
                                 usuario.setNacimiento(format.parse(parser.getString()));
                             } catch (ParseException ex) {
-                                Logger.getLogger(CandidatoReader.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(UsuarioReader.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             break;
                         case "movil":

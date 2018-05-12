@@ -118,6 +118,7 @@ public class RegistroBackingBean implements Serializable {
 
     public String register() {
         userEJB.createUser();
+        login.setEmail(email);
         return (login.getAuthenticatedUser() != null) ? "/administrador/listarEmpresas?faces-redirect=true" : "/login?faces-redirect=true";
     }
 }

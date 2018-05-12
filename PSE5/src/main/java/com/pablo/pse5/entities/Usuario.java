@@ -77,13 +77,13 @@ public class Usuario implements Serializable {
         this.nombre = nombre;
     }
 
-    public Usuario(String email, String password, String name, Date fecha, int telefono, BigInteger tarjeta) {
+    public Usuario(String email, String password, String nombre, Date nacimiento, Integer movil, BigInteger tarjeta) {
         this.email = email;
         this.password = password;
-        this.nombre = name;
-        this.nacimiento = fecha;
+        this.nombre = nombre;
+        this.nacimiento = nacimiento;
         this.tarjeta = tarjeta;
-        this.movil = telefono;
+        this.movil = movil;
     }
 
     public String getEmail() {
