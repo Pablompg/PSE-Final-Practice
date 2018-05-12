@@ -12,8 +12,8 @@
 
             <ui:define name="content">
                 <h2>Selecciona una empresa</h2>
-                <h:form>
-                    
+                <div class="principal">
+                    <h:form>
                     <p:messages id="messages" closable="true" autoUpdate="true"/>
                     
                     <h:selectOneRadio value="#{empresaBackingbBean.email}"
@@ -27,6 +27,7 @@
                                        itemLabel="#{e.nombre}"/>
                     </h:selectOneRadio>
                 </h:form>
+                </div>
             </ui:define>
 
         </ui:composition>

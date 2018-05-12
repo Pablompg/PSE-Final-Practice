@@ -48,6 +48,7 @@ public class UsuarioClientBean {
     
     public Usuario[] getEmpresas(){
         return target
+                .path("/empresas")
                 .request()
                 .get(Usuario[].class);
     }

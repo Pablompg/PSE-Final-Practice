@@ -55,6 +55,14 @@ public class UsuarioFacadeREST extends AbstractFacade<Usuario> {
     public Usuario find(@PathParam("id") String id) {
         return super.find(id);
     }
+    
+    @GET
+    @Path("/empresas")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Usuario> find() {
+        return em.createNamedQuery("Usuario.findEmpresas", Usuario.class)
+                .getResultList();
+    }
 
     @GET
     @Override
