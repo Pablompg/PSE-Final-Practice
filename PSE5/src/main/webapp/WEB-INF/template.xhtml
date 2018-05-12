@@ -15,7 +15,7 @@
     <h:body>
 
         <p:layout fullPage="true">
-            <p:layoutUnit id="top" position="north" size="95">
+            <p:layoutUnit id="top" position="north" size="123">
                 <h1>
                     <h:outputText id="top-text" value="Portal de Empleo - Grupo 5"/>
                 </h1>
@@ -73,7 +73,8 @@
                 </h:form>
             </p:layoutUnit>
 
-            <p:layoutUnit position="west" size="220" header="Menú" collapsible="true">
+            <p:layoutUnit position="west" header="Menú" collapsible="true"
+                          size="200">
                 <h:form>
                     <p:menu toggleable="true">
                         <p:menuitem value="Inicio" url="/faces/index.xhtml" icon="ui-icon-home"/>
@@ -95,7 +96,7 @@
                 </h:form>
             </p:layoutUnit>
 
-            <p:layoutUnit position="center" closable="true" collapsible="true" >
+            <p:layoutUnit position="center" >
                 <!--h:form>
                     <p:growl id="growlLogin" sticky="true" showDetail="true" life="3000" />
 
@@ -147,7 +148,7 @@
                 <ui:insert name="content"></ui:insert>
             </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="35" style="text-align: right; padding-right: 10px">
+            <p:layoutUnit position="south" style="text-align: right; padding-right: 10px">
                 <h:outputText value="David y Pablo" />
             </p:layoutUnit>
         </p:layout>

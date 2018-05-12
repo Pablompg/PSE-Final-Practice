@@ -11,6 +11,16 @@
 
             <ui:define name="content">
                 <h:form>
+                    <p:steps activeIndex="4" styleClass="custom">
+                        <p:menuitem value="Listado de ofertas"/>
+                        <p:menuitem value="Detalles de la oferta"/>
+                        <p:menuitem value="Verificaciones"/>
+                        <p:menuitem value="Carta de presentación"/>
+                        <p:menuitem value="Resumen"/>
+                    </p:steps>
+                </h:form>
+                <p:separator />
+                <h:form>
                     <h:outputText value="#{suscribirse.carta}"/>
                     <p:commandButton id="home" value="Inicio" action="goHome"/>
                 </h:form>

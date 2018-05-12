@@ -6,6 +6,7 @@ import com.pablo.pse5.client.SuscribirClientBean;
 import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Oferta;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import javax.faces.flow.FlowScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -64,6 +65,23 @@ public class Suscribirse implements Serializable{
     
     public String getDescripcionOferta(){
         return oferta.getDescripcion();
+    }
+    
+    public String getNombreOferta(){
+        return oferta.getNombre();
+    }
+    
+    public String getPuestoOferta(){
+        return oferta.getPuesto();
+    }
+    
+    public String getRequisitosMinimosOferta(){
+        return oferta.getRequisitosMinimos();
+    }
+    
+    public String getFechaOferta(){
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(oferta.getFecha());
     }
     
     public void suscribir(){

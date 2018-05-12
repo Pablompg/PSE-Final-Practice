@@ -1,35 +1,50 @@
 .ui-widget {
-    font-family: Times New Roman;
-    /* font-family: Courier New; */
-    font-size: 1em;
-}
-.ui-widget-content{
-    background: none;
-    border: 1px solid #740000;
-}
-#top{
-    background-image: url(wallpaper.png);
-}
-#top-text{
-    color: #fff;
-    padding-left: 1rem;
-}
-.ui-layout-pane-center{
-    border: none;
-    padding: 0 .5rem 0 0;
-}
-.bold{
-    font-weight: bold;
-}
-#menu{
-    list-style: none;
-    display: inline-block;
-    float: right;
-}
-#menu li{
-    display: inline;
+    font-size: 0.9em;
 }
 
-ui-dialog{
-    background-color: #fff;
+h1{
+    color: #c6712b;
+    text-align: center;
+}
+
+h2{
+    color: #aa5712;
+}
+
+.ui-datascroller .ui-datascroller-item {
+    border-bottom: 1px solid #964400;
+    padding: 25px 10px;
+}
+
+/*Pasos del FacesFlow*/
+.ui-steps .ui-steps-item {
+    width: 20%;
+}
+ 
+.ui-state-highlight {
+    text-shadow: none !important;
+}
+ 
+.ui-steps.custom {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+ 
+.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+    height: 10px;
+    padding: 0 1em;
+}
+ 
+.ui-steps.custom .ui-steps-item .ui-steps-number {
+    background-color: #c6712b;
+    color: #FFF;
+    display: inline-block;
+    width: 30px;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+ 
+.ui-steps.custom .ui-steps-item.ui-state-highlight .ui-steps-title {
+    color: #555;
 }

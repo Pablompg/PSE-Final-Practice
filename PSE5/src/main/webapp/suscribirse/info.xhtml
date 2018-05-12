@@ -10,14 +10,37 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <h:outputText value="#{suscribirse.idOferta}"/>
-                <h:outputText value="#{suscribirse.descripcionOferta}"/>
-                <h:outputText value="#{suscribirse.emailEmpresa}"/>
-                <h:outputText value="#{suscribirse.nombreEmpresa}"/>
-                <h:outputText value="#{suscribirse.carta}"/>
                 <h:form>
+                    <p:steps activeIndex="1" styleClass="custom">
+                        <p:menuitem value="Listado de ofertas"/>
+                        <p:menuitem value="Detalles de la oferta"/>
+                        <p:menuitem value="Verificaciones"/>
+                        <p:menuitem value="Carta de presentación"/>
+                        <p:menuitem value="Resumen"/>
+                    </p:steps>
+                </h:form>
+                <p:separator />
+                
+                <h2>Detalles de la oferta</h2>
+                <h:form>
+                    <h:outputText value="#{suscribirse.nombreOferta}" style="font-weight: bold"/><br/><br/>
+
+                    <h:outputText value="Descripción:"/><br/>
+                    <h:outputText value="#{suscribirse.descripcionOferta}"/><br/><br/>
+
+                    <h:outputText value="Fecha de incorporación:"/>
+                    <h:outputText value="#{suscribirse.fechaOferta}"
+                                  style="font-weight: bold; color: #99ff00"/><br/><br/>
+
+                    <h:outputText value="Puesto:"/><br/>
+                    <h:outputText value="#{suscribirse.puestoOferta}"/><br/><br/>
+
+                    <h:outputText value="Requisitos Mínimos:"/><br/>
+                    <h:outputText value="#{suscribirse.requisitosMinimosOferta}"
+                                  style="color: #a81919"/><br/><br/>
+                    
                     <p:commandButton id="verificaciones"
-                                     value="Ver detalles"
+                                     value="Suscribirse"
                                      action="verificaciones"/>
                 </h:form>
             </ui:define>

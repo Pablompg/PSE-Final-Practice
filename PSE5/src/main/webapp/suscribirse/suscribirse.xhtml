@@ -11,11 +11,21 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
+                <h:form>
+                    <p:steps activeIndex="0" styleClass="custom">
+                        <p:menuitem value="Listado de ofertas"/>
+                        <p:menuitem value="Detalles de la oferta"/>
+                        <p:menuitem value="Verificaciones"/>
+                        <p:menuitem value="Carta de presentación"/>
+                        <p:menuitem value="Resumen"/>
+                    </p:steps>
+                </h:form>
+                <p:separator />
                 <h2>Selecciona una oferta</h2>
                 <h:form>
-                    
+
                     <p:messages id="messages" closable="true" autoUpdate="true"/>
-                    
+
                     <h:selectOneRadio value="#{suscribirse.idOferta}"
                                       layout="pageDirection"
                                       required="true"
@@ -31,8 +41,6 @@
                                      action="info"
                                      value="Ver detalles" >
                     </p:commandButton>
-                    <!--and suscribirse.setNombreEmpresa(usuarioClientBean.getNombreEmpresa(suscribirse.emailEmpresa))
-                    suscribirse.setOferta(ofertaClientBean.getOfertaFacesFlow(suscribirse.idOferta))-->
                 </h:form>
             </ui:define>
 
