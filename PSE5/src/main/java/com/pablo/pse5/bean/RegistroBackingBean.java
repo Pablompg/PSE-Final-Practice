@@ -1,6 +1,5 @@
 package com.pablo.pse5.bean;
 
-import com.pablo.pse5.entities.Usuario;
 import com.pablo.pse5.jaas.UserEJB;
 import java.io.Serializable;
 import java.math.BigInteger;

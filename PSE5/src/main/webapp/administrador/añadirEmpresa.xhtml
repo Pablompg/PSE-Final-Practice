@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
@@ -14,7 +15,7 @@
                 <h2>Añadir nueva empresa</h2>
                 <h:form>
                     <f:event listener="#{registroBackingBean.validatePassword}" type="postValidate" />
-                    <p:panel>
+                    <div class="principal">
                         <h:panelGrid id="grid" columns="3">
                             <h:outputLabel for="name" value="Nombre:" style="font-weight:bold"/>
                             <p:inputText id="name" value="#{registroBackingBean.name}" required="true"
@@ -40,12 +41,31 @@
                                         value="#{registroBackingBean.confirmPassword}" required="true"
                                         requiredMessage="Por favor, confirma tu contraseña."/>
                             <p:message for="confirmpassword"/>
-                            
+
                         </h:panelGrid>
-                        <p:commandButton action="#{registroBackingBean.register}" update="grid" value="Regístrate!" icon="uiicon-
-                                         pencil"/>
-                    </p:panel>
+                        <p:commandButton actionListener="#{registroBackingBean.register()}"
+                                         update="grid" 
+                                         value="Registrar empresa"
+                                         icon="ui-icon-pencil"
+                                         style="margin-top: 15px"
+                                         oncomplete="handleRegisterRequest(xhr, status, args)"/>
+                    </div>
                 </h:form>
+                <p:dialog widgetVar="dialogWidget"
+                          header="Registro correcto"
+                          modal="true"
+                          appendTo="@(body)"
+                          resizable="false"
+                          closable="false">
+                    <h:form id="dialog">
+                        Nueva empresa registrada
+                        <center>
+                            <p:commandButton action="/administrador/listarEmpresas?faces-redirect=true"
+                                             value="Listado Empresas"
+                                             icon="ui-icon-document"/>
+                        </center>
+                    </h:form>
+                </p:dialog>
             </ui:define>
 
         </ui:composition>

@@ -1,5 +1,6 @@
 package com.pablo.pse5.client;
 
+import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.bean.OfertaBackingBean;
 import com.pablo.pse5.entities.Oferta;
 import com.pablo.pse5.json.OfertaReader;
@@ -22,7 +23,9 @@ public class OfertaClientBean{
     Client client;
     WebTarget target;
     @Inject
-    OfertaBackingBean bean;
+    OfertaBackingBean ofertaBean;
+    @Inject
+    LoginBackingBean loginBean;
     
     @PostConstruct
     public void init() {
@@ -41,6 +44,14 @@ public class OfertaClientBean{
                 .get(Oferta[].class);
     }
     
+    public Oferta[] getOfertasEmpresa() {
+        return target
+                .path("empresa/{emailEmpresa}")
+                .resolveTemplate("emailEmpresa", loginBean.getAuthenticatedUser().getEmail())
+                .request()
+                .get(Oferta[].class);
+    }
+    
     public Oferta getOfertaFacesFlow(int id){
         return target
                 .register(OfertaReader.class)
@@ -54,14 +65,14 @@ public class OfertaClientBean{
         return target
                 .register(OfertaReader.class)
                 .path("{idOferta}")
-                .resolveTemplate("idOferta", bean.getIdOferta())
+                .resolveTemplate("idOferta", ofertaBean.getIdOferta())
                 .request()
                 .get(Oferta.class);
     }
 
     public void deleteOferta() {
         target.path("{idOferta}")
-                .resolveTemplate("idOferta", bean.getIdOferta())
+                .resolveTemplate("idOferta", ofertaBean.getIdOferta())
                 .request()
                 .delete();
     }
@@ -69,12 +80,12 @@ public class OfertaClientBean{
     public void addOferta() {
         Oferta o = new Oferta();
         o.setIdOferta(1);
-        o.setNombre (bean.getOfertaNombre());
-        o.setDescripcion (bean.getOfertaDescripcion());
-        o.setFecha (bean.getOfertaFecha());
-        o.setPuesto (bean.getOfertaPuesto());
-        o.setRequisitosMinimos(bean.getOfertaRequisitosMinimos());
-        o.setEmailEmpresa("peñalara@peñalara.es");
+        o.setNombre (ofertaBean.getOfertaNombre());
+        o.setDescripcion (ofertaBean.getOfertaDescripcion());
+        o.setFecha (ofertaBean.getOfertaFecha());
+        o.setPuesto (ofertaBean.getOfertaPuesto());
+        o.setRequisitosMinimos(ofertaBean.getOfertaRequisitosMinimos());
+        o.setEmailEmpresa(loginBean.getAuthenticatedUser().getEmail());
         target.register(OfertaWriter.class)
             .request()
             .post(Entity.entity(o, MediaType.APPLICATION_JSON));

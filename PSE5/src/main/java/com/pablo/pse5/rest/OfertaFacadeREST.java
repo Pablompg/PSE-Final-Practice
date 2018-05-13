@@ -59,6 +59,15 @@ public class OfertaFacadeREST extends AbstractFacade<Oferta> {
     public Oferta find(@PathParam("id") Integer id) {
         return super.find(id);
     }
+    
+    @GET
+    @Path("empresa/{email}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Oferta> findOfertasEmpresa(@PathParam("email") String emailEmpresa) {
+        return em.createNamedQuery("Oferta.findByEmailEmpresa", Oferta.class)
+            .setParameter("emailEmpresa", emailEmpresa)
+            .getResultList();
+    }
 
     @GET
     @Override

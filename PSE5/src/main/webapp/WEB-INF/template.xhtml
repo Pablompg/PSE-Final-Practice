@@ -16,9 +16,13 @@
 
         <p:layout fullPage="true">
             <p:layoutUnit id="top" position="north" size="123">
-                <h1>
-                    <h:outputText id="top-text" value="Portal de Empleo - Grupo 5"/>
-                </h1>
+                <h:form>
+                    <h1><h:commandLink id="top-text" 
+                                       value="Portal de Empleo - Grupo 5"
+                                       action="index?faces-redirect=true"
+                                       style="text-decoration: none;"/></h1>
+                </h:form>
+                
                 <!--ul id="menu">
                     <li>
                         <h:form id="login">        

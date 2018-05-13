@@ -11,66 +11,69 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <h1>Añadir nueva oferta</h1>
-                <h:form>
-                    <p:messages id="messages" closable="true" autoUpdate="true"/>
-                    
-                    <table cellpadding="5" cellspacing="5">
-                        <tr>
-                            <th align="left">Nombre:</th>
-                            <td>
-                                <h:inputText 
-                                    value="#{ofertaBackingBean.ofertaNombre}"
-                                    requiredMessage="El campo nombre es obligatorio"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th align="left">Descripción:</th>
-                            <td>
-                                <h:inputText 
-                                    value="#{ofertaBackingBean.ofertaDescripcion}" 
-                                    requiredMessage="El campo descripción es obligatorio"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th align="left">Fecha:</th>
-                            <td>
-                                <h:inputText 
-                                    value="#{ofertaBackingBean.ofertaFecha}" 
-                                    requiredMessage="El campo fecha es obligatorio">
-                                    <f:convertDateTime pattern="yyyy-mm-dd"/>
-                                </h:inputText>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th align="left">Puesto:</th>
-                            <td>
-                                <h:inputText 
-                                    value="#{ofertaBackingBean.ofertaPuesto}" 
-                                    requiredMessage="El campo puesto es obligatorio"/>
-                                    
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <th align="left">Requisitos Mínimos:</th>
-                            <td>
-                                <h:inputText 
-                                    value="#{ofertaBackingBean.ofertaRequisitosMinimos}" 
-                                    requiredMessage="El campo descripción es obligatorio"/>
-                            </td>
-                        </tr>
-                    </table>
-                    <p:commandButton
-                        value="Añadir"
-                        ajax ="false"
-                        action="/faces/index.xhtml?faces-redirect=true"
-                        actionListener = "#{ofertaClientBean.addOferta()}"
-                        icon="ui-icon-plusthick"/>
-                    
-                </h:form>
+                <h2>Añadir nueva oferta</h2>
+                <div class="principal">
+                    <h:form>
+                        <h:panelGrid id="grid" columns="3">
+                            <h:outputText value="Nombre:" style="font-weight: bold"/>
+                            <p:inputText id="nombre"
+                                         size="25"
+                                         value="#{ofertaBackingBean.ofertaNombre}"
+                                         required="true"
+                                         requiredMessage="El campo nombre es obligatorio"/>
+                            <p:message for="nombre"/>
+                            
+                            <h:outputText value="Descripción:" style="font-weight: bold"/>
+                            <p:inputTextarea id="descripcion"
+                                             rows="5"
+                                             cols="25"
+                                             value="#{ofertaBackingBean.ofertaDescripcion}"
+                                             required="true"
+                                             requiredMessage="El campo descripción es obligatorio"/>
+                            <p:message for="descripcion"/>
+                            
+                            <h:outputText value="Fecha:" style="font-weight: bold"/>
+                            <p:calendar id="fecha"
+                                        size="25"
+                                        value="#{ofertaBackingBean.ofertaFecha}"
+                                        required="true"
+                                        requiredMessage="El campo fecha es obligatorio"
+                                        pattern="dd/MM/yyyy">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </p:calendar>
+                            <p:message for="fecha"/>
+                            
+                            <h:outputText value="Puesto:" style="font-weight: bold"/>
+                            <p:inputTextarea id="puesto"
+                                             rows="5"
+                                             cols="25"
+                                             value="#{ofertaBackingBean.ofertaPuesto}"
+                                             required="true"
+                                             requiredMessage="El campo puesto es obligatorio"/>
+                            <p:message for="puesto"/>
+                            
+                            <h:outputText value="Requisitos mínimos:" style="font-weight: bold"/>
+                            <p:inputTextarea id="requisitos"
+                                         rows="5"
+                                         cols="25"
+                                         value="#{ofertaBackingBean.ofertaRequisitosMinimos}"
+                                         required="true"
+                                         requiredMessage="El campo requisitos mínimos es obligatorio"/>
+                            <p:message for="requisitos"/>
+                            
+                        </h:panelGrid>
+                        <p:commandButton
+                            value="Crear oferta"
+                            update="grid"
+                            action="/faces/index.xhtml?faces-redirect=true"
+                            actionListener = "#{ofertaClientBean.addOferta()}"
+                            icon="ui-icon-plusthick"
+                            style="margin-top: 15px"/>
+
+                    </h:form>
+                </div>
             </ui:define>
         </ui:composition>
-        
+
     </body>
 </html>

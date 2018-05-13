@@ -11,22 +11,63 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <h2>Selecciona una oferta</h2>
-                <h:form>
-                    
-                    <p:messages id="messages" closable="true" autoUpdate="true"/>
-                    
-                    <h:selectOneRadio value="#{ofertaBackingBean.idOferta}"
-                                      layout="pageDirection"
-                                      required="true"
-                                      requiredMessage="No ha seleccionado ninguna opción"
-                                      style="margin-bottom: 10px">
-                        <f:selectItems value="#{ofertaClientBean.ofertas}"
-                                       var="o"
-                                       itemValue="#{o.idOferta}"
-                                       itemLabel="#{o.nombre}"/>
-                    </h:selectOneRadio>
-                </h:form>
+                <h2>Mis ofertas</h2>
+                <div class="principal">
+                    <h:form>
+                        <p:messages id="messages" closable="true" autoUpdate="true"/>
+
+                        <h:selectOneRadio value="#{ofertaBackingBean.idOferta}"
+                                          layout="pageDirection"
+                                          required="true"
+                                          requiredMessage="No ha seleccionado ninguna opción"
+                                          style="margin-bottom: 10px">
+                            <f:selectItems value="#{ofertaClientBean.ofertasEmpresa}"
+                                           var="o"
+                                           itemValue="#{o.idOferta}"
+                                           itemLabel="#{o.nombre}"/>
+                        </h:selectOneRadio>
+
+                        <p:commandButton value="Eliminar"
+                                         actionListener="#"
+                                         update="messages"
+                                         action="/empresa/listarOfertas?faces-redirect=true"
+                                         icon="ui-icon-trash"
+                                         style="margin: 15px 3px">
+                            <p:confirm header="Eliminando oferta" 
+                                       message="¿Está seguro que desea eliminar esta oferta?" 
+                                       icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" 
+                                         showEffect="fade" 
+                                         hideEffect="fade">
+                            <center>
+                                <p:commandButton value="Sí"
+                                                 type="button"
+                                                 styleClass="ui-confirmdialog-yes"
+                                                 icon="ui-icon-check" />
+                                <p:commandButton value="No"
+                                                 type="button"
+                                                 styleClass="ui-confirmdialog-no"
+                                                 icon="ui-icon-close" />
+                            </center>
+                        </p:confirmDialog>
+
+                        <p:commandButton value="Ver detalles"
+                                         action="/empresa/oferta?faces-redirect=true"
+                                         icon="ui-icon-contact"
+                                         style="margin: 15px 3px"/><br/>
+                        <p:commandButton value="Modificar"
+                                         action="/empresa/modificarOferta?faces-redirect=true"
+                                         icon="ui-icon-pencil"
+                                         style="margin: 0 3px"/>
+                        <p:commandButton value="Ver candidaturas"
+                                         action="/empresa/candidaturas?faces-redirect=true"
+                                         icon="ui-icon-folder-open"
+                                         style="margin: 0 3px"/>
+                    </h:form>
+                </div>
+
             </ui:define>
 
         </ui:composition>

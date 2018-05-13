@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -47,7 +46,8 @@
 
                             <h:outputLabel for="fechaNacimiento" value="Fecha de nacimiento:" style="font-weight:bold"/>
                             <p:calendar id="fechaNacimiento" value="#{registroBackingBean.fecha}" required="true" pattern="dd/MM/yyyy"
-                                        requiredMessage="Por favor, introduce tu fecha de nacimiento.">
+                                        requiredMessage="Por favor, introduce tu fecha de nacimiento."
+                                        locale="es" navigator="true">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </p:calendar>
                             <p:message for="fechaNacimiento"/>
@@ -55,6 +55,8 @@
                             <h:outputLabel for="tarjeta" value="Tarjeta:" style="font-weight:bold"/>
                             <p:inputText id="tarjeta" value="#{registroBackingBean.tarjeta}" required="true"
                                          requiredMessage="Por favor, introduce tu número de tarjeta." maxlength="16"
+                                         validatorMessage="La tarjeta debe tener 16 dígitos."
+                                         converterMessage="Debe introducir una cadena de 16 digitos numéricos."
                                          converter="#{BigInteger}">
                                 <f:validateLength minimum="16" maximum="16"/>
                             </p:inputText>
@@ -62,8 +64,10 @@
 
                             <h:outputLabel for="telefono" value="Teléfono" style="font-weight:bold"/>
                             <p:inputText id="telefono" value="#{registroBackingBean.telefono}" required="true"
-                                         requiredMessage="Por favor, introduce tu número de teléfono." maxlength="9">
-                                <f:convertNumber integerOnly="true" groupingUsed="false"/>
+                                         requiredMessage="Por favor, introduce tu número de teléfono." maxlength="9"
+                                         validatorMessage="El teléfono debe tener 9 dígitos."
+                                         converterMessage="Debe introducir una cadena de 9 digitos numéricos."
+                                         converter="#{Integer}">
                                 <f:validateLength minimum="9" maximum="9"/>
                             </p:inputText>
                             <p:message for="telefono"/>
@@ -83,24 +87,12 @@
                           resizable="false"
                           closable="false">
                     <h:form id="dialog">
-                        <c:choose>
-                            Nueva empresa registrada
-                            <c:when test="#{loginBackingBean.getAuthenticatedUser() != null}">
-                                <center>
-                                    <p:commandButton action="/administrador/listarEmpresas?faces-redirect=true"
-                                         value="Listado Empresas"
-                                         icon="ui-icon-document"/>
-                                </center>
-                            </c:when>
-                            <c:otherwise>
-                                ¡Ya estás registrado en el Portal de Empleo!
-                                <center>
-                                    <p:commandButton action="/login?faces-redirect=true"
-                                         value="Iniciar Sesión"
-                                         icon="ui-icon-person"/>
-                                </center>
-                            </c:otherwise>
-                        </c:choose>
+                        ¡Enhorabuena, ya estás registrado en el Portal de Empleo!
+                        <center>
+                            <p:commandButton action="/login?faces-redirect=true"
+                                 value="Iniciar Sesión"
+                                 icon="ui-icon-person"/>
+                        </center>
                     </h:form>
                 </p:dialog>
             </ui:define>
