@@ -25,6 +25,7 @@ function join() {
 }
 function send_message() {
     websocket.send(username + ": " + textField.value);
+    $("#texto").val('');
 }
 function disconnect() {
     websocket.close();
