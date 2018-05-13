@@ -11,22 +11,48 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <h2>Selecciona una empresa</h2>
-                <h:form>
-                    
-                    <p:messages id="messages" closable="true" autoUpdate="true"/>
-                    
-                    <h:selectOneRadio value="#{empresaBackingbBean.email}"
-                                      layout="pageDirection"
-                                      required="true"
-                                      requiredMessage="No ha seleccionado ninguna opción"
-                                      style="margin-bottom: 10px">
-                        <f:selectItems value="#{usuarioClientBean.empresas}"
-                                       var="e"
-                                       itemValue="#{e.email}"
-                                       itemLabel="#{e.nombre}"/>
-                    </h:selectOneRadio>
-                </h:form>
+                <h2>Listado de Empresas</h2>
+                <div class="principal">
+                    <h:form>
+                        <p:messages id="message" closable="true" autoUpdate="true"/>
+
+                        <h:selectOneRadio value="#{empresaBackingBean.email}"
+                                          layout="pageDirection"
+                                          required="true"
+                                          requiredMessage="No ha seleccionado ninguna opción"
+                                          style="margin-bottom: 10px">
+                            <f:selectItems value="#{usuarioClientBean.empresas}"
+                                           var="e"
+                                           itemValue="#{e.email}"
+                                           itemLabel="#{e.nombre}"/>
+                        </h:selectOneRadio>
+
+                        <p:commandButton value="Eliminar empresa"
+                                         actionListener="#{empresaBackingBean.eliminarEmpresa()}"
+                                         update="message"
+                                         action="/administrador/listarEmpresas?faces-redirect=true"
+                                         icon="ui-icon-trash">
+                            <p:confirm header="Eliminando empresa" 
+                                       message="¿Está seguro que desea eliminar esta empresa?" 
+                                       icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" 
+                                         showEffect="fade" 
+                                         hideEffect="fade">
+                            <center>
+                                <p:commandButton value="Sí"
+                                                 type="button"
+                                                 styleClass="ui-confirmdialog-yes"
+                                                 icon="ui-icon-check" />
+                                <p:commandButton value="No"
+                                                 type="button"
+                                                 styleClass="ui-confirmdialog-no"
+                                                 icon="ui-icon-close" />
+                            </center>
+                        </p:confirmDialog>
+                    </h:form>
+                </div>
             </ui:define>
 
         </ui:composition>

@@ -1,6 +1,7 @@
 
 package com.pablo.pse5.client;
 
+import com.pablo.pse5.bean.EmpresaBackingBean;
 import com.pablo.pse5.bean.RegistroBackingBean;
 import com.pablo.pse5.entities.Usuario;
 import com.pablo.pse5.json.UsuarioReader;
@@ -23,6 +24,8 @@ public class UsuarioClientBean {
     WebTarget target;
     @Inject
     private RegistroBackingBean registroBean;
+    @Inject
+    private EmpresaBackingBean empresaBean;
     
     
     @PostConstruct
@@ -48,6 +51,7 @@ public class UsuarioClientBean {
     
     public Usuario[] getEmpresas(){
         return target
+                .path("/empresas")
                 .request()
                 .get(Usuario[].class);
     }
@@ -84,5 +88,12 @@ public class UsuarioClientBean {
         target.register(UsuarioWriter.class)
             .request()
             .post(Entity.entity(u, MediaType.APPLICATION_JSON));
+    }
+    
+    public void deleteUsuario() {
+        target.path("{email}")
+                .resolveTemplate("email", empresaBean.getEmail())
+                .request()
+                .delete();
     }
 }
