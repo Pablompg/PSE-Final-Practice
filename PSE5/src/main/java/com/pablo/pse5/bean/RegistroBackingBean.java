@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.primefaces.PrimeFaces;
 
 @Named
 @SessionScoped
@@ -116,9 +117,9 @@ public class RegistroBackingBean implements Serializable {
         }
     }
 
-    public String register() {
+    public void register() {
         userEJB.createUser();
         login.setEmail(email);
-        return (login.getAuthenticatedUser() != null) ? "/administrador/listarEmpresas?faces-redirect=true" : "/login?faces-redirect=true";
+        PrimeFaces.current().ajax().addCallbackParam("register", true);
     }
 }

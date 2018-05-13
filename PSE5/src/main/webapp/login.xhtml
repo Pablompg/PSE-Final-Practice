@@ -21,9 +21,32 @@
                             <p:password id="password" value="#{loginBackingBean.password}" required="true"
                                         requiredMessage="Por favor, introduce tu contraseña."/>
                         </h:panelGrid>
-                        <p:commandButton action="#{loginBackingBean.login}" value="Login" icon="ui-icon-check"/>
+                        <p:commandButton actionListener="#{loginBackingBean.login}"
+                                         value="Login"
+                                         update="dialog"
+                                         icon="ui-icon-check"
+                                         oncomplete="handleLoginRequest(xhr, status, args)"/>
                     </p:panel>
                 </h:form>
+                <p:dialog widgetVar="dialogWidget"
+                          header="Datos correctos"
+                          modal="true"
+                          appendTo="@(body)"
+                          resizable="false"
+                          closable="false">
+                    <h:form id="dialog">
+                        <h3>
+                            Usted ha iniciado sesión como
+                            <h:outputText value="#{loginBackingBean.rol()}"/>
+                        </h3>
+                        <center>
+                            <p:commandButton value="Comenzar"
+                                         action="index?faces-redirect=true"
+                                         icon="ui-icon-arrowreturnthick-1-e"
+                                         style="margin: auto"/>
+                        </center>
+                    </h:form>
+                </p:dialog>
             </ui:define>
 
         </ui:composition>

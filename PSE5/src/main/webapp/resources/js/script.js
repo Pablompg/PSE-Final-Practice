@@ -1,25 +1,13 @@
 /* global PF */
 
 function handleLoginRequest(xhr, status, args) {
-    if(args.validationFailed || !args.loggedIn) {
-        PF('login').jq.effect("shake", {times:5}, 100);
-    }
-    else {
-        PF('login').hide();
+    if(!args.validationFailed && args.loggedIn) {
+        PF('dialogWidget').show();
     }
 }
 
-function handleRegistroRequest(xhr, status, args) {
-    if(args.validationFailed || !args.loggedIn) {
-        PF('registro').jq.effect("shake", {times:5}, 100);
-    }
-    else {
-        PF('registro').hide();
+function handleRegisterRequest(xhr, status, args) {
+    if(!args.validationFailed && args.register) {
+        PF('dialogWidget').show();
     }
 }
-
-function closeDialog(){
-    PF('dlg').hide();
-}
-
-

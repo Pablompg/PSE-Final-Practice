@@ -13,6 +13,7 @@ import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.primefaces.PrimeFaces;
 
 @Named
 @SessionScoped
@@ -24,7 +25,6 @@ public class LoginBackingBean implements Serializable {
     private static Logger log = Logger.getLogger(LoginBackingBean.class.getName());
     @Inject
     private UserEJB userEJB;
-
     public String getEmail() {
         return email;
     }
@@ -45,7 +45,7 @@ public class LoginBackingBean implements Serializable {
         return user;
     }
 
-    public String login() {
+    /*public String login() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         try {
@@ -66,6 +66,35 @@ public class LoginBackingBean implements Serializable {
         } else {
             return "login?faces-redirect=true";
         }
+    }*/
+    
+    public void login() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        Boolean loggedIn;
+        try {
+            request.login(email, password);
+            this.user = userEJB.findByEmail(request.getUserPrincipal().getName());
+            loggedIn = true;
+        } catch (ServletException e) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Login incorrecto!", null));
+            loggedIn = false;
+        }
+        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
+    }
+    
+    public String rol(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        String rol = "";
+        if (request.isUserInRole("administrador")) {
+            rol = "Administrador";
+        } else if (request.isUserInRole("candidato")) {
+            rol = "Candidato";
+        } else if (request.isUserInRole("empresa")) {
+            rol = "Empresa";
+        }
+        return rol;
     }
 
     public String logout() {

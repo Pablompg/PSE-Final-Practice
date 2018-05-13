@@ -67,7 +67,28 @@
                                              action="#{loginBackingBean.logout}" icon="ui-icon-power"
                                              rendered="#{request.isUserInRole('administrador')
                                                          or request.isUserInRole('candidato')
-                                                         or request.isUserInRole('empresa')}"/>
+                                                         or request.isUserInRole('empresa')}">
+                                <p:confirm header="Cerrar sesión" 
+                                           message="¿Está seguro que desea cerrar sesión?" 
+                                           icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" 
+                                             showEffect="fade" 
+                                             hideEffect="fade"
+                                             rendered="#{request.isUserInRole('administrador')
+                                                         or request.isUserInRole('candidato')
+                                                         or request.isUserInRole('empresa')}">
+                                <center>
+                                    <p:commandButton value="Sí"
+                                                     type="button"
+                                                     styleClass="ui-confirmdialog-yes"
+                                                     icon="ui-icon-check" />
+                                    <p:commandButton value="No"
+                                                     type="button"
+                                                     styleClass="ui-confirmdialog-no"
+                                                     icon="ui-icon-close" />
+                                </center>
+                            </p:confirmDialog>
                         </f:facet>
                     </p:toolbar>
                 </h:form>
@@ -81,6 +102,8 @@
                         <p:menuitem value="Chat" url="/faces/chat/chatroom.xhtml" icon="ui-icon-comment"
                                     rendered="#{request.isUserInRole('chatRol')}"/>
                         <p:menuitem value="Suscribirse" action="suscribirse" icon="ui-icon-plus"
+                                    rendered="#{request.isUserInRole('candidato')}"/>
+                        <p:menuitem value="Perfil" url="/faces/candidato/perfil.xhtml" icon="ui-icon-person"
                                     rendered="#{request.isUserInRole('candidato')}"/>
                         <p:submenu label="Gestionar ofertas"
                                    rendered="#{request.isUserInRole('empresa')}">

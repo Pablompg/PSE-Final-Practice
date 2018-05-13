@@ -4,16 +4,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <body>
 
         <ui:composition template="./WEB-INF/template.xhtml">
 
             <ui:define name="content">
+                <h2>Registro de nuevos usuarios</h2>
                 <h:form>
                     <f:event listener="#{registroBackingBean.validatePassword}" type="postValidate" />
-                    <p:panel header="Crear una nueva cuenta">
+                    <div class="principal">
                         <h:panelGrid id="grid" columns="3">
                             <h:outputLabel for="name" value="Nombre:" style="font-weight:bold"/>
                             <p:inputText id="name" value="#{registroBackingBean.name}" required="true"
@@ -52,8 +54,8 @@
 
                             <h:outputLabel for="tarjeta" value="Tarjeta:" style="font-weight:bold"/>
                             <p:inputText id="tarjeta" value="#{registroBackingBean.tarjeta}" required="true"
-                                         requiredMessage="Por favor, introduce tu número de tarjeta." maxlength="16">
-                                <f:convertNumber integerOnly="true" groupingUsed="false"/>
+                                         requiredMessage="Por favor, introduce tu número de tarjeta." maxlength="16"
+                                         converter="#{BigInteger}">
                                 <f:validateLength minimum="16" maximum="16"/>
                             </p:inputText>
                             <p:message for="tarjeta"/>
@@ -66,10 +68,41 @@
                             </p:inputText>
                             <p:message for="telefono"/>
                         </h:panelGrid>
-                        <p:commandButton action="#{registroBackingBean.register}" update="grid" value="Regístrate!" icon="uiicon-
-                                         pencil"/>
-                    </p:panel>
+                        <p:commandButton actionListener="#{registroBackingBean.register()}"
+                                         update="grid" 
+                                         value="Registrarse"
+                                         icon="ui-icon-pencil"
+                                         style="margin-top: 15px"
+                                         oncomplete="handleRegisterRequest(xhr, status, args)"/>
+                    </div>
                 </h:form>
+                <p:dialog widgetVar="dialogWidget"
+                          header="Registro correcto"
+                          modal="true"
+                          appendTo="@(body)"
+                          resizable="false"
+                          closable="false">
+                    <h:form id="dialog">
+                        <c:choose>
+                            Nueva empresa registrada
+                            <c:when test="#{loginBackingBean.getAuthenticatedUser() != null}">
+                                <center>
+                                    <p:commandButton action="/administrador/listarEmpresas?faces-redirect=true"
+                                         value="Listado Empresas"
+                                         icon="ui-icon-document"/>
+                                </center>
+                            </c:when>
+                            <c:otherwise>
+                                ¡Ya estás registrado en el Portal de Empleo!
+                                <center>
+                                    <p:commandButton action="/login?faces-redirect=true"
+                                         value="Iniciar Sesión"
+                                         icon="ui-icon-person"/>
+                                </center>
+                            </c:otherwise>
+                        </c:choose>
+                    </h:form>
+                </p:dialog>
             </ui:define>
 
         </ui:composition>
