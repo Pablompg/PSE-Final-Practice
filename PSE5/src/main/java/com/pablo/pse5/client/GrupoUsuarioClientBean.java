@@ -1,6 +1,7 @@
 
 package com.pablo.pse5.client;
 
+import com.pablo.pse5.bean.EmpresaBackingBean;
 import com.pablo.pse5.bean.RegistroBackingBean;
 import com.pablo.pse5.entities.GrupoUsuario;
 import com.pablo.pse5.json.GrupoUsuarioWriter;
@@ -22,6 +23,8 @@ public class GrupoUsuarioClientBean {
     WebTarget target;
     @Inject
     private RegistroBackingBean registroBean;
+    @Inject
+    private EmpresaBackingBean empresaBean;
     
     @PostConstruct
     public void init() {
@@ -41,5 +44,12 @@ public class GrupoUsuarioClientBean {
         target.register(GrupoUsuarioWriter.class)
             .request()
             .post(Entity.entity(grupo, MediaType.APPLICATION_JSON));
+    }
+    
+    public void deleteGrupoUsuario() {
+        target.path("{email}")
+                .resolveTemplate("email", empresaBean.getEmail())
+                .request()
+                .delete();
     }
 }

@@ -19,12 +19,14 @@
                             <p:inputText id="name" value="#{registroBackingBean.name}" required="true"
                                          requiredMessage="Por favor, introduce tu nombre." maxlength="30"/>
                             <p:message for="name"/>
+
                             <h:outputLabel for="email" value="E-Mail:" style="font-weight:bold"/>
                             <p:inputText id="email" value="#{registroBackingBean.email}" required="true"
                                          requiredMessage="Por favor, introduce tu email.">
                                 <f:validator validatorId="emailValidator" />
                             </p:inputText>
                             <p:message for="email"/>
+
                             <h:outputLabel for="password" value="Contraseña:" style="font-weight:bold"/>
                             <p:password id="password" value="#{registroBackingBean.password}" feedback="true"
                                         required="true" requiredMessage="Por favor, introduce tu contraseña."
@@ -34,24 +36,34 @@
                                 <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})" />
                             </p:password>
                             <p:message for="password"/>
+
                             <h:outputLabel for="confirmpassword" value="Confirmar contraseña:" style="font-weight:bold"/>
                             <p:password id="confirmpassword" feedback="true"
                                         value="#{registroBackingBean.confirmPassword}" required="true"
                                         requiredMessage="Por favor, confirma tu contraseña."/>
                             <p:message for="confirmpassword"/>
+
                             <h:outputLabel for="fechaNacimiento" value="Fecha de nacimiento:" style="font-weight:bold"/>
-                            <p:calendar id="fechaNacimiento" value="#{registroBackingBean.fecha}" required="true" pattern="yyyy-MM-dd"
+                            <p:calendar id="fechaNacimiento" value="#{registroBackingBean.fecha}" required="true" pattern="dd/MM/yyyy"
                                         requiredMessage="Por favor, introduce tu fecha de nacimiento.">
-                                <f:convertDateTime pattern="yyyy-MM-dd"/>
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </p:calendar>
                             <p:message for="fechaNacimiento"/>
+
                             <h:outputLabel for="tarjeta" value="Tarjeta:" style="font-weight:bold"/>
                             <p:inputText id="tarjeta" value="#{registroBackingBean.tarjeta}" required="true"
-                                         requiredMessage="Por favor, introduce tu número de tarjeta." maxlength="30"/>
+                                         requiredMessage="Por favor, introduce tu número de tarjeta." maxlength="16">
+                                <f:convertNumber integerOnly="true" groupingUsed="false"/>
+                                <f:validateLength minimum="16" maximum="16"/>
+                            </p:inputText>
                             <p:message for="tarjeta"/>
+
                             <h:outputLabel for="telefono" value="Teléfono" style="font-weight:bold"/>
                             <p:inputText id="telefono" value="#{registroBackingBean.telefono}" required="true"
-                                         requiredMessage="Por favor, introduce tu número de teléfono." maxlength="30"/>
+                                         requiredMessage="Por favor, introduce tu número de teléfono." maxlength="9">
+                                <f:convertNumber integerOnly="true" groupingUsed="false"/>
+                                <f:validateLength minimum="9" maximum="9"/>
+                            </p:inputText>
                             <p:message for="telefono"/>
                         </h:panelGrid>
                         <p:commandButton action="#{registroBackingBean.register}" update="grid" value="Regístrate!" icon="uiicon-
