@@ -28,7 +28,7 @@
                         </h:selectOneRadio>
 
                         <p:commandButton value="Eliminar"
-                                         actionListener="#"
+                                         actionListener="#{ofertaBackingBean.eliminarOferta()}"
                                          update="messages"
                                          action="/empresa/listarOfertas?faces-redirect=true"
                                          icon="ui-icon-trash"

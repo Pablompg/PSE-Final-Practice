@@ -1,9 +1,12 @@
 
 package com.pablo.pse5.bean;
 
+import com.pablo.pse5.client.OfertaClientBean;
+import com.pablo.pse5.client.SuscribirClientBean;
 import java.io.Serializable;
 import java.util.Date;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @SessionScoped
@@ -17,7 +20,13 @@ public class OfertaBackingBean implements Serializable{
     private String ofertaPuesto; 
     private String ofertaRequisitosMinimos;
     private String ofertaEmailEmpresa;
+    
+    @Inject
+    OfertaClientBean ofertaClientBean;
 
+    @Inject
+    SuscribirClientBean suscribirClientBean;
+    
     public int getIdOferta() {
         return idOferta;
     }
@@ -72,5 +81,10 @@ public class OfertaBackingBean implements Serializable{
 
     public void setOfertaEmailEmpresa(String ofertaEmailEmpresa) {
         this.ofertaEmailEmpresa = ofertaEmailEmpresa;
+    }
+    
+    public void eliminarOferta(){
+        ofertaClientBean.deleteOferta();
+        suscribirClientBean.deleteSuscripcionesPorIdOferta(idOferta);
     }
 }

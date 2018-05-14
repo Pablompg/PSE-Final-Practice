@@ -80,5 +80,23 @@ public class SuscribirClientBean{
             .request()
             .post(Entity.entity(s, MediaType.APPLICATION_JSON));
     }
+    
+    public Suscribir[] obtenerSuscripcionesPorIdOferta(int idOferta){
+        return target
+                .path("suscripciones/{idOferta}")
+                .resolveTemplate("idOferta", idOferta)
+                .request()
+                .get(Suscribir[].class);
+    }
+    
+    public void deleteSuscripcionesPorIdOferta(int idOferta){
+        for(Suscribir s:obtenerSuscripcionesPorIdOferta(idOferta)){
+            target
+                .path("{idSuscripciones}")
+                .resolveTemplate("idSuscripciones", s.getIdSuscribir())
+                .request()
+                .delete();
+        }
+    }
 }
 

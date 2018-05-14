@@ -87,6 +87,15 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
             .setParameter("idOferta",idOferta)
             .getResultList();
     }
+    
+    @GET
+    @Path("suscripciones/{idOferta}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Suscribir> findSuscripcionesByIdOferta(@PathParam("idOferta") int idOferta) {
+        return em.createNamedQuery("Suscribir.findByIdOferta", Suscribir.class)
+            .setParameter("idOferta",idOferta)
+            .getResultList();
+    }
 
     @GET
     @Path("count")
@@ -99,5 +108,6 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
     protected EntityManager getEntityManager() {
         return em;
     }    
+    
     
 }
