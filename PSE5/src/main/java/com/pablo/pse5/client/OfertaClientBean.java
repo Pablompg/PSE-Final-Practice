@@ -44,10 +44,10 @@ public class OfertaClientBean{
                 .get(Oferta[].class);
     }
     
-    public Oferta[] getOfertasEmpresa() {
+    public Oferta[] getOfertasEmpresa(String email) {
         return target
                 .path("empresa/{emailEmpresa}")
-                .resolveTemplate("emailEmpresa", loginBean.getAuthenticatedUser().getEmail())
+                .resolveTemplate("emailEmpresa", email)
                 .request()
                 .get(Oferta[].class);
     }
@@ -70,9 +70,9 @@ public class OfertaClientBean{
                 .get(Oferta.class);
     }
 
-    public void deleteOferta() {
+    public void deleteOferta(int idOferta) {
         target.path("{idOferta}")
-                .resolveTemplate("idOferta", ofertaBean.getIdOferta())
+                .resolveTemplate("idOferta", idOferta)
                 .request()
                 .delete();
     }

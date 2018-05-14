@@ -21,7 +21,7 @@
                                           required="true"
                                           requiredMessage="No ha seleccionado ninguna opción"
                                           style="margin-bottom: 10px">
-                            <f:selectItems value="#{ofertaClientBean.ofertasEmpresa}"
+                            <f:selectItems value="#{ofertaBackingBean.ofertasEmpresa()}"
                                            var="o"
                                            itemValue="#{o.idOferta}"
                                            itemLabel="#{o.nombre}"/>

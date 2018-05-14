@@ -96,6 +96,7 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
             .setParameter("idOferta",idOferta)
             .getResultList();
     }
+    
 
     @GET
     @Path("count")
