@@ -19,7 +19,7 @@
                 <h:form>
                     <h1><h:commandLink id="top-text" 
                                        value="Portal de Empleo - Grupo 5"
-                                       action="index?faces-redirect=true"
+                                       action="/faces/index?faces-redirect=true"
                                        style="text-decoration: none;"/></h1>
                 </h:form>
                 
@@ -57,12 +57,12 @@
                             <h:outputText value="#{loginBackingBean.authenticatedUser.nombre}"/>
                         </f:facet>
                         <f:facet name="right">
-                            <p:commandButton action="login?faces-redirect=true" 
+                            <p:commandButton action="/faces/login?faces-redirect=true" 
                                              value="Iniciar Sesión"
                                              rendered="#{request.isUserInRole('administrador')==false 
                                                          and request.isUserInRole('empresa')==false 
                                                          and request.isUserInRole('candidato')==false}"/>
-                            <p:commandButton action="registro?faces-redirect=true"
+                            <p:commandButton action="/faces/registro?faces-redirect=true"
                                              value="Registrarse"
                                              rendered="#{request.isUserInRole('administrador')==false 
                                                          and request.isUserInRole('empresa')==false 
