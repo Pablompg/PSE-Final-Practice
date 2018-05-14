@@ -24,10 +24,13 @@ public class LoginBackingBean implements Serializable {
     private String password;
     private Usuario user = null;
     private static Logger log = Logger.getLogger(LoginBackingBean.class.getName());
+    
     @Inject
     private UserEJB userEJB;
+    
     @Inject
     private UsuarioClientBean usuarioClientBean;
+    
     public String getEmail() {
         return email;
     }
@@ -47,29 +50,6 @@ public class LoginBackingBean implements Serializable {
     public Usuario getAuthenticatedUser() {
         return user;
     }
-
-    /*public String login() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        try {
-            request.login(email, password);
-        } catch (ServletException e) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Login incorrecto!", null));
-            return "login";
-        }
-        
-        this.user = userEJB.findByEmail(request.getUserPrincipal().getName());
-        
-        if (request.isUserInRole("administrador")) {
-            return "index?faces-redirect=true";
-        } else if (request.isUserInRole("candidato")) {
-            return "index?faces-redirect=true";
-        } else if (request.isUserInRole("empresa")) {
-            return "index?faces-redirect=true";
-        } else {
-            return "login?faces-redirect=true";
-        }
-    }*/
     
     public void login() {
         FacesContext context = FacesContext.getCurrentInstance();

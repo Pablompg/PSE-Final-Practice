@@ -3,6 +3,7 @@ package com.pablo.pse5.jaas;
 import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.bean.RegistroBackingBean;
 import com.pablo.pse5.client.GrupoUsuarioClientBean;
+import com.pablo.pse5.client.SuscribirClientBean;
 import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Usuario;
 import javax.ejb.Stateless;
@@ -18,6 +19,8 @@ public class UserEJB {
     private UsuarioClientBean usuarioClientBean;
     @Inject
     private GrupoUsuarioClientBean grupoClientBean;
+    @Inject
+    private SuscribirClientBean suscribirClientBean;
 
     public void createUser() {
         try {
@@ -47,6 +50,7 @@ public class UserEJB {
     }
     
     public void eliminarCandidato(String email){
+        suscribirClientBean.deleteSuscripcionesPorEmailCandidato(email);
         usuarioClientBean.deleteCandidato(email);
         grupoClientBean.deleteGrupoUsuarioCandidato(email);
     }

@@ -99,5 +99,22 @@ public class SuscribirClientBean{
         }
     }
     
+    public Suscribir[] obtenerSuscripcionesPorEmailCandidato(String emailCandidato){
+        return target
+                .path("{emailCandidato}/suscripciones")
+                .resolveTemplate("emailCandidato", emailCandidato)
+                .request()
+                .get(Suscribir[].class);
+    }
+    
+    public void deleteSuscripcionesPorEmailCandidato(String emailCandidato){
+        for(Suscribir s:obtenerSuscripcionesPorEmailCandidato(emailCandidato)){
+            target
+                .path("{idSuscripciones}")
+                .resolveTemplate("idSuscripciones", s.getIdSuscribir())
+                .request()
+                .delete();
+        }
+    }
 }
 

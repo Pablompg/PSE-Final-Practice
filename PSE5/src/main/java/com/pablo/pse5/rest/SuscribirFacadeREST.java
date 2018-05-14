@@ -97,6 +97,15 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
             .getResultList();
     }
     
+    @GET
+    @Path("{emailCandidato}/suscripciones")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Suscribir> findSuscripcionesByEmail(@PathParam("emailCandidato") String emailCandidato) {
+        return em.createNamedQuery("Suscribir.findByEmailCandidato", Suscribir.class)
+            .setParameter("emailCandidato",emailCandidato)
+            .getResultList();
+    }
+    
 
     @GET
     @Path("count")
