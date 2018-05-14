@@ -32,7 +32,7 @@ function disconnect() {
     document.getElementById("unirse").style.setProperty("visibility", "hidden");
     document.getElementById("enviar").style.setProperty("visibility", "hidden");
     document.getElementById("desconectar").style.setProperty("visibility", "hidden");
-    window.location.href = "http://localhost:8080/PSE5/faces/index.xhtml";
+    document.location.href = "http://localhost:8080/PSE5/faces/index.xhtml";
 }
 websocket.onopen = function () {
     writeToScreen("WEB SOCKET CONNECTION ESTABLISHED");
@@ -46,6 +46,7 @@ websocket.onmessage = function (evt) {
         users.innerHTML += evt.data.substring(0, evt.data.indexOf("joined")) + "\n";
     } else {
         chatlog.innerHTML += evt.data + "\n";
+        $(chatlog).scrollTop(chatlog.scrollHeight);
     }
 };
 websocket.onerror = function (evt) {
