@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/template.xhtml">
+
+            <ui:define name="content">
+                <h2><h:outputText value="#{ofertaBackingBean.ofertaNombre}"/></h2>
+                <div class="principal">
+                     <h:form>
+                        <p:panelGrid columns="2" >
+                            <h:outputText value="Nombre" style="font-weight: bold;"/>
+                            <h:outputText value="#{ofertaBackingBean.ofertaNombre}"/>
+                            
+                            <h:outputText value="Descripción" style="font-weight: bold;"/>
+                            <h:outputText value="#{ofertaBackingBean.ofertaDescripcion}"/>
+                            
+                            <h:outputText value="Fecha" style="font-weight: bold;"/>
+                            <h:outputText value="#{ofertaBackingBean.ofertaFecha}"/>
+                            
+                            <h:outputText value="Puesto" style="font-weight: bold;"/>
+                            <h:outputText value="#{ofertaBackingBean.ofertaPuesto}"/>
+                            
+                            <h:outputText value="Requisitos Mínimos" style="font-weight: bold;"/>
+                            <h:outputText value="#{ofertaBackingBean.ofertaRequisitosMinimos}"/>
+                        </p:panelGrid>
+                        
+                        <p:commandButton id="modificar" 
+                                         action="/faces/empresa/modificarOferta.xhtml?faces-redirect=true"
+                                         value="Modificar perfil"
+                                         icon="ui-icon-pencil"
+                                         style="margin: 15px 3px;"/>
+                        <p:commandButton value="Ver candidaturas"
+                                         action="/faces/empresa/candidaturas?faces-redirect=true"
+                                         icon="ui-icon-folder-open"
+                                         style="margin: 15px 3px"/>
+                        <p:commandButton value="Atrás"
+                                         action="/faces/empresa/listarOfertas?faces-redirect=true"
+                                         icon="ui-icon-arrowreturn-1-e"
+                                         style="margin: 15px 3px"/>
+                    </h:form>
+                </div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
