@@ -45,4 +45,9 @@ public class UserEJB {
         }
         return user;
     }
+    
+    public void eliminarCandidato(String email){
+        usuarioClientBean.deleteCandidato(email);
+        grupoClientBean.deleteGrupoUsuarioCandidato(email);
+    }
 }

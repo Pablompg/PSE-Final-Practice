@@ -37,7 +37,7 @@ public class EmpresaBackingBean implements Serializable{
     
     public void eliminarEmpresa(){
         usuarioClientBean.deleteUsuario();
-        grupoUsuarioClientBean.deleteGrupoUsuario();
+        grupoUsuarioClientBean.deleteGrupoUsuarioEmpresa();
     }
     
 }

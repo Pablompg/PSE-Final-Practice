@@ -96,4 +96,11 @@ public class UsuarioClientBean {
                 .request()
                 .delete();
     }
+    
+    public void deleteCandidato(String email) {
+        target.path("{email}")
+                .resolveTemplate("email", email)
+                .request()
+                .delete();
+    }
 }

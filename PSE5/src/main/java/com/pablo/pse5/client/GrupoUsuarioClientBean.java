@@ -46,9 +46,16 @@ public class GrupoUsuarioClientBean {
             .post(Entity.entity(grupo, MediaType.APPLICATION_JSON));
     }
     
-    public void deleteGrupoUsuario() {
+    public void deleteGrupoUsuarioEmpresa() {
         target.path("{email}")
                 .resolveTemplate("email", empresaBean.getEmail())
+                .request()
+                .delete();
+    }
+    
+    public void deleteGrupoUsuarioCandidato(String email) {
+        target.path("{email}")
+                .resolveTemplate("email", email)
                 .request()
                 .delete();
     }

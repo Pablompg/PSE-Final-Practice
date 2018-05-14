@@ -40,7 +40,7 @@ public class UsuarioWriter implements MessageBodyWriter<Usuario>{
                 .write("nombre", u.getNombre())
                 .write("nacimiento", formato.format(u.getNacimiento()))
                 .write("movil", u.getMovil())
-                .write("tarjeta", u.getTarjeta())
+                .write("tarjeta", u.getTarjeta().toString())
                 .writeEnd();
         }
         else{

@@ -7,7 +7,9 @@ package com.pablo.pse5.entities;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -113,6 +115,11 @@ public class Usuario implements Serializable {
 
     public Date getNacimiento() {
         return nacimiento;
+    }
+    
+    public String getNacimientoFormateado() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        return formato.format(nacimiento);
     }
 
     public void setNacimiento(Date nacimiento) {

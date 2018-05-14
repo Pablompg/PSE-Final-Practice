@@ -52,7 +52,7 @@ public class UsuarioReader implements MessageBodyReader<Usuario>{
                             usuario.setNombre(parser.getString());
                             break;
                         case "nacimiento": 
-                            DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                             try {
                                 usuario.setNacimiento(format.parse(parser.getString()));
                             } catch (ParseException ex) {
@@ -63,7 +63,7 @@ public class UsuarioReader implements MessageBodyReader<Usuario>{
                             usuario.setMovil(parser.getInt());
                             break;
                         case "tarjeta":
-                            usuario.setTarjeta(BigInteger.valueOf(parser.getInt()));
+                            usuario.setTarjeta(new BigInteger(parser.getString()));
                             break;
                         default:
                             break;

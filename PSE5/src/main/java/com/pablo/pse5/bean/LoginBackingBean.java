@@ -109,4 +109,9 @@ public class LoginBackingBean implements Serializable {
         }
         return "/index?faces-redirect=true";
     }
+    
+    public void eliminarCandidato(){
+        userEJB.eliminarCandidato(email);
+        logout();
+    }
 }
