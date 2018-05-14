@@ -2,6 +2,7 @@
 package com.pablo.pse5.client;
 
 import com.pablo.pse5.bean.EmpresaBackingBean;
+import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.bean.RegistroBackingBean;
 import com.pablo.pse5.entities.Usuario;
 import com.pablo.pse5.json.UsuarioReader;
@@ -26,6 +27,8 @@ public class UsuarioClientBean {
     private RegistroBackingBean registroBean;
     @Inject
     private EmpresaBackingBean empresaBean;
+    @Inject
+    private LoginBackingBean loginBean;
     
     
     @PostConstruct
@@ -102,5 +105,14 @@ public class UsuarioClientBean {
                 .resolveTemplate("email", email)
                 .request()
                 .delete();
+    }
+    
+    public void modificarCandidato() {
+        target
+            .path("{email}")
+            .register(UsuarioWriter.class)
+            .resolveTemplate("email", loginBean.getEmail())
+            .request()
+            .put(Entity.entity(loginBean.getAuthenticatedUser(), MediaType.APPLICATION_JSON));
     }
 }

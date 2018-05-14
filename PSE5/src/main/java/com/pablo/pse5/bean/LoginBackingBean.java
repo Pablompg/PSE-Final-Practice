@@ -1,5 +1,6 @@
 package com.pablo.pse5.bean;
 
+import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Usuario;
 import com.pablo.pse5.jaas.UserEJB;
 import java.io.Serializable;
@@ -25,6 +26,8 @@ public class LoginBackingBean implements Serializable {
     private static Logger log = Logger.getLogger(LoginBackingBean.class.getName());
     @Inject
     private UserEJB userEJB;
+    @Inject
+    private UsuarioClientBean usuarioClientBean;
     public String getEmail() {
         return email;
     }
@@ -113,5 +116,9 @@ public class LoginBackingBean implements Serializable {
     public void eliminarCandidato(){
         userEJB.eliminarCandidato(email);
         logout();
+    }
+    
+    public void modificarCandidato(){
+        usuarioClientBean.modificarCandidato();
     }
 }
