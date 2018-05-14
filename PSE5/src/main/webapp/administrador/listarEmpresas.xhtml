@@ -24,7 +24,7 @@
                             <f:selectItems value="#{usuarioClientBean.empresas}"
                                            var="e"
                                            itemValue="#{e.email}"
-                                           itemLabel="#{e.nombre}"/>
+                                           itemLabel="#{e.nombre} (#{e.email})"/>
                         </h:selectOneRadio>
 
                         <p:commandButton value="Eliminar empresa"

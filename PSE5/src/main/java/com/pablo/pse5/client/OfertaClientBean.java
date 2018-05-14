@@ -91,4 +91,22 @@ public class OfertaClientBean{
             .post(Entity.entity(o, MediaType.APPLICATION_JSON));
     }
     
+    public void modificarOferta(){
+        Oferta o = new Oferta();
+        o.setIdOferta(ofertaBean.getIdOferta());
+        o.setNombre(ofertaBean.getOfertaNombre());
+        o.setDescripcion(ofertaBean.getOfertaDescripcion());
+        o.setEmailEmpresa(ofertaBean.getOfertaEmailEmpresa());
+        o.setFecha(ofertaBean.getOfertaFecha());
+        o.setPuesto(ofertaBean.getOfertaPuesto());
+        o.setRequisitosMinimos(ofertaBean.getOfertaRequisitosMinimos());
+        
+        target
+            .path("{id}")
+            .register(OfertaWriter.class)
+            .resolveTemplate("id", ofertaBean.getIdOferta())
+            .request()
+            .put(Entity.entity(o, MediaType.APPLICATION_JSON));
+    }
+    
 }

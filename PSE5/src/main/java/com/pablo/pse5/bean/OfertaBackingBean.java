@@ -1,4 +1,3 @@
-
 package com.pablo.pse5.bean;
 
 import com.pablo.pse5.client.OfertaClientBean;
@@ -12,25 +11,25 @@ import javax.inject.Named;
 
 @SessionScoped
 @Named
-public class OfertaBackingBean implements Serializable{
-    
+public class OfertaBackingBean implements Serializable {
+
     private int idOferta;
     private String ofertaNombre;
-    private String ofertaDescripcion; 
-    private Date ofertaFecha; 
-    private String ofertaPuesto; 
+    private String ofertaDescripcion;
+    private Date ofertaFecha;
+    private String ofertaPuesto;
     private String ofertaRequisitosMinimos;
     private String ofertaEmailEmpresa;
-    
+
     @Inject
     OfertaClientBean ofertaClientBean;
 
     @Inject
     SuscribirClientBean suscribirClientBean;
-    
+
     @Inject
     LoginBackingBean loginBean;
-    
+
     public int getIdOferta() {
         return idOferta;
     }
@@ -86,13 +85,27 @@ public class OfertaBackingBean implements Serializable{
     public void setOfertaEmailEmpresa(String ofertaEmailEmpresa) {
         this.ofertaEmailEmpresa = ofertaEmailEmpresa;
     }
-    
-    public void eliminarOferta(){
+
+    public void eliminarOferta() {
         ofertaClientBean.deleteOferta(idOferta);
         suscribirClientBean.deleteSuscripcionesPorIdOferta(idOferta);
     }
-    
-    public Oferta[] ofertasEmpresa(){
+
+    public Oferta[] ofertasEmpresa() {
         return ofertaClientBean.getOfertasEmpresa(loginBean.getEmail());
+    }
+
+    public void volcarDatosOferta() {
+        Oferta o = ofertaClientBean.getOferta();
+        ofertaNombre = o.getNombre();
+        ofertaDescripcion = o.getDescripcion();
+        ofertaFecha = o.getFecha();
+        ofertaPuesto = o.getPuesto();
+        ofertaRequisitosMinimos = o.getRequisitosMinimos();
+        ofertaEmailEmpresa = o.getEmailEmpresa();
+    }
+
+    public void modificarOferta() {
+        ofertaClientBean.modificarOferta();
     }
 }
