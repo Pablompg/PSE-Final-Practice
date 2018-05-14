@@ -24,12 +24,12 @@
                             <h:outputLabel for="email" value="E-Mail:" style="font-weight:bold"/>
                             <p:inputText id="email" value="#{registroBackingBean.email}" required="true"
                                          requiredMessage="Por favor, introduce tu email.">
-                                <f:validator validatorId="emailValidator" />
+                                <f:validator validatorId="emailValidator"/>
                             </p:inputText>
                             <p:message for="email"/>
 
                             <h:outputLabel for="password" value="Contraseña:" style="font-weight:bold"/>
-                            <p:password id="password" value="#{registroBackingBean.password}" feedback="true"
+                            <p:password id="password" value="#{registroBackingBean.password}" feedback ="true"
                                         required="true" requiredMessage="Por favor, introduce tu contraseña."
                                         validatorMessage="La contraseña debe contener al menos un carácter en minúsculas,
                                         un caracter en mayúscula, un número y su longitud debe estar entre 6 y 20
@@ -46,9 +46,11 @@
 
                             <h:outputLabel for="fechaNacimiento" value="Fecha de nacimiento:" style="font-weight:bold"/>
                             <p:calendar id="fechaNacimiento" value="#{registroBackingBean.fecha}" required="true" pattern="dd/MM/yyyy"
-                                        requiredMessage="Por favor, introduce tu fecha de nacimiento."
-                                        locale="es" navigator="true">
+                                        requiredMessage="Por favor, introduce tu fecha de nacimiento." maxdate="#{registroBackingBean.currentDate}"
+                                        locale="es" navigator="true"
+                                        >
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                <f:validator validatorId="calendarValidator"/>
                             </p:calendar>
                             <p:message for="fechaNacimiento"/>
 

@@ -29,8 +29,10 @@
                             <h:outputLabel for="fechaNacimiento" value="Fecha de nacimiento:" style="font-weight:bold"/>
                             <p:calendar id="fechaNacimiento" value="#{loginBackingBean.authenticatedUser.nacimiento}" required="true" pattern="dd/MM/yyyy"
                                         requiredMessage="Por favor, introduce tu fecha de nacimiento."
+                                        maxdate="#{registroBackingBean.currentDate}"
                                         locale="es" navigator="true">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                <f:validator validatorId="calendarValidator"/>
                             </p:calendar>
                             <p:message for="fechaNacimiento"/>
 

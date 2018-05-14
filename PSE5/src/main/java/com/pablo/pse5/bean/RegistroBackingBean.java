@@ -27,11 +27,16 @@ public class RegistroBackingBean implements Serializable {
     private BigInteger tarjeta;
     private int telefono;
     private static Logger log = Logger.getLogger(RegistroBackingBean.class.getName());
+
     @Inject
     private UserEJB userEJB;
     @Inject
     private LoginBackingBean login;
 
+    public Date getCurrentDate() {
+        return new Date();
+    }
+    
     public String getName() {
         return name;
     }

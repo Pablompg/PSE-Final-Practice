@@ -33,13 +33,14 @@
                                              requiredMessage="El campo descripción es obligatorio"/>
                             <p:message for="descripcion"/>
 
-                            <h:outputText value="Fecha:" style="font-weight: bold"/>
+                            <h:outputText value="Fecha incorporación:" style="font-weight: bold"/>
                             <p:calendar id="fecha"
                                         size="25"
                                         value="#{ofertaBackingBean.ofertaFecha}"
                                         required="true"
                                         requiredMessage="El campo fecha es obligatorio"
-                                        pattern="dd/MM/yyyy">
+                                        pattern="dd/MM/yyyy"
+                                        mindate="#{ofertaBackingBean.currentDate}">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </p:calendar>
                             <p:message for="fecha"/>

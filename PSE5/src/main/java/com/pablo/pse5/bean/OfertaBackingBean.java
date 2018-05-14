@@ -4,7 +4,9 @@ import com.pablo.pse5.client.OfertaClientBean;
 import com.pablo.pse5.client.SuscribirClientBean;
 import com.pablo.pse5.entities.Oferta;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -30,6 +32,10 @@ public class OfertaBackingBean implements Serializable {
     @Inject
     LoginBackingBean loginBean;
 
+    public Date getCurrentDate(){
+        return new Date();
+    }
+    
     public int getIdOferta() {
         return idOferta;
     }
@@ -107,5 +113,10 @@ public class OfertaBackingBean implements Serializable {
 
     public void modificarOferta() {
         ofertaClientBean.modificarOferta();
+    }
+    
+    public String getFechaFormateada() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        return formato.format(ofertaFecha);
     }
 }
