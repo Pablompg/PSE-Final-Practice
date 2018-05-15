@@ -36,7 +36,7 @@ public class CalendarValidator implements Validator{
         if(years>65){
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de validación","No se admiten usuarios mayores de 65 años"));
         }
-        else if(years<18){
+        else if(years<16){
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error de validación","No se admiten usuarios menores de 18 años"));
         }
     }
