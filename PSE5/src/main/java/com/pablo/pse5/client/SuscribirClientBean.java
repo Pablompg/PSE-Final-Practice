@@ -1,6 +1,7 @@
 
 package com.pablo.pse5.client;
 
+import com.pablo.pse5.batch.SuscripcionesOfertaBatch;
 import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.entities.Suscribir;
 import com.pablo.pse5.json.SuscribirReader;
@@ -43,15 +44,6 @@ public class SuscribirClientBean{
                 .get(Suscribir[].class);
     }
 
-//    public Suscribir getSuscribir() {
-//        return target
-//                .register(SuscribirReader.class)
-//                .path("{id}")
-//                .resolveTemplate("id", bean.getIdSuscribir())
-//                .request()
-//                .get(Suscribir.class);
-//    }
-    
     public Suscribir[] getUsuarioSuscrito(int idOferta) {
         return target
                 .register(SuscribirReader.class)
@@ -61,14 +53,7 @@ public class SuscribirClientBean{
                 .request()
                 .get(Suscribir[].class);
     }
-
-//    public void deleteSuscribir() {
-//        target.path("{id}")
-//                .resolveTemplate("id", bean.getIdSuscribir())
-//                .request()
-//                .delete();
-//    }
-//
+    
     public void addSuscribir(int idOferta, String cartaPresentacion) {
         Suscribir s = new Suscribir();
         s.setIdSuscribir(1);

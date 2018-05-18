@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job id="suscripcionesOferta"
+     xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     version="1.0">
+    <step id="informeSuscripcionesOferta" >
+        <chunk item-count="3">
+            <reader ref="batchReader"/>
+            <processor ref="batchProcessor"/>
+            <writer ref="batchWriter"/>
+        </chunk>
+    </step>
+</job> 

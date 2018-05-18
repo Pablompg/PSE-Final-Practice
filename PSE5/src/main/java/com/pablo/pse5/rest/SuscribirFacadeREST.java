@@ -5,6 +5,7 @@
  */
 package com.pablo.pse5.rest;
 
+import com.pablo.pse5.batch.SuscripcionesOfertaBatch;
 import com.pablo.pse5.entities.Suscribir;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -70,13 +71,6 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
     public List<Suscribir> findAll() {
         return super.findAll();
     }
-//
-//    @GET
-//    @Path("{from}/{to}")
-//    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-//    public List<Suscribir> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-//        return super.findRange(new int[]{from, to});
-//    }
     
     @GET
     @Path("{emailCandidato}/{idOferta}")
@@ -105,7 +99,6 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
             .setParameter("emailCandidato",emailCandidato)
             .getResultList();
     }
-    
 
     @GET
     @Path("count")

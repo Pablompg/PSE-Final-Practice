@@ -19,10 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author usuario
- */
+
 @Entity
 @Table(name = "suscribir")
 @XmlRootElement
@@ -32,7 +29,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Suscribir.findByIdOferta", query = "SELECT s FROM Suscribir s WHERE s.idOferta = :idOferta")
     , @NamedQuery(name = "Suscribir.findByEmailCandidato", query = "SELECT s FROM Suscribir s WHERE s.emailCandidato = :emailCandidato")
     , @NamedQuery(name = "Suscribir.findByOfertaAndCandidato", query = "SELECT s FROM Suscribir s WHERE s.emailCandidato = :emailCandidato AND s.idOferta = :idOferta")
-    , @NamedQuery(name = "Suscribir.findByCartaPresentacion", query = "SELECT s FROM Suscribir s WHERE s.cartaPresentacion = :cartaPresentacion")})
+    , @NamedQuery(name = "Suscribir.findByCartaPresentacion", query = "SELECT s FROM Suscribir s WHERE s.cartaPresentacion = :cartaPresentacion")
+    , @NamedQuery(name = "Suscribir.CountSuscripcionesPorEmpresa", query = "SELECT new com.pablo.pse5.batch.SuscripcionesOfertaBatch(u.nombre, o.nombre, u.email, COUNT(s.idSuscribir),  o.idOferta)"
+                                                                                + "FROM Suscribir AS s "
+                                                                                + "LEFT JOIN Oferta AS o ON o.idOferta=s.idOferta "
+                                                                                + "LEFT JOIN Usuario AS u ON u.email=o.emailEmpresa "
+                                                                                + "GROUP BY o.idOferta")
+})
 public class Suscribir implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -126,5 +129,5 @@ public class Suscribir implements Serializable {
     public String toString() {
         return "com.pablo.pse5.entities.Suscribir[ idSuscribir=" + idSuscribir + " ]";
     }
-    
+
 }
