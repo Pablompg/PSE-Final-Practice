@@ -38,29 +38,34 @@ public class BatchWriter extends AbstractItemWriter {
     @Override
     public void writeItems(List list) throws Exception {
         for (SuscripcionesOfertaBatch g : (List<SuscripcionesOfertaBatch>) list) {
-            cell = new PdfPCell(new Phrase(g.getNombreEmpresa(), new Font(FontFamily.HELVETICA, 10)));
+            cell = new PdfPCell(new Phrase(g.getNombreEmpresa(),new Font(FontFamily.HELVETICA, 10)));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase(g.getNombreOferta(), new Font(FontFamily.HELVETICA, 10)));
+            cell = new PdfPCell(new Phrase(g.getNombreOferta(),new Font(FontFamily.HELVETICA, 10)));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase(g.getEmailEmpresa(), new Font(FontFamily.HELVETICA, 10)));
+            cell = new PdfPCell(new Phrase(g.getEmailEmpresa(),new Font(FontFamily.HELVETICA, 10)));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase(g.getNumSuscripciones()));
+            cell = new PdfPCell(new Phrase(String.valueOf(g.getNumSuscripciones()),new Font(FontFamily.HELVETICA, 10)));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
             table.addCell(cell);
 
-            cell = new PdfPCell(new Phrase(g.getIdOferta()));
+            cell = new PdfPCell(new Phrase(String.valueOf(g.getIdOferta()),new Font(FontFamily.HELVETICA, 10)));
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setPadding(5);
             table.addCell(cell);
 
         }
@@ -97,36 +102,41 @@ public class BatchWriter extends AbstractItemWriter {
         document.add(linea);
         //Creamos una tabla de 5 columnas
         table = new PdfPTable(5);
-        table.setWidthPercentage(document.getPageSize().getWidth()/5-10);
+        table.setWidthPercentage(document.getPageSize().getWidth()/5-15);
         //Creamos la primera fila
         cell = new PdfPCell(new Phrase("Nombre Empresa"));
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBackgroundColor(new BaseColor(226, 226, 226));
+        cell.setPadding(10);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("Título Oferta"));
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBackgroundColor(new BaseColor(226, 226, 226));
+        cell.setPadding(10);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("Email Empresa"));
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBackgroundColor(new BaseColor(226, 226, 226));
+        cell.setPadding(10);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("Nº de Suscripciones"));
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBackgroundColor(new BaseColor(226, 226, 226));
+        cell.setPadding(10);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("Id Oferta"));
         cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         cell.setBackgroundColor(new BaseColor(226, 226, 226));
+        cell.setPadding(10);
         table.addCell(cell);
 
     }
