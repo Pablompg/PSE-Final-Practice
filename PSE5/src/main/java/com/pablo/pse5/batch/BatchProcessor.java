@@ -14,7 +14,7 @@ public class BatchProcessor implements ItemProcessor {
         String fila;
         SuscripcionesOfertaBatch suscripciones = (SuscripcionesOfertaBatch) t;
         fila = suscripciones.getNumSuscripciones() + "," + suscripciones.getNombreOferta();
-        return fila;
+        return t;
     }
     
 
