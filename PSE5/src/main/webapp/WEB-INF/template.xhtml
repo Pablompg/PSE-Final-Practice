@@ -22,35 +22,6 @@
                                        action="/faces/index?faces-redirect=true"
                                        style="text-decoration: none;"/></h1>
                 </h:form>
-                
-                <!--ul id="menu">
-                    <li>
-                        <h:form id="login">        
-                            <h:outputLink value="javascript:void(0)" onclick="PF('registro').hide(); PF('login').show();" title="login">
-                                Iniciar Sesión
-                            </h:outputLink>
-                        </h:form>
-                    </li>
-                    <li>
-                        <h:form>        
-                            <h:outputLink value="javascript:void(0)" onclick="PF('login').hide(); PF('registro').show();" title="login">
-                                Registrarse
-                            </h:outputLink>
-                        </h:form>
-                    </li>
-                </ul>
-                <h:form>           
-                    <p:growl id="message" showDetail="true" />
-
-                    <p:commandButton value="Cerrar Sesión" update="message">
-                        <p:confirm header="Cerrando sesión" message="¿Está seguro?" icon="ui-icon-alert" />
-                    </p:commandButton>
-
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                    </p:confirmDialog>
-                </h:form-->
                 <h:form>
                     <p:toolbar>
                         <f:facet name="left">
@@ -118,61 +89,13 @@
                                    rendered="#{request.isUserInRole('administrador')}">
                             <p:menuitem value="Listar empresas" url="/faces/administrador/listarEmpresas.xhtml" icon="ui-icon-search"/>
                             <p:menuitem value="Añadir empresa" url="/faces/administrador/añadirEmpresa.xhtml" icon="ui-icon-plus"/>
-                            <p:menuitem value="Generar Informe" url="/faces/administrador/informe.xhtml" icon="ui-icon-plus"/>
+                            <p:menuitem value="Generar informe" url="/faces/administrador/informe.xhtml" icon="ui-icon-document"/>
                         </p:submenu>
                     </p:menu>
                 </h:form>
             </p:layoutUnit>
 
             <p:layoutUnit position="center" >
-                <!--h:form>
-                    <p:growl id="growlLogin" sticky="true" showDetail="true" life="3000" />
-
-                    <p:dialog header="Iniciar Sesión" widgetVar="login" resizable="false">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputLabel for="username" value="Username:" />
-                            <p:inputText id="username" value="" required="true" label="username" />
-
-                            <h:outputLabel for="password" value="Password:" />
-                            <p:password id="password" value="" required="true" label="password" />
-
-                            <f:facet name="footer">
-                                <p:commandButton value="Login" update="growlLogin"
-                                                 oncomplete="handleLoginRequest(xhr, status, args)" />
-                            </f:facet>  
-                        </h:panelGrid>
-                    </p:dialog>
-                </h:form>
-                <h:form>
-                    <p:growl id="growlRegistro" sticky="true" showDetail="true" life="3000" />
-
-                    <p:dialog header="Registro" widgetVar="registro" resizable="false">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputLabel for="email" value="Email" />
-                            <p:inputText id="email" value="" required="true" label="email" />
-
-                            <h:outputLabel for="password2" value="Password:" />
-                            <p:password id="password2" value="" required="true" label="password2" />
-
-                            <h:outputLabel for="nombre" value="Nombre:" />
-                            <p:password id="nombre" value="" required="true" label="nombre" />
-
-                            <h:outputLabel for="fecha" value="Fecha de nacimiento:" />
-                            <p:password id="fecha" value="" required="true" label="fecha" />
-
-                            <h:outputLabel for="movil" value="Móvil:" />
-                            <p:password id="movil" value="" required="true" label="movil" />
-
-                            <h:outputLabel for="tarjeta" value="Nº de tarjeta:" />
-                            <p:password id="tarjeta" value="" required="true" label="tarjeta" />
-
-                            <f:facet name="footer">
-                                <p:commandButton value="Login" update="growlRegistro"
-                                                 oncomplete="handleRegistroRequest(xhr, status, args)" />
-                            </f:facet>  
-                        </h:panelGrid>
-                    </p:dialog>
-                </h:form-->
                 <ui:insert name="content"></ui:insert>
             </p:layoutUnit>
 

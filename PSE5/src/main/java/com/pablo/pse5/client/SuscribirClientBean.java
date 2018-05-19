@@ -1,7 +1,6 @@
 
 package com.pablo.pse5.client;
 
-import com.pablo.pse5.batch.SuscripcionesOfertaBatch;
 import com.pablo.pse5.bean.LoginBackingBean;
 import com.pablo.pse5.entities.Suscribir;
 import com.pablo.pse5.json.SuscribirReader;

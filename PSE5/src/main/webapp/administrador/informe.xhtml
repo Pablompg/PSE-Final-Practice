@@ -9,10 +9,18 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <h2>Informe Generado Correctamente</h2>
-                <p:commandButton value="Generar Informe" 
-                                 actionListener="#{suscripcionesOfertaBackingBean.runJob()}" icon="ui-icon-power">
-                </p:commandButton>
+                <h2>Elaboración de informes</h2>
+                <div class="principal">
+                    Seleccione el botón generar informes para obtener un informe 
+                    detallado en formato PDF que contenga la lista total de ofertas 
+                    disponibles en la aplicación junto con el número de suscripciones
+                    a cada oferta, junto con otros datos de interés.<br/>
+                    <p:commandButton style="margin-top: 15px"
+                                     value="Generar Informe" 
+                                     actionListener="#{suscripcionesOfertaBackingBean.runJob()}"
+                                     icon="ui-icon-power">
+                    </p:commandButton>
+                </div>
             </ui:define>
 
         </ui:composition>
