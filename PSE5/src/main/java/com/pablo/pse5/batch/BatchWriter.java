@@ -32,8 +32,8 @@ public class BatchWriter extends AbstractItemWriter {
     Date fecha = new Date();
     float columnWidth[] = new float[]{50,50,50,50,50};
     SimpleDateFormat formatoDia = new SimpleDateFormat("dd-MM-yyyy");
-    SimpleDateFormat formatoHorayMinuto = new SimpleDateFormat("hh:mm");
-    SimpleDateFormat formatoHorayMinuto2 = new SimpleDateFormat("hh-mm");
+    SimpleDateFormat formatoHorayMinuto = new SimpleDateFormat("HH:mm");
+    SimpleDateFormat formatoHorayMinuto2 = new SimpleDateFormat("HH-mm");
 
     @Override
     public void writeItems(List list) throws Exception {
