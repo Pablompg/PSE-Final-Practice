@@ -115,36 +115,6 @@ public class SuscribirFacadeREST extends AbstractFacade<Suscribir> {
         return String.valueOf(super.count());
     }
 
-    @GET
-    @Path("/generatePDF")
-    @Produces({MediaType.APPLICATION_OCTET_STREAM})
-    public Response generatePDF() {
-        try {
-
-            String text = "This is the text of my pdf";
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            
-            Document document = new Document();
-            PdfWriter.getInstance(document, baos);
-            document.open();
-            document.add(new Paragraph(text));
-            document.close();
-            
-            System.err.println("doc closed");
-
-            return Response.ok().entity(baos.toByteArray()).
-                    header("Content-Disposition",
-                            "attachment; filename=\"mypdf - " + new Date().toString() + ".pdf\"")
-                    .header("Expires", "0")
-                    .header("Cache-Control", "must-revalidate, post-check=0, pre-check=0")
-                    .header("Pragma", "public")
-                    .build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
-        }
-    }
-
     @Override
     protected EntityManager getEntityManager() {
         return em;

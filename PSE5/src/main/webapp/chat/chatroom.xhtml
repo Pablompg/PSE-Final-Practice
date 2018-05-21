@@ -9,7 +9,9 @@
         <ui:composition template="./../WEB-INF/template.xhtml">
 
             <ui:define name="content">
-                <form action="">
+                <h2>Chat</h2>
+                <div class="principal">
+                    <form action="">
                     <table>
                         <tr><td>
                                 <h3><p:outputLabel value="Mensajes" /></h3>
@@ -42,6 +44,7 @@
                         </tr>
                     </table>
                 </form>
+                </div>
                 <div id="output"></div>
                 <script languaje="javascript" type="text/javascript" 
                         src="${facesContext.externalContext.requestContextPath}/resources/js/websocket.js">

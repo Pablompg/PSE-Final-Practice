@@ -20,6 +20,11 @@ h2{
     padding: 25px 10px;
 }
 
+/*DataScroller*/
+.detail {
+    width: 95%;
+}
+
 /*Pasos del FacesFlow*/
 .ui-steps .ui-steps-item {
     width: 20%;

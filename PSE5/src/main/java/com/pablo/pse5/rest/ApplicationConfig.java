@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.pablo.pse5.json.UsuarioWriter.class);
         resources.add(com.pablo.pse5.json.ValdaviaReader.class);
         resources.add(com.pablo.pse5.rest.GrupoUsuarioFacadeREST.class);
+        resources.add(com.pablo.pse5.rest.InformesREST.class);
         resources.add(com.pablo.pse5.rest.OfertaFacadeREST.class);
         resources.add(com.pablo.pse5.rest.SuscribirFacadeREST.class);
         resources.add(com.pablo.pse5.rest.UsuarioFacadeREST.class);

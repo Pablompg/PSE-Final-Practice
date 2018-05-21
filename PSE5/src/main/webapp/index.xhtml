@@ -7,29 +7,65 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <body>
-        
+
         <ui:composition template="./WEB-INF/template.xhtml">
             <ui:define name="content">
-                <h:form> 
+                <h:form id="form"> 
                     <p:dataScroller value="#{ofertaClientBean.ofertas}" var="oferta" chunkSize="10">
                         <f:facet name="header">
                             Ofertas
                         </f:facet>
-                        <h:panelGrid columns="1" style="width:100%" columnClasses="detail">
+                        <h:panelGrid columns="2" style="width:100%" columnClasses="detail,detallesOferta">
                             <p:outputPanel>
-                                <h:panelGrid columns="2" cellpadding="5">
-                                    <h:outputText value="Id:" />
-                                    <h:outputText value="#{oferta.idOferta}" class="bold"/>
 
-                                    <h:outputText value="Nombre:" />
-                                    <h:outputText value="#{oferta.nombre}" class="bold"/>
-
-                                    <h:outputText value="Descripción:" />
-                                    <h:outputText value="#{oferta.descripcion}" class="bold"/>
+                                <h:panelGrid columns="1" cellpadding="5">
+                                    <h:outputText value="#{oferta.nombre}" style="font-weight: bold"/>
+                                    <h:outputText value="#{oferta.descripcion}"/>
                                 </h:panelGrid>
                             </p:outputPanel>
+                            <p:commandButton update=":form:ofertaDetail" 
+                                             oncomplete="PF('ofertaDialog').show()"
+                                             title="Detalles"
+                                             value="Detalles"
+                                             icon="ui-icon-search"
+                                             actionListener="{ofertaBackingBean.volcarDatosOferta()}">
+                                <f:setPropertyActionListener value="#{oferta.nombre}" target="#{ofertaBackingBean.ofertaNombre}"/>
+                                <f:setPropertyActionListener value="#{oferta.descripcion}" target="#{ofertaBackingBean.ofertaDescripcion}"/>
+                                <f:setPropertyActionListener value="#{oferta.emailEmpresa}" target="#{ofertaBackingBean.ofertaEmailEmpresa}"/>
+                                <f:setPropertyActionListener value="#{oferta.puesto}" target="#{ofertaBackingBean.ofertaPuesto}"/>
+                                <f:setPropertyActionListener value="#{oferta.requisitosMinimos}" target="#{ofertaBackingBean.ofertaRequisitosMinimos}"/>
+                                <f:setPropertyActionListener value="#{oferta.idOferta}" target="#{ofertaBackingBean.idOferta}"/>
+                            </p:commandButton>
                         </h:panelGrid>
                     </p:dataScroller>
+                    <p:dialog header="Detalles de la Oferta"
+                              widgetVar="ofertaDialog"
+                              modal="true"
+                              appendTo="@(body)"
+                              showEffect="fade"
+                              hideEffect="fade"
+                              resizable="false">
+                        <p:outputPanel id="ofertaDetail" >
+                            <p:panelGrid  columns="2" rendered="#{not empty ofertaBackingBean.idOferta}" columnClasses="label,value">
+                                <f:facet name="header">
+                                    <h:outputText value="#{ofertaBackingBean.ofertaNombre}" />
+                                </f:facet>
+
+                                <h:outputText value="Descripción" style="font-weight: bold;"/>
+                                <h:outputText value="#{ofertaBackingBean.ofertaDescripcion}"/>
+
+                                <h:outputText value="Puesto" style="font-weight: bold;"/>
+                                <h:outputText value="#{ofertaBackingBean.ofertaPuesto}"/>
+
+                                <h:outputText value="Requisitos Mínimos" style="font-weight: bold;"/>
+                                <h:outputText value="#{ofertaBackingBean.ofertaRequisitosMinimos}"/>
+                                
+                                <h:outputText value="Contacto" style="font-weight: bold;"/>
+                                <h:outputText value="#{ofertaBackingBean.ofertaEmailEmpresa}"/>
+
+                            </p:panelGrid>
+                        </p:outputPanel>   
+                    </p:dialog>
                 </h:form>
             </ui:define>
         </ui:composition>
