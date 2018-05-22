@@ -3,9 +3,6 @@
 <job id="suscripcionesOferta"
      xmlns="http://xmlns.jcp.org/xml/ns/javaee"
      version="1.0">
-    <listeners>
-        <listener ref="batchListener"/>
-    </listeners>
     <step id="informeSuscripcionesOferta" >
         <chunk item-count="3">
             <reader ref="batchReader"/>

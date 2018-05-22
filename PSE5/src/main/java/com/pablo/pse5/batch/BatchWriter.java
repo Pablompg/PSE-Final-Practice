@@ -11,7 +11,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.pablo.pse5.client.InformesClientBean;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -23,7 +22,6 @@ import javax.batch.api.chunk.AbstractItemWriter;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.client.ClientBuilder;
 
 @Named
 @Dependent
@@ -39,8 +37,6 @@ public class BatchWriter extends AbstractItemWriter {
     SimpleDateFormat formatoHorayMinuto2 = new SimpleDateFormat("HH-mm");
     String path;
     
-    @Inject
-    InformesClientBean informes;
 
     @Override
     public void writeItems(List list) throws Exception {
@@ -81,8 +77,8 @@ public class BatchWriter extends AbstractItemWriter {
     @Override
     public void open(Serializable checkpoint) throws DocumentException, IOException {
         //Imprimimos por pantalla la ruta actual donde vamos a trabajar
-        path = System.getProperty("user.dir") + File.separator + "InformeDia"
-                + formatoDia.format(fecha) + "Hora" + formatoHorayMinuto2.format(fecha) + ".pdf";
+        path = System.getProperty("user.dir") + File.separator + "Informe"
+                + formatoDia.format(fecha) + ".pdf";
         System.out.println(path);
         //Generamos un nuevo documento PDF y lo abrimos para escribir en él
         document = new Document();
@@ -152,8 +148,6 @@ public class BatchWriter extends AbstractItemWriter {
     public void close() throws DocumentException {
         document.add(table);
         document.close();
-        System.out.println("terminado batch");
-        //informes.getInforme(path);
     }
 
 }
