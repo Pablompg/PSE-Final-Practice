@@ -14,7 +14,6 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -33,8 +32,8 @@ public class InformesREST {
     @Produces({MediaType.APPLICATION_OCTET_STREAM})
     public Response getPDF() {
         try {
-            SimpleDateFormat formatoDia = new SimpleDateFormat("dd-MM-yyyy");
-            String path = System.getProperty("user.dir") + File.separator + "Informe"
+            SimpleDateFormat formatoDia = new SimpleDateFormat("yyyy-MM-dd");
+            String path = System.getProperty("user.dir") + File.separator + "Informes"+File.separator
                 + formatoDia.format(new Date()) + ".pdf";
             File f = new File(path);
             OutputStream oos = new FileOutputStream("test.pdf");
@@ -49,7 +48,7 @@ public class InformesREST {
             is.close();
             return Response.ok().entity(buf)
                     .header("Content-Disposition",
-                            "attachment; filename=\"Informe.pdf")
+                            "attachment; filename=\"Informe "+formatoDia.format(new Date())+".pdf")
                     .header("Expires", "0")
                     .header("Cache-Control", "must-revalidate, post-check=0, pre-check=0")
                     .header("Pragma", "public")

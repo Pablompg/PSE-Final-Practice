@@ -9,6 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.NotFoundException;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -44,7 +45,7 @@ public class ValdaviaClientBean {
                     .resolveTemplate("userId", usuario.getEmail())
                     .request(MediaType.APPLICATION_JSON)
                     .get(Pago.class);
-        } catch (NotFoundException e) {
+        } catch (WebApplicationException e) {
             return new Pago("none","none");
         }
         return m;

@@ -11,3 +11,18 @@ function handleRegisterRequest(xhr, status, args) {
         PF('dialogWidget').show();
     }
 }
+
+$(document).ready(function() {     
+    $('#descargarInforme').hover(function(){     
+        $('#descargarInforme').addClass('ui-state-hover');    
+    },     
+    function(){    
+        $('#descargarInforme').removeClass('ui-state-hover');     
+    });
+});   
+
+function generarInforme(){
+    setTimeout(function() {
+        document.getElementById("descargarInforme").style.removeProperty("visibility");
+    }, 500);
+}

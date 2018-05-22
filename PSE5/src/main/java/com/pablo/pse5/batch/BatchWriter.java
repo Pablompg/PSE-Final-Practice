@@ -20,7 +20,6 @@ import java.util.Date;
 import java.util.List;
 import javax.batch.api.chunk.AbstractItemWriter;
 import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -32,7 +31,7 @@ public class BatchWriter extends AbstractItemWriter {
     PdfPCell cell;
     Date fecha = new Date();
     float columnWidth[] = new float[]{50,50,50,50,50};
-    SimpleDateFormat formatoDia = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat formatoDia = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat formatoHorayMinuto = new SimpleDateFormat("HH:mm");
     SimpleDateFormat formatoHorayMinuto2 = new SimpleDateFormat("HH-mm");
     String path;
@@ -77,7 +76,7 @@ public class BatchWriter extends AbstractItemWriter {
     @Override
     public void open(Serializable checkpoint) throws DocumentException, IOException {
         //Imprimimos por pantalla la ruta actual donde vamos a trabajar
-        path = System.getProperty("user.dir") + File.separator + "Informe"
+        path = System.getProperty("user.dir") + File.separator + "Informes"+File.separator
                 + formatoDia.format(fecha) + ".pdf";
         System.out.println(path);
         //Generamos un nuevo documento PDF y lo abrimos para escribir en él

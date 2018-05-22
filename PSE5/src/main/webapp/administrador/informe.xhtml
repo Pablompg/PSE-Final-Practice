@@ -18,8 +18,16 @@
                     <p:commandButton style="margin-top: 15px"
                                      value="Generar Informe" 
                                      actionListener="#{suscripcionesOfertaBackingBean.runJob()}"
-                                     icon="ui-icon-document"/>
-                    <a href="#{request.contextPath}/webresources/informes">Descargar el PDF de los cojones</a>
+                                     icon="ui-icon-document"
+                                     onclick="generarInforme();"/>
+                    <a id="descargarInforme"
+                       class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" 
+                       href="#{request.contextPath}/webresources/informes"
+                       style="margin-top: 15px; visibility:hidden"
+                       >
+                       <span class="ui-button-icon-left ui-icon ui-c ui-icon-disk" style='float: left;'></span>
+                       <span class="ui-button-text ui-c">Descargar/Visualizar Informe</span>
+                    </a>
                 </div>
             </ui:define>
 
