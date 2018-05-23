@@ -1,5 +1,6 @@
 package com.pablo.pse5.batch;
 
+import com.pablo.pse5.client.SuscribirClientBean;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 import javax.batch.operations.JobOperator;
@@ -7,15 +8,15 @@ import javax.batch.operations.JobSecurityException;
 import javax.batch.operations.JobStartException;
 import javax.batch.runtime.BatchRuntime;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
 public class suscripcionesOfertaBackingBean {
-
+    
     SimpleDateFormat formatoDia = new SimpleDateFormat("dd-MM-yyyy");
-
+    
+    
     public void runJob() throws JobSecurityException {
         try {
             JobOperator jo = BatchRuntime.getJobOperator();
@@ -25,4 +26,6 @@ public class suscripcionesOfertaBackingBean {
             ex.printStackTrace();
         }
     }
+    
+    
 }

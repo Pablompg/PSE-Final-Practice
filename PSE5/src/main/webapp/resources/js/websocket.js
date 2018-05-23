@@ -35,13 +35,13 @@ function disconnect() {
     document.location.href = "http://localhost:8080/PSE5/faces/index.xhtml";
 }
 websocket.onopen = function () {
-    writeToScreen("WEB SOCKET CONNECTION ESTABLISHED");
+    //writeToScreen("WEB SOCKET CONNECTION ESTABLISHED");
 };
 websocket.onclose = function () {
-    writeToScreen("WEB SOCKET CONNECTION CLOSED");
+    //writeToScreen("WEB SOCKET CONNECTION CLOSED");
 };
 websocket.onmessage = function (evt) {
-    writeToScreen("RECEIVED: " + evt.data);
+    //writeToScreen("RECEIVED: " + evt.data);
     if (evt.data.indexOf("joined") !== -1) {
         users.innerHTML += evt.data.substring(0, evt.data.indexOf("joined")) + "\n";
     } else {

@@ -80,6 +80,8 @@
                                     rendered="#{request.isUserInRole('candidato')}"/>
                         <p:menuitem value="Perfil" url="/faces/candidato/perfil.xhtml" icon="ui-icon-person"
                                     rendered="#{request.isUserInRole('candidato')}"/>
+                        <p:menuitem value="Candidaturas" url="/faces/candidato/candidaturas.xhtml" icon="ui-icon-script"
+                                    rendered="#{request.isUserInRole('candidato')}"/>
                         <p:submenu label="Gestionar ofertas"
                                    rendered="#{request.isUserInRole('empresa')}">
                             <p:menuitem value="Listar ofertas" url="/faces/empresa/listarOfertas.xhtml" icon="ui-icon-search"/>

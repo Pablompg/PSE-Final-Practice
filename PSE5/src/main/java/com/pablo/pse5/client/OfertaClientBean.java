@@ -69,6 +69,15 @@ public class OfertaClientBean{
                 .request()
                 .get(Oferta.class);
     }
+    
+    public Oferta getOferta(int idOferta) {
+        return target
+                .register(OfertaReader.class)
+                .path("{idOferta}")
+                .resolveTemplate("idOferta", idOferta)
+                .request()
+                .get(Oferta.class);
+    }
 
     public void deleteOferta(int idOferta) {
         target.path("{idOferta}")

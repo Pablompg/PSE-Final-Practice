@@ -12,6 +12,7 @@ function handleRegisterRequest(xhr, status, args) {
     }
 }
 
+
 $(document).ready(function() {     
     $('#descargarInforme').hover(function(){     
         $('#descargarInforme').addClass('ui-state-hover');    

@@ -48,13 +48,15 @@
                         <h:outputText value="Carta de presentación:"/><br/>
                         <h:outputText value="#{suscribirse.carta}"/><br/>
                         
+                        <p:barcode value=
+                                   "Enhorabuena se ha suscrito a: #{suscribirse.nombreOferta}, con id: #{suscribirse.idOferta}. Email de contacto: #{suscribirse.emailEmpresa}" type="qr"/>
                         <p:commandButton id="home"
                                          value="Inicio"
                                          action="goHome"
                                          icon="ui-icon-home"
                                          style="margin-top: 15px;"/>
                     </h:form>
-                    <p:barcode value="Enhorabuena se ha suscrito a: #{suscribirse.nombreOferta}" type="qr"/>
+                    
                 </div>
 
             </ui:define>

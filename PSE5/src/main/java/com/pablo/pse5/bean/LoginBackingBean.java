@@ -1,6 +1,7 @@
 package com.pablo.pse5.bean;
 
 import com.pablo.pse5.client.UsuarioClientBean;
+import com.pablo.pse5.entities.Suscribir;
 import com.pablo.pse5.entities.Usuario;
 import com.pablo.pse5.jaas.UserEJB;
 import java.io.Serializable;
@@ -100,5 +101,9 @@ public class LoginBackingBean implements Serializable {
     
     public void modificarCandidato(){
         usuarioClientBean.modificarCandidato();
+    }
+    
+    public Suscribir[] getSuscripcionesPorEmail(){
+        return userEJB.getSuscripcionesPorEmailCandidato(email);
     }
 }

@@ -119,4 +119,8 @@ public class OfertaBackingBean implements Serializable {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         return formato.format(ofertaFecha);
     }
+    
+    public String getNombreById(int idOferta){
+        return ofertaClientBean.getOferta(idOferta).getNombre();
+    }
 }
