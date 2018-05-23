@@ -76,7 +76,7 @@ public class BatchWriter extends AbstractItemWriter {
     @Override
     public void open(Serializable checkpoint) throws DocumentException, IOException {
         //Imprimimos por pantalla la ruta actual donde vamos a trabajar
-        path = System.getProperty("user.dir") + File.separator + "Informes"+File.separator
+        path = System.getProperty("user.dir") +File.separator+ "Informe"
                 + formatoDia.format(fecha) + ".pdf";
         System.out.println(path);
         //Generamos un nuevo documento PDF y lo abrimos para escribir en él

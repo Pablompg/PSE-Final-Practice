@@ -33,7 +33,7 @@ public class InformesREST {
     public Response getPDF() {
         try {
             SimpleDateFormat formatoDia = new SimpleDateFormat("yyyy-MM-dd");
-            String path = System.getProperty("user.dir") + File.separator + "Informes"+File.separator
+            String path = System.getProperty("user.dir")+File.separator+ "Informe"
                 + formatoDia.format(new Date()) + ".pdf";
             File f = new File(path);
             OutputStream oos = new FileOutputStream("test.pdf");

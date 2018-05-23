@@ -1,6 +1,5 @@
 package com.pablo.pse5.batch;
 
-import com.pablo.pse5.client.SuscribirClientBean;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 import javax.batch.operations.JobOperator;
