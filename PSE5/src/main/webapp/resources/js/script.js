@@ -25,5 +25,5 @@ $(document).ready(function() {
 function generarInforme(){
     setTimeout(function() {
         document.getElementById("descargarInforme").style.removeProperty("visibility");
-    }, 500);
+    }, 700);
 }

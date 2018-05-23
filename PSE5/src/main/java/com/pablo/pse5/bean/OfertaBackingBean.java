@@ -2,6 +2,7 @@ package com.pablo.pse5.bean;
 
 import com.pablo.pse5.client.OfertaClientBean;
 import com.pablo.pse5.client.SuscribirClientBean;
+import com.pablo.pse5.client.UsuarioClientBean;
 import com.pablo.pse5.entities.Oferta;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -21,11 +22,14 @@ public class OfertaBackingBean implements Serializable {
     private Date ofertaFecha;
     private String ofertaPuesto;
     private String ofertaRequisitosMinimos;
-    private String ofertaEmailEmpresa;
+    private String ofertaEmailEmpresa="";
 
     @Inject
     OfertaClientBean ofertaClientBean;
 
+    @Inject
+    UsuarioClientBean usuarioClientBean;
+    
     @Inject
     SuscribirClientBean suscribirClientBean;
 
@@ -122,5 +126,19 @@ public class OfertaBackingBean implements Serializable {
     
     public String getNombreById(int idOferta){
         return ofertaClientBean.getOferta(idOferta).getNombre();
+    }
+    
+    public String getNombreEmpresaByEmail(){
+        return usuarioClientBean.getNombreEmpresa(ofertaEmailEmpresa);
+    }
+    
+    
+    public void vaciarOferta(){
+        ofertaNombre = "";
+        ofertaDescripcion = "";
+        ofertaFecha = new Date();
+        ofertaPuesto = "";
+        ofertaRequisitosMinimos = "";
+        ofertaEmailEmpresa = "";
     }
 }

@@ -11,7 +11,7 @@
         <ui:composition template="./WEB-INF/template.xhtml">
             <ui:define name="content">
                 <h:form id="form"> 
-                    <p:dataScroller value="#{ofertaClientBean.ofertas}" var="oferta" chunkSize="10">
+                    <p:dataScroller value="#{ofertaClientBean.ofertas}" var="oferta" chunkSize="50">
                         <f:facet name="header">
                             Ofertas
                         </f:facet>
@@ -59,6 +59,9 @@
 
                                 <h:outputText value="Requisitos Mínimos" style="font-weight: bold;"/>
                                 <h:outputText value="#{ofertaBackingBean.ofertaRequisitosMinimos}"/>
+                                
+                                <h:outputText value="Nombre Empresa" style="font-weight: bold;"/>
+                                <h:outputText value="#{ofertaBackingBean.getNombreEmpresaByEmail()}"/>
                                 
                                 <h:outputText value="Contacto" style="font-weight: bold;"/>
                                 <h:outputText value="#{ofertaBackingBean.ofertaEmailEmpresa}"/>

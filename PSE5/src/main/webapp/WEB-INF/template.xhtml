@@ -85,7 +85,7 @@
                         <p:submenu label="Gestionar ofertas"
                                    rendered="#{request.isUserInRole('empresa')}">
                             <p:menuitem value="Listar ofertas" url="/faces/empresa/listarOfertas.xhtml" icon="ui-icon-search"/>
-                            <p:menuitem value="Añadir oferta" url="/faces/empresa/añadirOferta.xhtml" icon="ui-icon-plus"/>
+                            <p:menuitem value="Añadir oferta" url="/faces/empresa/añadirOferta.xhtml" actionListener="#{ofertaBackingBean.vaciarOferta()}" icon="ui-icon-plus"/>
                         </p:submenu>
                         <p:submenu label="Gestionar empresas"
                                    rendered="#{request.isUserInRole('administrador')}">
