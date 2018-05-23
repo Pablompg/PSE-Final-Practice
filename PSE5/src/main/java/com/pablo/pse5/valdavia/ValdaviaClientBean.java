@@ -47,6 +47,8 @@ public class ValdaviaClientBean {
                     .get(Pago.class);
         } catch (WebApplicationException e) {
             return new Pago("none","none");
+        } catch(Exception e){
+            return new Pago("errorInternet","errorInternet");
         }
         return m;
     }

@@ -79,6 +79,22 @@
                         </div>
 
                     </c:when>
+                    <c:when test="#{suscribirse.estadoPagos == 'errorInternet'}">
+                        <h2>
+                            Error
+                        </h2>
+                        <div class="principal">
+                            No se ha podido establecer conexión con Valdavia.
+                            <h:form>
+                                <p:commandButton id="home"
+                                                 value="Inicio"
+                                                 action="goHome"
+                                                 icon="ui-icon-home"
+                                                 style="margin-top: 15px"/>
+                            </h:form>
+                        </div>
+
+                    </c:when>
                     <c:otherwise>
                         <h2>
                             Usuario no identificado en la pasarela de pagos
