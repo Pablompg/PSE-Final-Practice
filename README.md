@@ -1,5 +1,5 @@
 # PSE (Plataformas Software Empresariales)
-## Escuela de Ingeniería Informática de Segovia <img src="http://www.eui.uva.es/sites/default/files/zeropoint_logo.png" alt="drawing" width="200px"/>
+## Escuela de Ingeniería Informática de Segovia 
 
 This is our Enterprise Software Platforms final practice.  It is a java EE web platform that includes PDF creation using iText API, batch processing, JDBC, JPA, JSON processing, WebSockets, JAAS, JAX-RS, MySQL, and JSF and PrimeFaces for the UI.
 
