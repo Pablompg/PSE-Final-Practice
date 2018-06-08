@@ -2,6 +2,7 @@ PSE (Plataformas Software Empresariales)
 
 Escuela de Ingeniería Informática de Segovia
 
-    <img style="float: center;" src="http://www.eui.uva.es/sites/default/files/zeropoint_logo.png" width="40%">
+    <img src="http://www.eui.uva.es/sites/default/files/zeropoint_logo.png" alt="drawing" width="200px" style="float: center"/>
 
 This is my Enterprise Software Platforms final practice. 
+
