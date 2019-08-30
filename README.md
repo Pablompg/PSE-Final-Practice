@@ -1,7 +1,7 @@
 # PSE (Plataformas Software Empresariales)
 ## Escuela de Ingeniería Informática de Segovia 
 
-This is our Enterprise Software Platforms final practice.  It is a java EE web platform that includes PDF creation using iText API, batch processing, JDBC, JPA, JSON processing, WebSockets, JAAS, JAX-RS, MySQL, and JSF and PrimeFaces for the UI.
+This is our Enterprise Software Platforms final practice.  It is a java EE web platform. It is an employment website for companies to post their job offers that includes PDF creation using the iText API, batch processing, JDBC, JPA, JSON processing, WebSockets, JAAS, JAX-RS, MySQL, and JSF and PrimeFaces for the UI.
 
 The project memory is included for your revision.
 
